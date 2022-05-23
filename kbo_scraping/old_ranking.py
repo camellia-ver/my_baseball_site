@@ -1,7 +1,6 @@
 # KBO 순위 정보 수집
 # 시범 경기 외의 정규리그 순위만 수집
-# 1982~2021 동안의 순위는 최종 순위만 수집
-# 2022 ~ ing는 4월2일 개막전 부터 시즌 종료일까지의 매일 순위 정보 수집
+# 1982 ~ 2021 동안의 순위는 최종 순위만 수집
 
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -32,4 +31,3 @@ driver = webdriver.Chrome(service=service,options=chrome_options)
 driver.implicitly_wait(5) # 웹페이지가 로딩 될때까지 5초는 기다림
 driver.maximize_window() # 화면 최대화
 driver.get("https://www.koreabaseball.com/TeamRank/TeamRank.aspx")
-
