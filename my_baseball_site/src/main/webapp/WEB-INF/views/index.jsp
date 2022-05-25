@@ -7,11 +7,9 @@
     <title>baseball data site</title>
 </head>
 <body>
-    <div class="container">
-        <%@include file="/WEB-INF/views/includes/menu.jsp"%>
-        <div class="dashboard_area">
+    <%@include file="/WEB-INF/views/includes/menu.jsp"%>
+    <div class="contents">
 
-        </div>
     </div>
 </body>
 </html>
