@@ -4,9 +4,14 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>메인페이지</title>
+    <title>baseball data site</title>
 </head>
 <body>
-    <h1>메인페이지</h1>
+    <div class="container">
+        <%@include file="/WEB-INF/views/includes/menu.jsp"%>
+        <div class="dashboard_area">
+
+        </div>
+    </div>
 </body>
 </html>
