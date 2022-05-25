@@ -9,7 +9,7 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 import pymysql
 from pymysql import cursors
-import time
+import time,datetime
 
 options = Options()
 options.add_experimental_option("detach",True)
@@ -25,8 +25,8 @@ driver.get("https://www.koreabaseball.com/TeamRank/TeamRank.aspx")
 tbody = driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_udpRecord"]/table/tbody').text
 tbody = tbody.split('\n')
 
-date = driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_lblSearchDateTitle"]').text
-save_date = date[:4] + date[5:7] + date[8:10]
+date = str(datetime.datetime.now())
+save_date = date[:10].replace('-','')
 
 db_connect = pymysql.connect(
     user='root',
