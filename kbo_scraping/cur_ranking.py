@@ -7,6 +7,8 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
+import pymysql
+from pymysql import cursors
 import time
 
 options = Options()
@@ -21,3 +23,40 @@ driver.implicitly_wait(5)
 driver.get("https://www.koreabaseball.com/TeamRank/TeamRank.aspx")
 
 tbody = driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_udpRecord"]/table/tbody').text
+tbody = tbody.split('\n')
+
+date = driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_lblSearchDateTitle"]').text
+save_date = date[:4] + date[5:7] + date[8:10]
+
+db_connect = pymysql.connect(
+    user='root',
+    passwd='1234',
+    host='127.0.0.1',
+    db='kbo_data',
+    charset='utf8'
+)
+
+if not db_connect:
+    print("연결 실패")    
+    db_connect.close()
+    exit(0)
+else:
+    print("연결 성공")
+
+cursor = db_connect.cursor(cursors.DictCursor)
+
+for rank in tbody:
+    save_data = rank.split(' ')
+    save_data[1] = "'" + save_data[1] + "'"
+    save_data[8] = "'" + save_data[8] + "'"
+    save_data[9] = "'" + save_data[9] + "'"
+    save_data[10] = "'" + save_data[10] + "'"
+    save_data[11] = "'" + save_data[11] + "'"
+    save_data = ','.join(save_data) + ',' + save_date + ",'단일리그'"
+    
+    sql = "insert into ranking(no,team_name,game,win,lose,tie,win_rate,game_difference,last_10_matches,continuity,home,away,r_date,uniqueness)values(" + save_data + ')'
+    
+    cursor.execute(sql)
+    db_connect.commit()
+
+db_connect.close()
