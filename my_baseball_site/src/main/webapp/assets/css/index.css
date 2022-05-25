@@ -1,0 +1,8 @@
+.contents{
+    width: auto; height: auto;
+    margin: 20px; border-radius: 30px;
+    background-color: rgb(218, 219, 234);
+}
+
+.content_left{float: left; margin: 20px;}
+.content_right{float: right; margin: 20px;}

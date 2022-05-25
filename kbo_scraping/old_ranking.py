@@ -105,13 +105,16 @@ for year in range(1982,2021):
     time.sleep(5)
 
 select = Select(driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_ddlYear"]')).select_by_value("2022")
-prev_btn = driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_btnPreDate"]')
-prev_btn.click()
+# prev_btn = driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_btnPreDate"]')
+# prev_btn.click()
 
 date = driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_lblSearchDateTitle"]').text
 
 while date != "2022.04.02(토)":
     # driver.implicitly_wait(10)
+    prev_btn = driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_btnPreDate"]')
+    prev_btn.click()
+
     time.sleep(10)
     date = driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_lblSearchDateTitle"]').text
     save_date = date[:4] + date[5:7] + date[8:10]
@@ -120,9 +123,6 @@ while date != "2022.04.02(토)":
     tbody = tbody.split('\n')
     
     time.sleep(10)
-    prev_btn = driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_btnPreDate"]')
-    prev_btn.click()
-
     for rank in tbody:
         save_data = rank.split(' ')
         save_data[1] = "'" + save_data[1] + "'"
