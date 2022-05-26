@@ -15,7 +15,7 @@ import time,datetime
 options = Options()
 options.add_experimental_option("detach",True)
 options.add_experimental_option("excludeSwitches",["enable-logging"])
-# options.add_argument("headless")
+options.add_argument("headless")
 
 service = Service(executable_path=ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service,options=options)
