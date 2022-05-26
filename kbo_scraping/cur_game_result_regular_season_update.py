@@ -35,6 +35,23 @@ contents = driver.find_elements_by_xpath('//*[@id="tblSchedule"]/tbody/tr')
 today = str(datetime.datetime.now())
 today = today[5:7] + '.'+ today[8:10]
 
+db_connect = pymysql.connect(
+    user='root',
+    passwd='1234',
+    host='127.0.0.1',
+    db='kbo_data',
+    charset='utf8'
+)
+
+if not db_connect:
+    print("연결 실패")    
+    db_connect.close()
+    exit(0)
+else:
+    print("연결 성공")
+
+cursor = db_connect.cursor(cursors.DictCursor)
+
 for i in contents:
     result = i.text.split(' ')
     if today in result[0]:
@@ -69,9 +86,21 @@ for i in contents:
                 result.insert(5,result[2][-3:])
         del result[2]
         vs_idx = result[3].find("vs")
-        result.insert(4,result[3][:vs_idx])
-        result.insert(5,result[3][vs_idx+2:])
+        if result[3][:vs_idx] == '':
+            result.insert(4,'-1')
+            result.insert(5,'-1')
+        else:
+            result.insert(4,result[3][:vs_idx])
+            result.insert(5,result[3][vs_idx+2:])
         del result[3]
         result[0] = year + result[0][:2] + result[0][3:5]
-        save_data = "'" + "','".join(result) + "'" + ",정규시즌"
+        # save_data = "'" + "','".join(result) + "'" + ",정규시즌"
+        # save_data = save_data[18:-7]
+        sql = "update schedule_game_result set team1_score="+result[3]+",team2_score="+result[4]+",note="+"where="+result[0]
+
+        cursor.execute(sql)
+        db_connect.commit()
+
         break
+
+db_connect.close()

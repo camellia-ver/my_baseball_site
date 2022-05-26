@@ -27,9 +27,27 @@ select = Select(driver.find_element_by_xpath('//*[@id="ddlSeries"]')).select_by_
 
 contents = driver.find_elements_by_xpath('//*[@id="tblSchedule"]/tbody/tr')
 
+db_connect = pymysql.connect(
+    user='root',
+    passwd='1234',
+    host='127.0.0.1',
+    db='kbo_data',
+    charset='utf8'
+)
+
+if not db_connect:
+    print("연결 실패")    
+    db_connect.close()
+    exit(0)
+else:
+    print("연결 성공")
+
+cursor = db_connect.cursor(cursors.DictCursor)
+
 year = "2022"
 for i in contents:
     result = i.text.split(' ')
+    print(result)
     if len(result) == 8:
             del result[5]
             del result[4]
@@ -59,9 +77,21 @@ for i in contents:
     del result[2]
 
     vs_idx = result[3].find("vs")
-    result.insert(4,result[3][:vs_idx])
-    result.insert(5,result[3][vs_idx+2:])
+    if result[3][:vs_idx] == '':
+        result.insert(4,'-1')
+        result.insert(5,'-1')
+    else:
+        result.insert(4,result[3][:vs_idx])
+        result.insert(5,result[3][vs_idx+2:])
     del result[3]
 
     result[0] = year + result[0][:2] + result[0][3:5]
-    save_data = "'" + "','".join(result) + "'" + '포스트시즌'
+    save_data = "'" + "','".join(result) + "','포스트시즌'"
+    
+    sql = "insert into schedule_game_result(g_date,g_time,team1,team1_score,team2_score,team2,baseball_stadium,note,season)values(" + save_data + ')'
+    print(sql)
+
+    cursor.execute(sql)
+    # db_connect.commit()
+
+db_connect.close()
