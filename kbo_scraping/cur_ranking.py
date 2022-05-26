@@ -55,7 +55,7 @@ for rank in tbody:
     save_data = ','.join(save_data) + ',' + save_date + ",'단일리그'"
     
     sql = "insert into ranking(no,team_name,game,win,lose,tie,win_rate,game_difference,last_10_matches,continuity,home,away,r_date,uniqueness)values(" + save_data + ')'
-    
+
     cursor.execute(sql)
     db_connect.commit()
 
