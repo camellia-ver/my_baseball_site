@@ -30,7 +30,8 @@ team_btn.click()
 next_btn = driver.find_element_by_xpath('//*[@id="btnNext"]/img')
 
 for year in range(2001,2022):
-    select = Select(driver.find_element_by_xpath('//*[@id="ddlYear"]')).select_by_value(str(year))
+    year = str(year)
+    select = Select(driver.find_element_by_xpath('//*[@id="ddlYear"]')).select_by_value(year)
     select = Select(driver.find_element_by_xpath('//*[@id="ddlMonth"]')).select_by_value("04")
     while True:
         end_check = driver.find_element_by_xpath('//*[@id="tblSchedule"]/tbody/tr/td').text
@@ -61,8 +62,32 @@ for year in range(2001,2022):
                 elif len(result) == 5:
                     del result[2]
                     result.insert(0,date)
-                print(result)
                 
+                ssg_idx = result[2].find("SSG")
+                kia_idx = result[2].find("KIA")
+                if kia_idx == -1 and ssg_idx == -1:
+                    result.insert(3,result[2][:2])
+                    result.insert(4,result[2][2:-2])
+                    result.insert(5,result[2][-2:])
+                else:
+                    if ssg_idx == 0 or kia_idx == 0:
+                        result.insert(3,result[2][:3])
+                        result.insert(4,result[2][3:-2])
+                        result.insert(5,result[2][-2:])
+                    else:
+                        result.insert(3,result[2][:2])
+                        result.insert(4,result[2][2:-3])
+                        result.insert(5,result[2][-3:])
+                del result[2]
+
+                vs_idx = result[3].find("vs")
+                result.insert(4,result[3][:vs_idx])
+                result.insert(5,result[3][vs_idx+2:])
+                del result[3]
+
+                result[0] = year + result[0][:2] + result[0][3:5]
+                save_data = "'" + "','".join(result) + "'" + "정규시즌"
+
         next_btn.click()
 
         time.sleep(5)

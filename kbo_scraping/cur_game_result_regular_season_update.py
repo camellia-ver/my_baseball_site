@@ -1,6 +1,8 @@
+# 오늘 경기결과 업데이트
 # 경기 결과 수집
-# 포스트시즌 내용 만(2010이후 부터 데이터 존재)
-# 지난 시즌
+# 정규시즌 내용 만
+# 현재 시즌
+# 2022년 부터 더블헤더 폐지
 
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -23,17 +25,25 @@ driver = webdriver.Chrome(service=service,options=options)
 driver.implicitly_wait(5)
 driver.get("https://www.koreabaseball.com/Schedule/Schedule.aspx")
 
-select = Select(driver.find_element_by_xpath('//*[@id="ddlSeries"]')).select_by_value("3,4,5,7")
+team_btn = driver.find_element_by_xpath('//*[@id="contents"]/ul/li[4]/a')
+team_btn.click()
+next_btn = driver.find_element_by_xpath('//*[@id="btnNext"]/img')
 
-for year in range(2010,2022):
-    year = str(year)
-    select = Select(driver.find_element_by_xpath('//*[@id="ddlYear"]')).select_by_value(str(year))
+year = "2022"
 
-    contents = driver.find_elements_by_xpath('//*[@id="tblSchedule"]/tbody/tr')
+contents = driver.find_elements_by_xpath('//*[@id="tblSchedule"]/tbody/tr')
+today = str(datetime.datetime.now())
+today = today[5:7] + '.'+ today[8:10]
 
-    for i in contents:
-        result = i.text.split(' ')
-        if len(result) == 8:
+for i in contents:
+    result = i.text.split(' ')
+    if today in result[0]:
+        if len(result) == 9:
+            del result[6]
+            del result[5]
+            del result[4]
+            del result[3]
+        elif len(result) == 8:
             del result[5]
             del result[4]
             del result[3]
@@ -41,9 +51,7 @@ for year in range(2010,2022):
             del result[4]
             del result[3]
         elif len(result) == 6:
-            result[4] = result[4][-2:]
             del result[3]
-
         ssg_idx = result[2].find("SSG")
         kia_idx = result[2].find("KIA")
         if kia_idx == -1 and ssg_idx == -1:
@@ -64,8 +72,6 @@ for year in range(2010,2022):
         result.insert(4,result[3][:vs_idx])
         result.insert(5,result[3][vs_idx+2:])
         del result[3]
-
         result[0] = year + result[0][:2] + result[0][3:5]
-        save_data = "'" + "','".join(result) + "'" + "포스트시즌"
-    
-    time.sleep(5)
+        save_data = "'" + "','".join(result) + "'" + ",정규시즌"
+        break
