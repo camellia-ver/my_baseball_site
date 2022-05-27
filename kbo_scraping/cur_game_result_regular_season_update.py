@@ -50,6 +50,7 @@ year = "2022"
 prev_day = 1
 
 for i in range(prev_day):
+    time.sleep(10)
     contents = driver.find_elements_by_xpath('//*[@id="tblSchedule"]/tbody/tr')
     yesterday = str(datetime.datetime.now() - datetime.timedelta(days=i+1))
     yesterday = yesterday[5:7] + '.'+ yesterday[8:10]
