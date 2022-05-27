@@ -22,12 +22,6 @@ driver = webdriver.Chrome(service=service,options=options)
 driver.implicitly_wait(5)
 driver.get("https://www.koreabaseball.com/TeamRank/TeamRank.aspx")
 
-tbody = driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_udpRecord"]/table/tbody').text
-tbody = tbody.split('\n')
-
-date = str(datetime.datetime.now())
-save_date = date[:10].replace('-','')
-
 db_connect = pymysql.connect(
     user='root',
     passwd='1234',
@@ -45,18 +39,33 @@ else:
 
 cursor = db_connect.cursor(cursors.DictCursor)
 
-for rank in tbody:
-    save_data = rank.split(' ')
-    save_data[1] = "'" + save_data[1] + "'"
-    save_data[8] = "'" + save_data[8] + "'"
-    save_data[9] = "'" + save_data[9] + "'"
-    save_data[10] = "'" + save_data[10] + "'"
-    save_data[11] = "'" + save_data[11] + "'"
-    save_data = ','.join(save_data) + ',' + save_date + ",'단일리그'"
-    
-    sql = "insert into ranking(no,team_name,game,win,lose,tie,win_rate,game_difference,last_10_matches,continuity,home,away,r_date,uniqueness)values(" + save_data + ')'
+# 몇일 전 기록까지 저장 할지, 1 : 오늘 것만,2 : 어제 것 까지
+prev_day = 1
 
-    cursor.execute(sql)
-    db_connect.commit()
+for i in range(prev_day):
+    time.sleep(10)
+
+    date = driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_lblSearchDateTitle"]').text
+    save_date = date[:4] + date[5:7] + date[8:10]
+
+    tbody = driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_udpRecord"]/table/tbody').text
+    tbody = tbody.split('\n')
+
+    for rank in tbody:
+        save_data = rank.split(' ')
+        save_data[1] = "'" + save_data[1] + "'"
+        save_data[8] = "'" + save_data[8] + "'"
+        save_data[9] = "'" + save_data[9] + "'"
+        save_data[10] = "'" + save_data[10] + "'"
+        save_data[11] = "'" + save_data[11] + "'"
+        save_data = ','.join(save_data) + ',' + save_date + ",'단일리그'"
+        
+        sql = "insert into ranking(no,team_name,game,win,lose,tie,win_rate,game_difference,last_10_matches,continuity,home,away,r_date,uniqueness)values(" + save_data + ')'
+        
+        cursor.execute(sql)
+        db_connect.commit()
+
+    prev_btn = driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_btnPreDate"]')
+    prev_btn.click()
 
 db_connect.close()
