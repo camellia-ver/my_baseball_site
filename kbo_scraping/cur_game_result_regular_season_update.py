@@ -32,8 +32,8 @@ next_btn = driver.find_element_by_xpath('//*[@id="btnNext"]/img')
 year = "2022"
 
 contents = driver.find_elements_by_xpath('//*[@id="tblSchedule"]/tbody/tr')
-today = str(datetime.datetime.now())
-today = today[5:7] + '.'+ today[8:10]
+yesterday = str(datetime.datetime.now() - datetime.timedelta(days=1))
+yesterday = yesterday[5:7] + '.'+ yesterday[8:10]
 
 db_connect = pymysql.connect(
     user='root',
@@ -54,7 +54,7 @@ cursor = db_connect.cursor(cursors.DictCursor)
 
 for i in contents:
     result = i.text.split(' ')
-    if today in result[0]:
+    if yesterday in result[0]:
         if len(result) == 9:
             del result[6]
             del result[5]
@@ -94,10 +94,9 @@ for i in contents:
             result.insert(5,result[3][vs_idx+2:])
         del result[3]
         result[0] = year + result[0][:2] + result[0][3:5]
-        # save_data = "'" + "','".join(result) + "'" + ",정규시즌"
-        # save_data = save_data[18:-7]
-        sql = "update schedule_game_result set team1_score="+result[3]+",team2_score="+result[4]+",note="+"where="+result[0]
-
+        
+        sql = "update schedule_game_result set team1_score='"+result[3]+"',team2_score='"+result[4]+"',note='"+result[7]+"' where g_date= "+result[0]
+        
         cursor.execute(sql)
         db_connect.commit()
 

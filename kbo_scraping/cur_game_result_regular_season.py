@@ -57,7 +57,7 @@ while True:
 
         for i in contents:
             result = i.text.split(' ')
-            print(result)
+            
             if len(result) == 9:
                 del result[6]
                 del result[5]
@@ -103,7 +103,7 @@ while True:
             save_data = "'" + "','".join(result) + "'" + ",'정규시즌'"
             
             sql = "insert into schedule_game_result(g_date,g_time,team1,team1_score,team2_score,team2,baseball_stadium,note,season)values(" + save_data + ')'
-            print(sql)
+           
             cursor.execute(sql)
             db_connect.commit()
             

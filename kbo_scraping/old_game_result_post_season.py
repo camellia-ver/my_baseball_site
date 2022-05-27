@@ -54,7 +54,7 @@ for year in range(2010,2022):
         if result[1] == "이동일":
             continue
 
-        print(result)
+        
         if len(result) == 9:
             del result[6]
             del result[5]
@@ -104,7 +104,7 @@ for year in range(2010,2022):
         save_data = save_data[1:9]+save_data[10:]
 
         sql = "insert into schedule_game_result(g_date,g_time,team1,team1_score,team2_score,team2,baseball_stadium,note,season)values(" + save_data + ')'
-        print(sql)      
+              
         cursor.execute(sql)
         db_connect.commit()
     
