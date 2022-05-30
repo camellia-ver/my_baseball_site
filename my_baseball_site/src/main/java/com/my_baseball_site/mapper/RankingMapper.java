@@ -1,14 +1,14 @@
 package com.my_baseball_site.mapper;
 
+import java.util.Date;
+import java.util.List;
+
+import com.my_baseball_site.vo.RankingVO;
+
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public class RankingMapper {
-    
+public interface RankingMapper {
+    public List<RankingVO> selectRankingToday();
+    public List<RankingVO> selectRankingByDate(Date date);
 }
-// public void insertCategory(String name);
-// public Integer isDuplicateCategory(String name);
-// public List<CategoryVO> selectCategoryAll();
-// public void deleteCategory(Integer seq);
-// public String selectCategoryName(Integer seq);
-// public Integer selectCateProdCnt(Integer seq);

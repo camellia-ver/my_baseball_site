@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>baseball data site</title>
-    <link rel="stylesheet" href="/assets/css/index.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 <body>
     <%@include file="/WEB-INF/views/includes/menu.jsp"%>
