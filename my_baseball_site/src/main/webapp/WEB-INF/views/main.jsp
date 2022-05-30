@@ -1,5 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,65 +20,37 @@
                 <table class="table table-striped">
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">순위</th>
+                        <th scope="col">팀명</th>
+                        <th scope="col">게임수</th>
+                        <th scope="col">승</th>
+                        <th scope="col">패</th>
+                        <th scope="col">무</th>
+                        <th scope="col">승률</th>
+                        <th scope="col">게임차</th>
+                        <th scope="col">최근 10경기</th>
+                        <th scope="col">연속</th>
+                        <th scope="col">홈</th>
+                        <th scope="col">방문</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">4</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">5</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">6</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">7</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">8</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">9</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">10</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                      </tr>
+                      <c:forEach items="${today_ranking}" var="item">
+                        <tr>
+                          <td>${item.no}</td>
+                          <td>${item.team_name}</td>
+                          <td>${item.game}</td>
+                          <td>${item.win}</td>
+                          <td>${item.lose}</td>
+                          <td>${item.tie}</td>
+                          <td>${item.win_rate}</td>
+                          <td>${item.game_difference}</td>
+                          <td>${item.last_10_matches}</td>
+                          <td>${item.continuity}</td>
+                          <td>${item.home}</td>
+                          <td>${item.away}</td>
+                        </tr>
+                      </c:forEach>
                     </tbody>
                   </table>
             </div>

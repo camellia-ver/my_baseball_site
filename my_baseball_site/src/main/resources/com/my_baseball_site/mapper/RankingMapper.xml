@@ -3,9 +3,6 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.my_baseball_site.mapper.RankingMapper">
-    <select id="selectRankingToday" resultType="com.my_baseball_site.vo.RankingVO">
-        select * from ranking limit 10
-    </select>
     <select id="selectRankingByDate" resultType="com.my_baseball_site.vo.RankingVO">
         select * from ranking where r_date = #{date}
     </select>
