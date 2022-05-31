@@ -51,16 +51,18 @@ year = "2022"
 prev_day = 1
 
 for i in range(prev_day):
-    time.sleep(10)
-    contents = driver.find_elements_by_xpath('//*[@id="tblSchedule"]/tbody/tr')
     yesterday = str(datetime.datetime.now() - datetime.timedelta(days=i+1))
     yesterday = yesterday[5:7] + '.'+ yesterday[8:10]
+    cur_month = str(datetime.datetime.now())
+    cur_month = cur_month[5:7]
 
-    month_check = contents[0].text.split(' ')
-    if yesterday[:2] != month_check[0][:2]:
+    if cur_month != yesterday[:2]:
         prev_btn.click()
-        contents = driver.find_elements_by_xpath('//*[@id="tblSchedule"]/tbody/tr')
-        
+    
+    time.sleep(10)
+
+    contents = driver.find_elements_by_xpath('//*[@id="tblSchedule"]/tbody/tr')
+
     for i in contents:
         result = i.text.split(' ')
             
