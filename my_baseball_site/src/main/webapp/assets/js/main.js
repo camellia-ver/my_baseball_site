@@ -5,4 +5,9 @@ $(function(){
         $("#game_result").css("color","royalblue")
     else
         $("#game_result").css("color","salmon")
+
+    game_cancel = $('#game_cancel').text()
+
+    if(game_cancel != '-')
+        $("#game_cancel").css("color","orange")
 })

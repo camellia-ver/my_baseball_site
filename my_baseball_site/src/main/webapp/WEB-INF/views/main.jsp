@@ -12,10 +12,18 @@
 <body>
     <div class="contents">
         <div class="content_left">
-            <div class="today_game_result">
-                <span>${recently_game.date} ${recently_game.team1} ${recently_game.team1_score} VS ${recently_game.team2_score} ${recently_game.team2}</span>
-                <p id="game_result">${recently_game.result}</p> 
-            </div>
+            <c:if test="${recently_game.note != '-'}">
+                <div class="today_game_result">
+                    <span>${recently_game.date}</span>
+                    <p id="game_cancel">${recently_game.note}</p>
+                </div>
+            </c:if>
+            <c:if test="${recently_game.note == '-'}">
+                <div class="today_game_result">
+                    <span>${recently_game.date} ${recently_game.team1} ${recently_game.team1_score} VS ${recently_game.team2_score} ${recently_game.team2}</span>
+                    <p id="game_result">${recently_game.result}</p> 
+                </div>
+            </c:if>
             <div class="today_ranking">
                 <div class="ranking_title">
                     <h2> < TEAM RANKING > </h2>
@@ -61,11 +69,7 @@
                 </div>
                 <c:forEach items="${three_game_schedule}" var="item">
                     <div class="schedule">
-<<<<<<< HEAD
                         <p>${item.date} ${item.g_time} 경기</p>
-=======
-                        <p>${item.date} ${item.g_time}</p>
->>>>>>> recently_game_result
                         <p>${item.team1} VS ${item.team2} ${item.baseball_stadium}</p>
                     </div>
                 </c:forEach>

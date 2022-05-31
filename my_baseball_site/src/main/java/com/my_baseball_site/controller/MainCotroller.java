@@ -1,6 +1,5 @@
 package com.my_baseball_site.controller;
 
-import com.my_baseball_site.mapper.RankingMapper;
 import com.my_baseball_site.service.RankingService;
 import com.my_baseball_site.service.ScheduleGameResultService;
 

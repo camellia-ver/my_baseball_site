@@ -37,6 +37,8 @@ public class ScheduleGameResultService {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
         String today = formatter.format(date.getTime());
 
+        
+
         while(true){
             if(sgr_mapper.isGame(today) == 1){
                 break;
@@ -48,8 +50,16 @@ public class ScheduleGameResultService {
         }
 
         ScheduleGameResultVO data = sgr_mapper.selectRecentlyGameResult(today);
+        SimpleDateFormat formatter2 = new SimpleDateFormat("MM월 dd일");
+        String print_date;
 
-        if(data.getTeam1_score() > data.getTeam2_score()){
+        if(!data.getNote().equals("-")){
+            print_date = formatter2.format(data.getG_date());
+            data.setDate(print_date);
+
+            return data;
+        }
+        else if(data.getTeam1_score() > data.getTeam2_score()){
             if(data.getTeam1().equals("삼성"))
                 data.setResult("승리");
             else
@@ -62,8 +72,7 @@ public class ScheduleGameResultService {
                 data.setResult("패배");
         }
 
-        SimpleDateFormat formatter2 = new SimpleDateFormat("MM월 dd일");
-        String print_date = formatter2.format(data.getG_date());
+        print_date = formatter2.format(data.getG_date());
         data.setDate(print_date);
 
         return data;
