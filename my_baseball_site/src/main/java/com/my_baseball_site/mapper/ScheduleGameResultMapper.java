@@ -1,0 +1,15 @@
+package com.my_baseball_site.mapper;
+
+import java.util.List;
+
+import com.my_baseball_site.vo.ScheduleGameResultVO;
+
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface ScheduleGameResultMapper {
+    List<ScheduleGameResultVO> selectScheduleThreeGame(String date);
+    
+    Integer isGame(String date);
+    ScheduleGameResultVO selectRecentlyGameResult(String date);
+}

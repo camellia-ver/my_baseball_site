@@ -4,14 +4,27 @@
     float: left; margin: 20px; width: 70%;
 }
 .content_right{
-    float: right; margin: 20px; text-align:center; width: 22%;
+    float: right; text-align:center; width: 24%; margin-right: 25px;
 }
 
-.today_game_result{height: 100px;font-size: 30px; margin-bottom: 10px;} 
+.today_game_result{height: 100px;font-size: 30px;background-color: skyblue;} 
 .today_game_result > p{font-weight: 600;}
-.today_ranking{text-align: center; font-size: 21px;}
+
+.today_ranking{
+    text-align: center; font-size: 20px;margin-top: 10px;
+}
+.ranking_title > h2{
+    float:left; font-size: 30px; margin-bottom: 10px;
+    padding-left: 38%; font-weight: 500;
+}
+.ranking_title > button {float: right; margin-bottom: 10px;}
 
 .game_schedule{
-    font-size: 25px; text-align: center; margin-top: 50px; margin-right: 10px;
+    font-size: 25px; text-align: center; margin-right: 10px;
+    margin-top: 30px;
 }
-.schedule{padding-bottom: 30px;}
+.game_schedule > h2{font-weight: 500;}
+.schedule{
+    box-shadow:0 0 10px rgba(0,0,0,0.2); border-radius: 5px;
+    padding:15%; margin: 15px;
+}

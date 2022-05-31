@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.my_baseball_site.mapper.ScheduleGameResultMapper">
+    <select id="selectScheduleThreeGame" resultType="com.my_baseball_site.vo.ScheduleGameResultVO">
+        select * from schedule_game_result where g_date >= #{date} limit 3
+    </select>
+
+    <select id="isGame" resultType="java.lang.Integer">
+        select count(*) from schedule_game_result where g_date = #{date}
+    </select>
+    <select id="selectRecentlyGameResult" resultType="com.my_baseball_site.vo.ScheduleGameResultVO">
+        select * from schedule_game_result where g_date = #{date} 
+    </select>
+</mapper>

@@ -17,6 +17,10 @@
                 <p>패배</p> 
             </div>
             <div class="today_ranking">
+                <div class="ranking_title">
+                    <h2> < TEAM RANKING > </h2>
+                    <button type="button" class="btn btn-primary">더보기</button>
+                </div>
                 <table class="table table-striped">
                     <thead>
                       <tr>
@@ -28,10 +32,7 @@
                         <th scope="col">무</th>
                         <th scope="col">승률</th>
                         <th scope="col">게임차</th>
-                        <th scope="col">최근 10경기</th>
                         <th scope="col">연속</th>
-                        <th scope="col">홈</th>
-                        <th scope="col">방문</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -45,10 +46,7 @@
                           <td>${item.tie}</td>
                           <td>${item.win_rate}</td>
                           <td>${item.game_difference}</td>
-                          <td>${item.last_10_matches}</td>
                           <td>${item.continuity}</td>
-                          <td>${item.home}</td>
-                          <td>${item.away}</td>
                         </tr>
                       </c:forEach>
                     </tbody>
@@ -57,6 +55,7 @@
         </div>
         <div class="content_right">
             <div class="game_schedule">
+                <h2>경기 일정</h2>
                 <div class="schedule">
                     <p>5월 28일 경기</p>
                     <p>삼성 VS LG 잠실</p>
