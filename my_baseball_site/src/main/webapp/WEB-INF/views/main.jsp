@@ -1,20 +1,20 @@
 <%@page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@include file="/WEB-INF/views/includes/header.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>baseball data site</title>
     <link rel="stylesheet" href="/assets/css/main.css">
+    <script src="/assets/js/main.js"></script>
 </head>
 <body>
-    <%@include file="/WEB-INF/views/includes/menu.jsp"%>
     <div class="contents">
         <div class="content_left">
             <div class="today_game_result">
-                <span>5월 27일 삼성 0 VS 5 LG</span>
-                <p>패배</p> 
+                <span>${recently_game.date} ${recently_game.team1} ${recently_game.team1_score} VS ${recently_game.team2_score} ${recently_game.team2}</span>
+                <p id="game_result">${recently_game.result}</p> 
             </div>
             <div class="today_ranking">
                 <div class="ranking_title">
@@ -61,7 +61,11 @@
                 </div>
                 <c:forEach items="${three_game_schedule}" var="item">
                     <div class="schedule">
+<<<<<<< HEAD
                         <p>${item.date} ${item.g_time} 경기</p>
+=======
+                        <p>${item.date} ${item.g_time}</p>
+>>>>>>> recently_game_result
                         <p>${item.team1} VS ${item.team2} ${item.baseball_stadium}</p>
                     </div>
                 </c:forEach>
