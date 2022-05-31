@@ -22,10 +22,16 @@
 
 .game_schedule{
     font-size: 25px; text-align: center; margin-right: 10px;
-    margin-top: 30px;
+    margin-top: 50px;
 }
-.game_schedule > h2{font-weight: 500;}
 .schedule{
     box-shadow:0 0 10px rgba(0,0,0,0.2); border-radius: 5px;
-    padding:15%; margin: 15px; background-color: white;
+    padding:45px; margin: 15px; background-color: white;
 }
+.game_schedule_title{padding-bottom: 40px;}
+.game_schedule_title > h2{
+    float:left; font-weight: 500;
+    /* font-size: 30px; margin-bottom: 10px;
+    padding-left: 38%; font-weight: 500; */
+}
+.game_schedule_title > button {float: right; }

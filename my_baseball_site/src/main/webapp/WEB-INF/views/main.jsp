@@ -55,10 +55,13 @@
         </div>
         <div class="content_right">
             <div class="game_schedule">
-                <h2>경기 일정</h2>
+                <div class="game_schedule_title">
+                    <h2>경기 일정</h2>
+                    <button type="button" class="btn btn-primary">더보기</button>
+                </div>
                 <c:forEach items="${three_game_schedule}" var="item">
                     <div class="schedule">
-                        <p>${item.date} 경기</p>
+                        <p>${item.date} ${item.g_time} 경기</p>
                         <p>${item.team1} VS ${item.team2} ${item.baseball_stadium}</p>
                     </div>
                 </c:forEach>
