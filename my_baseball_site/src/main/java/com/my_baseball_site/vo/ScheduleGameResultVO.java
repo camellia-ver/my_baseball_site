@@ -17,4 +17,5 @@ public class ScheduleGameResultVO {
     private String note;
     private String season;
     private String result;
+    private String date;
 }

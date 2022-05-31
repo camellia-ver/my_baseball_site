@@ -56,18 +56,12 @@
         <div class="content_right">
             <div class="game_schedule">
                 <h2>경기 일정</h2>
-                <div class="schedule">
-                    <p>5월 28일 경기</p>
-                    <p>삼성 VS LG 잠실</p>
-                </div>
-                <div class="schedule">
-                    <p>5월 28일 경기</p>
-                    <p>삼성 VS LG 잠실</p>
-                </div>
-                <div class="schedule">
-                    <p>5월 28일 경기</p>
-                    <p>삼성 VS LG 잠실</p>
-                </div>
+                <c:forEach items="${three_game_schedule}" var="item">
+                    <div class="schedule">
+                        <p>${item.date} 경기</p>
+                        <p>${item.team1} VS ${item.team2} ${item.baseball_stadium}</p>
+                    </div>
+                </c:forEach>
             </div>
         </div>
     </div>
