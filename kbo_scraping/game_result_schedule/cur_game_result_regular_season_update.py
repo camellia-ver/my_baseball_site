@@ -28,6 +28,7 @@ driver.get("https://www.koreabaseball.com/Schedule/Schedule.aspx")
 team_btn = driver.find_element_by_xpath('//*[@id="contents"]/ul/li[4]/a')
 team_btn.click()
 next_btn = driver.find_element_by_xpath('//*[@id="btnNext"]/img')
+prev_btn = driver.find_element_by_xpath('//*[@id="btnPrev"]/img')
 
 db_connect = pymysql.connect(
     user='root',
@@ -55,8 +56,14 @@ for i in range(prev_day):
     yesterday = str(datetime.datetime.now() - datetime.timedelta(days=i+1))
     yesterday = yesterday[5:7] + '.'+ yesterday[8:10]
 
+    month_check = contents[0].text.split(' ')
+    if yesterday[:2] != month_check[0][:2]:
+        prev_btn.click()
+        contents = driver.find_elements_by_xpath('//*[@id="tblSchedule"]/tbody/tr')
+        
     for i in contents:
         result = i.text.split(' ')
+            
         if yesterday in result[0]:
             if len(result) == 9:
                 del result[6]
