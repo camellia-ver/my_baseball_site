@@ -13,7 +13,7 @@
     <div class="contents">
         <div class="content_left">
             <div class="today_game_result">
-                5월 27일 삼성 0 VS 5 LG
+                <span>5월 27일 삼성 0 VS 5 LG</span>
                 <p>패배</p> 
             </div>
             <div class="today_ranking">
