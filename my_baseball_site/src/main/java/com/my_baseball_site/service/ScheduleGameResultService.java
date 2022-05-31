@@ -2,6 +2,7 @@ package com.my_baseball_site.service;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import com.my_baseball_site.mapper.ScheduleGameResultMapper;
@@ -15,10 +16,9 @@ public class ScheduleGameResultService {
     @Autowired ScheduleGameResultMapper sgr_mapper;
 
     public List<ScheduleGameResultVO> selectScheduleThreeGame(){
-        Calendar date = Calendar.getInstance();
-        date.add(Calendar.DATE,-1);
+        Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
-        String today = formatter.format(date.getTime());
+        String today = formatter.format(date);
 
         List<ScheduleGameResultVO> list = sgr_mapper.selectScheduleThreeGame(today);
 
@@ -29,5 +29,43 @@ public class ScheduleGameResultService {
         }
 
         return list;
+    }
+
+    public ScheduleGameResultVO selectRecentlyGameResult(){   
+        Calendar date = Calendar.getInstance();
+        date.add(Calendar.DATE,-1);
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+        String today = formatter.format(date.getTime());
+
+        while(true){
+            if(sgr_mapper.isGame(today) == 1){
+                break;
+            }
+            else{
+                date.add(Calendar.DATE,-1);
+                today = formatter.format(date.getTime());
+            }
+        }
+
+        ScheduleGameResultVO data = sgr_mapper.selectRecentlyGameResult(today);
+
+        if(data.getTeam1_score() > data.getTeam2_score()){
+            if(data.getTeam1().equals("삼성"))
+                data.setResult("승리");
+            else
+                data.setResult("패배");
+        }
+        else{
+            if(data.getTeam2().equals("삼성"))
+                data.setResult("승리");
+            else
+                data.setResult("패배");
+        }
+
+        SimpleDateFormat formatter2 = new SimpleDateFormat("MM월 dd일");
+        String print_date = formatter2.format(data.getG_date());
+        data.setDate(print_date);
+
+        return data;
     }
 }
