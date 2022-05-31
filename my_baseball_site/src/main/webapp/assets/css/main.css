@@ -22,7 +22,7 @@
 
 .game_schedule{
     font-size: 25px; text-align: center; margin-right: 10px;
-    margin-top: 50px; 
+    margin-top: 50px;
 }
 .game_schedule_title{width: 100%; padding: 10px; margin-bottom: 4px;}
 .game_schedule_title > h2{float:left; font-weight: 500;}

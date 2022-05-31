@@ -65,11 +65,14 @@ public class ScheduleGameResultService {
             else
                 data.setResult("패배");
         }
-        else{
+        else if(data.getTeam1_score() < data.getTeam2_score()){
             if(data.getTeam2().equals("삼성"))
                 data.setResult("승리");
             else
                 data.setResult("패배");
+        }
+        else{
+            data.setResult("무승부");
         }
 
         print_date = formatter2.format(data.getG_date());
