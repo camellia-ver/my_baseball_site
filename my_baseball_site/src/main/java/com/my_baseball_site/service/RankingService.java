@@ -18,7 +18,7 @@ public class RankingService {
         Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
         String today = formatter.format(date);
-        
+
         List<RankingVO> list = mapper.selectRankingByDate(today);
 
         return list;

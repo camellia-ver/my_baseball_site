@@ -13,7 +13,7 @@ public class RankingVO {
     private Integer win;
     private Integer lose;
     private Integer tie;
-    private float win_rate;
+    private Float win_rate;
     private Integer game_difference;
     private String last_10_matches;
     private String continuity;
