@@ -9,4 +9,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface RankingMapper {
     public List<RankingVO> selectRankingByDate(String date);
+    public List<Integer> selectYear();
 }

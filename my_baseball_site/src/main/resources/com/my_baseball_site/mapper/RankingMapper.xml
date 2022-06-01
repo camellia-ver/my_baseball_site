@@ -6,4 +6,7 @@
     <select id="selectRankingByDate" resultType="com.my_baseball_site.vo.RankingVO">
         select * from ranking where r_date = #{date}
     </select>
+    <select id="selectYear" resultType="java.lang.Integer">
+        select distinct year(r_date) from ranking
+    </select>
 </mapper>

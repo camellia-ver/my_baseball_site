@@ -21,4 +21,7 @@ public class RankingVO {
     private String away;
     private Date r_date;
     private String uniqueness;
+
+    private String print_win_rate;
+    private String print_date;
 }

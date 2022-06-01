@@ -19,7 +19,7 @@
                 <button class="btn btn-primary" type="submit"><</button>
             </div>
             <div class="today">
-                <p>6월1일</p><br>
+                <p>${today_ranking[0].print_date}</p><br>
                 <input type="date" id="input_date">
             </div>
             <div class="btn_right">
@@ -29,7 +29,7 @@
         <div class="date_select">
             <div class="left_select">
                 <div class="select">
-                    <select class="form-select" aria-label="Default select example">
+                    <select class="form-select" aria-label="Default select example" id="left_select">
                         <!-- <option selected>연도</option> -->
                         <option selected value="1">2022</option>
                         <option value="2">2021</option>
@@ -37,7 +37,8 @@
                     </select>
                 </div>
                 <div class="date">
-                    <p>6월 1일</p>
+                    <p>${today_ranking[0].print_date}</p>
+                    <!-- <p>현재 출력되고 있는 순위의 날짜</p> -->
                 </div>
             </div>
             <div class="right_select">
@@ -66,6 +67,7 @@
                   </tr>
                 </thead>
                 <tbody>
+                <c:forEach items="${today_ranking}" var="item">
                     <tr>
                         <td>${item.no}</td>
                         <td>${item.team_name}</td>
@@ -73,15 +75,14 @@
                         <td>${item.win}</td>
                         <td>${item.lose}</td>
                         <td>${item.tie}</td>
-                        <td>${item.win_rate}</td>
+                        <td>${item.print_win_rate}</td>
                         <td>${item.game_difference}</td>
+                        <td>${item.last_10_matches}</td>
                         <td>${item.continuity}</td>
-                        <td>${item.continuity}</td>
-                        <td>${item.continuity}</td>
-                      </tr>
-                  <!-- <c:forEach items="${today_ranking}" var="item">
-                    
-                  </c:forEach> -->
+                        <td>${item.home}</td>
+                        <td>${item.away}</td>
+                    </tr>
+                </c:forEach>
                 </tbody>
               </table>
         </div>
