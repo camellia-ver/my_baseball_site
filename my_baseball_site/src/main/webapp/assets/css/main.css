@@ -18,7 +18,7 @@
     float:left; font-size: 30px; margin-bottom: 10px;
     padding-left: 38%; font-weight: 500;
 }
-.ranking_title > button {float: right; margin-bottom: 10px;}
+.ranking_title > a {float: right; margin-bottom: 10px;}
 
 .game_schedule{
     font-size: 25px; text-align: center; margin-right: 10px;
@@ -26,7 +26,7 @@
 }
 .game_schedule_title{width: 100%; padding: 10px; margin-bottom: 4px;}
 .game_schedule_title > h2{float:left; font-weight: 500;}
-.game_schedule_title > button{float: right; }
+.game_schedule_title > a{float: right; }
 .schedule{
     box-shadow:0 0 10px rgba(0,0,0,0.2); border-radius: 5px;
     padding:45px; margin: 15px; background-color: white;
@@ -35,4 +35,4 @@
 .game_schedule_title > h2{
     float:left; font-weight: 500;
 }
-.game_schedule_title > button {float: right; }
+.game_schedule_title > a {float: right; }

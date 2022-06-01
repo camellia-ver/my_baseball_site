@@ -27,7 +27,7 @@
             <div class="today_ranking">
                 <div class="ranking_title">
                     <h2> < TEAM RANKING > </h2>
-                    <button type="button" class="btn btn-primary">더보기</button>
+                    <a class="btn btn-primary" href="/ranking" role="button">더보기</a>
                 </div>
                 <table class="table table-striped">
                     <thead>
@@ -65,7 +65,7 @@
             <div class="game_schedule">
                 <div class="game_schedule_title">
                     <h2>경기 일정</h2>
-                    <button type="button" class="btn btn-primary">더보기</button>
+                    <a class="btn btn-primary" href="#" role="button">더보기</a>
                 </div>
                 <c:forEach items="${three_game_schedule}" var="item">
                     <div class="schedule">
