@@ -51,6 +51,18 @@ public class RankingService {
         return list;
     }
 
+    public String selectStartDate(){
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
+        String cur_year = formatter.format(date) + "0101";
+
+        SimpleDateFormat formatter2 = new SimpleDateFormat("yyyy-MM-dd");
+        Date start_date = mapper.selectStartDate(cur_year);
+        String min_date = formatter2.format(start_date);
+
+        return min_date;
+    }
+
     public List<RankingVO> selectRankingByDate(String date){
         List<RankingVO> list = mapper.selectRankingByDate(date);
 

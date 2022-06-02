@@ -3,7 +3,7 @@ $(function(){
         let year = $(".select option:selected").val()
         let now = new Date()
 
-        if(year == 2022)
+        if(year == now.getFullYear.toString())
         {
             let today = createToday(now)
 

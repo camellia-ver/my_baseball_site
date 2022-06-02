@@ -20,7 +20,7 @@
             </div>
             <div class="today">
                 <p>${today_ranking[0].print_date}</p><br>
-                <input type="date" id="input_date" min="2022-04-02" max=${today_ranking[0].max_date}>
+                <input type="date" id="input_date" min=${startDate} max=${today_ranking[0].max_date}>
             </div>
             <div class="btn_right">
                 <button class="btn btn-primary" type="submit">></button>
