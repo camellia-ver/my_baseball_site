@@ -58,8 +58,8 @@ while True:
 
         for i in contents:
             result = i.text.split(' ')
-            
-            if int(result[0][:2]) > day:
+            result_day = int(result[0][3:-3])
+            if result_day > day:
                 if len(result) == 9:
                     del result[6]
                     del result[5]
