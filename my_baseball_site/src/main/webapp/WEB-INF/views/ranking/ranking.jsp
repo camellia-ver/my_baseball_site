@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <title>baseball data site</title>
     <link rel="stylesheet" href="/assets/css/ranking.css">
-    <!-- <script src="/assets/js/main.js"></script> -->
+    <script src="/assets/js/ranking.js"></script>
 </head>
 <body>
     <div class="contents">
@@ -27,25 +27,16 @@
             </div>
         </div>
         <div class="date_select">
-            <div class="left_select">
-                <div class="select">
-                    <select class="form-select" aria-label="Default select example" id="left_select">
-                        <!-- <option selected>연도</option> -->
-                        <option selected value="1">2022</option>
-                        <option value="2">2021</option>
-                        <option value="3">2020</option>
-                    </select>
-                </div>
-                <div class="date">
-                    <p>${today_ranking[0].print_date}</p>
-                    <!-- <p>현재 출력되고 있는 순위의 날짜</p> -->
-                </div>
-            </div>
-            <div class="right_select">
-                <select class="form-select" aria-label="Default select example" id="right_select">
-                    <option selected value="정규시즌">정규시즌</option>
-                    <option value="포스트시즌">포스트시즌</option>
+            <div class="select">
+                <select class="form-select" aria-label="Default select example" id="select">
+                    <c:forEach items="${years}" var="item">
+                        <option value=${item}>${item}</option>
+                    </c:forEach>
                 </select>
+            </div>
+            <div class="date">
+                <p>${today_ranking[0].print_date}</p>
+                <!-- <p>현재 출력되고 있는 순위의 날짜</p> -->
             </div>
         </div>
         <div class="ranking">
@@ -76,7 +67,7 @@
                         <td>${item.lose}</td>
                         <td>${item.tie}</td>
                         <td>${item.print_win_rate}</td>
-                        <td>${item.game_difference}</td>
+                        <td>${item.print_game_difference}</td>
                         <td>${item.last_10_matches}</td>
                         <td>${item.continuity}</td>
                         <td>${item.home}</td>

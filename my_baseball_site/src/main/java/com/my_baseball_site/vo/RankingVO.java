@@ -14,7 +14,7 @@ public class RankingVO {
     private Integer lose;
     private Integer tie;
     private Float win_rate;
-    private Integer game_difference;
+    private Float game_difference;
     private String last_10_matches;
     private String continuity;
     private String home;
@@ -22,6 +22,7 @@ public class RankingVO {
     private Date r_date;
     private String uniqueness;
 
+    private String print_game_difference;
     private String print_win_rate;
     private String print_date;
 }

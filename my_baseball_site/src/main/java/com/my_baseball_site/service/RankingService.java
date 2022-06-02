@@ -28,12 +28,18 @@ public class RankingService {
         DecimalFormat n_formatter = new DecimalFormat("0.000");
         String print_win_rate;
 
+        DecimalFormat n_formatter2 = new DecimalFormat("0.#");
+        String print_game_difference;
+
         for(RankingVO item : list){
             print_date = formatter2.format(item.getR_date());
             item.setPrint_date(print_date);;
 
             print_win_rate = n_formatter.format(item.getWin_rate());
             item.setPrint_win_rate(print_win_rate);
+
+            print_game_difference = n_formatter2.format(item.getGame_difference());
+            item.setPrint_game_difference(print_game_difference);
         }
 
         return list;

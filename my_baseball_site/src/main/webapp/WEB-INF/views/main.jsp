@@ -53,7 +53,7 @@
                           <td>${item.lose}</td>
                           <td>${item.tie}</td>
                           <td>${item.print_win_rate}</td>
-                          <td>${item.game_difference}</td>
+                          <td>${item.print_game_difference}</td>
                           <td>${item.continuity}</td>
                         </tr>
                       </c:forEach>
