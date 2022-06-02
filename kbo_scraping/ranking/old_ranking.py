@@ -71,6 +71,11 @@ for year in range(1982,2022):
             save_data[10] = "'" + save_data[10] + "'"
             save_data[11] = "'" + save_data[11] + "'"
             save_data = ','.join(save_data) + ',' + save_date + ",'드림리그'"
+            sql = "insert into ranking(no,team_name,game,win,lose,tie,win_rate,game_difference,last_10_matches,continuity,home,away,r_date,uniqueness)values(" + save_data + ')'
+        
+            cursor.execute(sql)
+            db_connect.commit()
+
         for rank in tbody2:
             save_data = rank.split(' ')
             save_date = str(year) + "1231"
@@ -82,7 +87,7 @@ for year in range(1982,2022):
             save_data = ','.join(save_data) + ',' + save_date + ",'매직리그'"
     
             sql = "insert into ranking(no,team_name,game,win,lose,tie,win_rate,game_difference,last_10_matches,continuity,home,away,r_date,uniqueness)values(" + save_data + ')'
-    
+            
             cursor.execute(sql)
             db_connect.commit()
     else:

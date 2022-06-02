@@ -16,14 +16,14 @@
         </div>
         <div class="date_pick">
             <div class="btn_left">
-                <button class="btn btn-primary" type="submit"><</button>
+                <button class="btn btn-primary" type="submit" id="left_btn"><</button>
             </div>
             <div class="today">
-                <p>${today_ranking[0].print_date}</p><br>
+                <p id="print_today">${today_ranking[0].print_full_date}</p><br>
                 <input type="date" id="input_date" min=${startDate} max=${today_ranking[0].max_date}>
             </div>
             <div class="btn_right">
-                <button class="btn btn-primary" type="submit">></button>
+                <button class="btn btn-primary" type="submit" id="right_btn">></button>
             </div>
         </div>
         <div class="date_select">
@@ -35,7 +35,7 @@
                 </select>
             </div>
             <div class="date">
-                <p>${today_ranking[0].print_date}</p>
+                <p id="print_date">${today_ranking[0].print_date}</p>
                 <!-- <p>현재 출력되고 있는 순위의 날짜</p> -->
             </div>
         </div>
@@ -55,6 +55,7 @@
                     <th scope="col">연속</th>
                     <th scope="col">홈</th>
                     <th scope="col">방문</th>
+                    <th scope="col">리그</th>
                   </tr>
                 </thead>
                 <tbody id="ranking_tbody">
@@ -72,6 +73,7 @@
                             <td>${item.continuity}</td>
                             <td>${item.home}</td>
                             <td>${item.away}</td>
+                            <td>${item.uniqueness}</td>
                         </tr>
                     </c:forEach>
                 </tbody>

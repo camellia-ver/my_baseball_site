@@ -1,5 +1,7 @@
 package com.my_baseball_site.api;
 
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,8 +25,9 @@ public class RankingAPIController {
         Map<String, Object> resultMap = new LinkedHashMap<String,Object>();
         
         List<RankingVO> list = r_service.selectRankingByDate(date);
+
         resultMap.put("status", true);
-        resultMap.put("list", list);
+        resultMap.put("data", list);
 
         return resultMap;
     }
