@@ -50,7 +50,7 @@ else:
 cursor = db_connect.cursor(cursors.DictCursor)
 
 # 1999,2000 양대리그
-for year in range(1982,2021):
+for year in range(1982,2022):
     select = Select(driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_ddlYear"]')).select_by_value(str(year))
     time.sleep(1)
     if year == 1999 or year == 2000:

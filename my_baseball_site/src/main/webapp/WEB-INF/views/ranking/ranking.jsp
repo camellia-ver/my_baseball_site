@@ -57,23 +57,23 @@
                     <th scope="col">방문</th>
                   </tr>
                 </thead>
-                <tbody>
-                <c:forEach items="${today_ranking}" var="item">
-                    <tr>
-                        <td>${item.no}</td>
-                        <td>${item.team_name}</td>
-                        <td>${item.game}</td>
-                        <td>${item.win}</td>
-                        <td>${item.lose}</td>
-                        <td>${item.tie}</td>
-                        <td>${item.print_win_rate}</td>
-                        <td>${item.print_game_difference}</td>
-                        <td>${item.last_10_matches}</td>
-                        <td>${item.continuity}</td>
-                        <td>${item.home}</td>
-                        <td>${item.away}</td>
-                    </tr>
-                </c:forEach>
+                <tbody id="ranking_tbody">
+                    <c:forEach items="${today_ranking}" var="item">
+                        <tr>
+                            <td>${item.no}</td>
+                            <td>${item.team_name}</td>
+                            <td>${item.game}</td>
+                            <td>${item.win}</td>
+                            <td>${item.lose}</td>
+                            <td>${item.tie}</td>
+                            <td>${item.print_win_rate}</td>
+                            <td>${item.print_game_difference}</td>
+                            <td>${item.last_10_matches}</td>
+                            <td>${item.continuity}</td>
+                            <td>${item.home}</td>
+                            <td>${item.away}</td>
+                        </tr>
+                    </c:forEach>
                 </tbody>
               </table>
         </div>
