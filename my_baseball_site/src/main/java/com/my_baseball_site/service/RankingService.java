@@ -2,6 +2,8 @@ package com.my_baseball_site.service;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -21,6 +23,19 @@ public class RankingService {
         String today = formatter.format(date);
 
         List<RankingVO> list = mapper.selectRankingByDate(today);
+
+        if(list.size() == 0){
+            Date year = new Date();
+            SimpleDateFormat yearFormatter = new SimpleDateFormat("yyyy");
+            String cur_year = yearFormatter.format(year);
+            cur_year += "1231";
+
+            list = mapper.selectRankingLast(cur_year);
+
+            Collections.reverse(list);
+
+            return list;
+        }
 
         SimpleDateFormat formatter2 = new SimpleDateFormat("MM월 dd일");
         String print_date;
@@ -68,6 +83,19 @@ public class RankingService {
 
         SimpleDateFormat formatter2 = new SimpleDateFormat("MM월 dd일");
         String print_date;
+
+        if(list.size() == 0){
+            Date year = new Date();
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
+            String cur_year = formatter.format(year);
+            cur_year += "1231";
+
+            list = mapper.selectRankingLast(cur_year);
+
+            Collections.reverse(list);
+
+            return list;
+        }
 
         for(RankingVO item : list){
             print_date = formatter2.format(item.getR_date());

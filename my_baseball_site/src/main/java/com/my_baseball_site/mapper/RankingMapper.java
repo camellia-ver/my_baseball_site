@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface RankingMapper {
     public List<RankingVO> selectRankingByDate(String date);
+    public List<RankingVO> selectRankingLast(String date);
     public List<Integer> selectYear();
     public Date selectStartDate(String date);
 }
