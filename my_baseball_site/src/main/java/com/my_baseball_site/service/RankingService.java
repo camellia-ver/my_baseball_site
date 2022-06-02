@@ -25,6 +25,9 @@ public class RankingService {
         SimpleDateFormat formatter2 = new SimpleDateFormat("MM월 dd일");
         String print_date;
 
+        SimpleDateFormat formatter3 = new SimpleDateFormat("yyyy-MM-dd");
+        String max_date;
+
         DecimalFormat n_formatter = new DecimalFormat("0.000");
         String print_win_rate;
 
@@ -34,6 +37,9 @@ public class RankingService {
         for(RankingVO item : list){
             print_date = formatter2.format(item.getR_date());
             item.setPrint_date(print_date);;
+
+            max_date = formatter3.format(item.getR_date());
+            item.setMax_date(max_date);
 
             print_win_rate = n_formatter.format(item.getWin_rate());
             item.setPrint_win_rate(print_win_rate);
