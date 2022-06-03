@@ -80,8 +80,6 @@ public class RankingService {
                 item.setPrint_game_difference(print_game_difference);
             }
 
-            Collections.reverse(list);
-
             return list;
         }
 
@@ -136,8 +134,6 @@ public class RankingService {
                 print_game_difference = n_formatter2.format(item.getGame_difference());
                 item.setPrint_game_difference(print_game_difference);
             }
-
-            Collections.reverse(list);
 
             return list;
         }
