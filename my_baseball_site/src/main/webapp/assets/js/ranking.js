@@ -58,6 +58,10 @@ $(function(){
         let print_today = dateArr[0] +"년 " + dateArr[1]+"월 " + dateArr[2]+"일"
         let print_date = dateArr[1]+"월 " + dateArr[2]+"일"
 
+        btn_date = new Date(btn_date.setFullYear(dateArr[0]))
+        btn_date = new Date(btn_date.setMonth(parseInt(dateArr[1])-1))
+        btn_date = new Date(btn_date.setDate(dateArr[2]))
+
         $("#print_today").html("")
         $("#print_today").append(print_today)
         $("#print_date").html("")
@@ -66,30 +70,26 @@ $(function(){
     })
 
     $("#left_btn").click(function(){
-        btn_date = new Date(btn_date.setDate(btn_date.getDate() - 1))
-        btn_url = createToday(btn_date)
+        let start_date = $("#input_date").attr("min")
+        let startDateArr = start_date.split("-")
+        start_date = startDateArr[0] + startDateArr[1] + startDateArr[2]
         
-        $("#print_today").html("")
-        $("#print_today").append(printToday(btn_date))
-        $("#print_date").html("")
-        $("#print_date").append(printDate(btn_date))
-
-        getRanking(btn_url)
+        if(btn_url == start_date)
+            alert("마지막 날짜 입니다.")
+        else{
+            btn_event(-1)
+        }
     })
     $("#right_btn").click(function(){
-        if(btn_url == btn_today)
+        let end_date = $("#input_date").attr("max")
+        let endDateArr = end_date.split("-")
+        end_date = endDateArr[0] + endDateArr[1] + endDateArr[2]
+
+        if(btn_url == btn_today || btn_url == end_date)
             alert("마지막 날짜 입니다.")
         else
         {
-            btn_date = new Date(btn_date.setDate(btn_date.getDate() + 1))
-            btn_url = createToday(btn_date)
-            
-            $("#print_today").html("")
-            $("#print_today").append(printToday(btn_date))
-            $("#print_date").html("")
-            $("#print_date").append(printDate(btn_date))
-
-            getRanking(btn_url)
+            btn_event(1)
         }
     })
 
@@ -163,5 +163,17 @@ $(function(){
                 }
             }
         })
+    }
+
+    function btn_event(minus_or_plus_day){
+        btn_date = new Date(btn_date.setDate(btn_date.getDate() + minus_or_plus_day))
+            btn_url = createToday(btn_date)
+            
+            $("#print_today").html("")
+            $("#print_today").append(printToday(btn_date))
+            $("#print_date").html("")
+            $("#print_date").append(printDate(btn_date))
+
+            getRanking(btn_url)
     }
 })
