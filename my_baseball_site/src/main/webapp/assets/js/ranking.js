@@ -1,4 +1,9 @@
 $(function(){
+    let btn_now = new Date()
+    let btn_today = createToday(btn_now)
+    let btn_date = btn_now
+    let btn_url = btn_today
+
     $(".select").change(function(){
         let year = $(".select option:selected").val()
         let now = new Date()
@@ -61,10 +66,31 @@ $(function(){
     })
 
     $("#left_btn").click(function(){
-        alert("이전")
+        btn_date = new Date(btn_date.setDate(btn_date.getDate() - 1))
+        btn_url = createToday(btn_date)
+        
+        $("#print_today").html("")
+        $("#print_today").append(printToday(btn_date))
+        $("#print_date").html("")
+        $("#print_date").append(printDate(btn_date))
+
+        getRanking(btn_url)
     })
     $("#right_btn").click(function(){
-        alert("이후")
+        if(btn_url == btn_today)
+            alert("마지막 날짜 입니다.")
+        else
+        {
+            btn_date = new Date(btn_date.setDate(btn_date.getDate() + 1))
+            btn_url = createToday(btn_date)
+            
+            $("#print_today").html("")
+            $("#print_today").append(printToday(btn_date))
+            $("#print_date").html("")
+            $("#print_date").append(printDate(btn_date))
+
+            getRanking(btn_url)
+        }
     })
 
     function createToday(now){
@@ -78,7 +104,6 @@ $(function(){
 
         return today
     }
-
     function printToday(now){
         let print_date = 
             now.getFullYear().toString() + "년 "

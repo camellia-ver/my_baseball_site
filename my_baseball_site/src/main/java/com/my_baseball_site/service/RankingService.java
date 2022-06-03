@@ -2,7 +2,6 @@ package com.my_baseball_site.service;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -71,6 +70,9 @@ public class RankingService {
                 max_date = formatter3.format(item.getR_date());
                 item.setMax_date(max_date);
     
+                print_full_date = formatter4.format(item.getR_date());
+                item.setPrint_full_date(print_full_date);
+
                 print_win_rate = n_formatter.format(item.getWin_rate());
                 item.setPrint_win_rate(print_win_rate);
     
@@ -104,6 +106,9 @@ public class RankingService {
         SimpleDateFormat formatter2 = new SimpleDateFormat("MM월 dd일");
         String print_date;
 
+        SimpleDateFormat formatter4 = new SimpleDateFormat("yyyy년 MM월 dd일");
+        String print_full_date;
+
         DecimalFormat n_formatter = new DecimalFormat("0.000");
         String print_win_rate;
 
@@ -121,6 +126,10 @@ public class RankingService {
                 print_date = formatter2.format(item.getR_date());
                 item.setPrint_date(print_date);
 
+                print_full_date = formatter4.format(item.getR_date());
+                item.setPrint_full_date(print_full_date);
+
+
                 print_win_rate = n_formatter.format(item.getWin_rate());
                 item.setPrint_win_rate(print_win_rate);
 
@@ -136,6 +145,9 @@ public class RankingService {
         for(RankingVO item : list){
             print_date = formatter2.format(item.getR_date());
             item.setPrint_date(print_date);
+
+            print_full_date = formatter4.format(item.getR_date());
+            item.setPrint_full_date(print_full_date);
 
             print_win_rate = n_formatter.format(item.getWin_rate());
             item.setPrint_win_rate(print_win_rate);
