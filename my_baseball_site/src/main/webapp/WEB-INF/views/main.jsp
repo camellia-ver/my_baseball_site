@@ -12,6 +12,11 @@
 <body>
     <div class="contents">
         <div class="content_left">
+            <c:if test="${recently_game == null}">
+                <div class="today_game_result">
+                    <p>올해 시즌 시작 전</p>
+                </div>    
+            </c:if>
             <c:if test="${recently_game.note != '-'}">
                 <div class="today_game_result">
                     <span>${recently_game.date}</span>
@@ -65,7 +70,7 @@
             <div class="game_schedule">
                 <div class="game_schedule_title">
                     <h2>경기 일정</h2>
-                    <a class="btn btn-primary" href="#" role="button">더보기</a>
+                    <a class="btn btn-primary" href="/schedule_game_result" role="button">더보기</a>
                 </div>
                 <c:forEach items="${three_game_schedule}" var="item">
                     <div class="schedule">

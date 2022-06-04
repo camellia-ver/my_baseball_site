@@ -33,11 +33,10 @@ public class ScheduleGameResultService {
 
     public ScheduleGameResultVO selectRecentlyGameResult(){   
         Calendar date = Calendar.getInstance();
+        Integer cur_year = date.getWeekYear();
         date.add(Calendar.DATE,-1);
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
         String today = formatter.format(date.getTime());
-
-        
 
         while(true){
             if(sgr_mapper.isGame(today) == 1){
@@ -46,6 +45,12 @@ public class ScheduleGameResultService {
             else{
                 date.add(Calendar.DATE,-1);
                 today = formatter.format(date.getTime());
+            }
+
+            if(date.getWeekYear() != cur_year){
+                ScheduleGameResultVO data = null;
+
+                return data;
             }
         }
 

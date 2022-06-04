@@ -40,7 +40,7 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">경기일정</a>
+                <a class="nav-link" href="/schedule_game_result">경기일정</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">선수단</a>

@@ -18,8 +18,12 @@ def create_save_data(year):
     date = ""
     for i in range(len(contents)):
         result = contents[i].text.replace('\n',' ')
+
+        if result == "데이터가 없습니다.":
+            continue
+
         result = result.split(' ')
-             
+
         if i > 0:
             date = contents[i-1].text.split(' ')[0]
                 
