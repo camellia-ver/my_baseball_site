@@ -85,4 +85,34 @@ public class ScheduleGameResultService {
 
         return data;
     }
+
+    public List<ScheduleGameResultVO> selectScheduleGameResultByYearMonth(){
+        Date now = new Date();
+        SimpleDateFormat yearFormatter = new SimpleDateFormat("yyyy");
+        String year = yearFormatter.format(now);
+
+        SimpleDateFormat monthFormatter = new SimpleDateFormat("MM");
+        String month = monthFormatter.format(now);
+        
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd");
+
+        List<ScheduleGameResultVO> list = sgr_mapper.selectScheduleGameResultByYearMonth(year, month);
+
+        for(ScheduleGameResultVO item : list){
+            if(item.getTeam1_score() == -1){
+                item.setPrint_team1_score("");
+                item.setPrint_team2_score("");
+            }
+            else{
+                Integer score = 0;
+                String print_score = score.toString(item.getTeam1_score());
+                item.setPrint_team1_score(print_score);
+                print_score = score.toString(item.getTeam2_score());
+                item.setPrint_team2_score(print_score);
+            }
+            item.setDate(dateFormat.format(item.getG_date()));
+        }
+
+        return list;
+    }
 }

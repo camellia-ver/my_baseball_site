@@ -62,6 +62,8 @@ $(function(){
         btn_date = new Date(btn_date.setMonth(parseInt(dateArr[1])-1))
         btn_date = new Date(btn_date.setDate(dateArr[2]))
 
+        btn_url = createToday(btn_date)
+
         $("#print_today").html("")
         $("#print_today").append(print_today)
         $("#print_date").html("")
@@ -84,8 +86,8 @@ $(function(){
         let end_date = $("#input_date").attr("max")
         let endDateArr = end_date.split("-")
         end_date = endDateArr[0] + endDateArr[1] + endDateArr[2]
-
-        if(btn_url == btn_today || btn_url == end_date)
+        
+        if(btn_url == end_date)
             alert("마지막 날짜 입니다.")
         else
         {
@@ -167,13 +169,13 @@ $(function(){
 
     function btn_event(minus_or_plus_day){
         btn_date = new Date(btn_date.setDate(btn_date.getDate() + minus_or_plus_day))
-            btn_url = createToday(btn_date)
-            
-            $("#print_today").html("")
-            $("#print_today").append(printToday(btn_date))
-            $("#print_date").html("")
-            $("#print_date").append(printDate(btn_date))
+        btn_url = createToday(btn_date)
+        
+        $("#print_today").html("")
+        $("#print_today").append(printToday(btn_date))
+        $("#print_date").html("")
+        $("#print_date").append(printDate(btn_date))
 
-            getRanking(btn_url)
+        getRanking(btn_url)
     }
 })

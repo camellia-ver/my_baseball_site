@@ -8,8 +8,9 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface ScheduleGameResultMapper {
-    List<ScheduleGameResultVO> selectScheduleThreeGame(String date);
-    
-    Integer isGame(String date);
+    List<ScheduleGameResultVO> selectScheduleThreeGame(String date); 
     ScheduleGameResultVO selectRecentlyGameResult(String date);
+    List<ScheduleGameResultVO> selectScheduleGameResultByYearMonth(String year,String month);
+    Integer isGame(String date);
+    List<Integer> selectYear();
 }

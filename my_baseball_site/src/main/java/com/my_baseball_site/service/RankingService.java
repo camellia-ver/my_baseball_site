@@ -60,7 +60,7 @@ public class RankingService {
             String cur_year = yearFormatter.format(year);
             cur_year += "1231";
 
-            list = mapper.selectRankingLast(cur_year);
+            list = mapper.selectRankingByDate(cur_year);
 
             for(RankingVO item : list){
                 print_date = formatter2.format(item.getR_date());
@@ -117,7 +117,7 @@ public class RankingService {
             String cur_year = formatter.format(date);
             cur_year += "1231";
 
-            list = mapper.selectRankingLast(cur_year);
+            list = mapper.selectRankingByDate(cur_year);
 
             for(RankingVO item : list){
                 print_date = formatter2.format(item.getR_date());

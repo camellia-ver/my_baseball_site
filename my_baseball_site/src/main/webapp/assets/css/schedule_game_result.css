@@ -2,12 +2,13 @@
 
 .title{font-size: 40px; padding: 10px; margin: 10px; font-weight: 600;}
 
-.date_div{display: inline-flex;margin-left: 33%;  width: 33%; }
+.date_div{display: inline-flex;margin-left: 36%;  width: 33%; }
 .btn_left{margin: 10px; padding: 10px;}
 .date_select{margin: 10px; padding: 10px; text-align: center; display: inline-flex;}
 .btn_right{margin: 10px; padding: 10px;}
+.date_select > p{margin: 10px; padding: 10px; margin-left: 0px; padding-left: 0px; font-size: 20px;}
 
-#year_select{margin: 10px; padding: 10px; width: 150px;}
-#month_select{margin: 10px; padding: 10px; width: 100px;}
+#year_select{margin: 10px; padding: 10px; width: 80px; margin-top: 0px; margin-bottom: 20px;}
+#month_select{margin: 10px; padding: 10px; width: 60px; margin-top: 0px; margin-bottom: 20px;}
 
-.schedule_game_result{margin: 10px; padding: 10px; font-size: 20px;}
+.schedule_game_result{margin: 10px; padding: 10px; font-size: 20px; text-align: center;}

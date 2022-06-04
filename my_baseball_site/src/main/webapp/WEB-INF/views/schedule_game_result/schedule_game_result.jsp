@@ -7,7 +7,7 @@
         <meta charset="UTF-8">
         <title>baseball data site</title>
         <link rel="stylesheet" href="/assets/css/schedule_game_result.css">
-        <!-- <script src="/assets/js/main.js"></script> -->
+        <script src="/assets/js/schedule_game_result.js"></script>
     </head>
     <body>
         <div class="contents">
@@ -20,11 +20,24 @@
                 </div>
                 <div class="date_select">
                     <select class="form-select" aria-label="Default select example" id="year_select">
-                        <option value=1>1</option>
-                    </select>
+                        <c:forEach items="${years}" var="item">
+                            <option value="${item}">${item}</option>
+                        </c:forEach>
+                    </select><p>년</p>
                     <select class="form-select" aria-label="Default select example" id="month_select">
-                        <option value=1>1</option>
-                    </select>
+                        <option value="01">1</option>
+                        <option value="02">2</option>
+                        <option value="03">3</option>
+                        <option value="04">4</option>
+                        <option value="05">5</option>
+                        <option value="06">6</option>
+                        <option value="07">7</option>
+                        <option value="08">8</option>
+                        <option value="09">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select><p>월</p>
                 </div>
                 <div class="btn_right">
                     <button class="btn btn-primary" type="submit" id="right_btn">></button>
@@ -34,27 +47,25 @@
                 <table class="table table-striped">
                     <thead>
                       <tr>
-                        <th scope="col">순위</th>
-                        <th scope="col">팀명</th>
-                        <th scope="col">게임수</th>
-                        <th scope="col">승</th>
-                        <th scope="col">패</th>
-                        <th scope="col">무</th>
-                        <th scope="col">승률</th>
-                        <th scope="col">게임차</th>
+                        <th scope="col">일자</th>
+                        <th scope="col">시간</th>
+                        <th scope="col">시합</th>
+                        <th scope="col">구장</th>
+                        <th scope="col">참고사항</th>
+                        <th scope="col">시즌</th>
                       </tr>
                     </thead>
                     <tbody id="ranking_tbody">
+                        <c:forEach items="${cur_data}" var="item">
                             <tr>
-                                <td>${item.no}</td>
-                                <td>${item.team_name}</td>
-                                <td>${item.game}</td>
-                                <td>${item.win}</td>
-                                <td>${item.lose}</td>
-                                <td>${item.tie}</td>
-                                <td>${item.print_win_rate}</td>
-                                <td>${item.print_game_difference}</td>
+                                <td>${item.date}</td>
+                                <td>${item.g_time}</td>
+                                <td>${item.team1} ${item.print_team1_score} VS ${item.print_team2_score} ${item.team2}</td>
+                                <td>${item.baseball_stadium}</td>
+                                <td>${item.note}</td>
+                                <td>${item.season}</td>
                             </tr>
+                        </c:forEach>
                     </tbody>
                   </table>
             </div>

@@ -16,6 +16,9 @@ public class ScheduleGameResultVO {
     private String baseball_stadium;
     private String note;
     private String season;
+
     private String result;
     private String date;
+    private String print_team1_score;
+    private String print_team2_score;
 }
