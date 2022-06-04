@@ -45,10 +45,10 @@ prev_day = 1
 for i in range(prev_day):
     time.sleep(10)
 
-    date = driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_lblSearchDateTitle"]').text
+    date = driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_lblSearchDateTitle"]').text
     save_date = date[:4] + date[5:7] + date[8:10]
 
-    tbody = driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_udpRecord"]/table/tbody').text
+    tbody = driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_udpRecord"]/table/tbody').text
     tbody = tbody.split('\n')
 
     for rank in tbody:
@@ -61,12 +61,11 @@ for i in range(prev_day):
         save_data = ','.join(save_data) + ',' + save_date + ",'단일리그'"
         
         sql = "insert into ranking(no,team_name,game,win,lose,tie,win_rate,game_difference,last_10_matches,continuity,home,away,r_date,uniqueness)values(" + save_data + ')'
-        print(sql)
 
         cursor.execute(sql)
         db_connect.commit()
 
-    prev_btn = driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_btnPreDate"]')
+    prev_btn = driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_btnPreDate"]')
     prev_btn.click()
 
 db_connect.close()

@@ -23,9 +23,9 @@ driver = webdriver.Chrome(service=service,options=options)
 driver.implicitly_wait(5)
 driver.get("https://www.koreabaseball.com/Schedule/Schedule.aspx")
 
-select = Select(driver.find_element_by_xpath('//*[@id="ddlSeries"]')).select_by_value("3,4,5,7")
+select = Select(driver.find_element(by=By.XPATH,value='//*[@id="ddlSeries"]')).select_by_value("3,4,5,7")
 
-contents = driver.find_elements_by_xpath('//*[@id="tblSchedule"]/tbody/tr')
+contents = driver.find_elements(by=By.XPATH,value='//*[@id="tblSchedule"]/tbody/tr')
 
 db_connect = pymysql.connect(
     user='root',

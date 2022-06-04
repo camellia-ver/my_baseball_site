@@ -24,10 +24,10 @@ driver = webdriver.Chrome(service=service,options=options)
 driver.implicitly_wait(5)
 driver.get("https://www.koreabaseball.com/Schedule/Schedule.aspx")
 
-select = Select(driver.find_element_by_xpath('//*[@id="ddlMonth"]')).select_by_value("09")
-team_btn = driver.find_element_by_xpath('//*[@id="contents"]/ul/li[4]/a')
+select = Select(driver.find_element(by=By.XPATH,value='//*[@id="ddlMonth"]')).select_by_value("09")
+team_btn = driver.find_element(by=By.XPATH,value='//*[@id="contents"]/ul/li[4]/a')
 team_btn.click()
-next_btn = driver.find_element_by_xpath('//*[@id="btnNext"]/img')
+next_btn = driver.find_element(by=By.XPATH,value='//*[@id="btnNext"]/img')
 
 db_connect = pymysql.connect(
     user='root',
@@ -49,12 +49,12 @@ cursor = db_connect.cursor(cursors.DictCursor)
 year = "2022"
 day = 23
 while True:
-    end_check = driver.find_element_by_xpath('//*[@id="tblSchedule"]/tbody/tr/td').text
+    end_check = driver.find_element(by=By.XPATH,value='//*[@id="tblSchedule"]/tbody/tr/td').text
     
     if end_check == "데이터가 없습니다.":
         break
     else:
-        contents = driver.find_elements_by_xpath('//*[@id="tblSchedule"]/tbody/tr')
+        contents = driver.find_elements(by=By.XPATH,value='//*[@id="tblSchedule"]/tbody/tr')
 
         for i in contents:
             result = i.text.split(' ')

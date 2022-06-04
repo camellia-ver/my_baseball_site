@@ -25,10 +25,10 @@ driver = webdriver.Chrome(service=service,options=options)
 driver.implicitly_wait(5)
 driver.get("https://www.koreabaseball.com/Schedule/Schedule.aspx")
 
-team_btn = driver.find_element_by_xpath('//*[@id="contents"]/ul/li[4]/a')
+team_btn = driver.find_element(by=By.XPATH,value='//*[@id="contents"]/ul/li[4]/a')
 team_btn.click()
-next_btn = driver.find_element_by_xpath('//*[@id="btnNext"]/img')
-prev_btn = driver.find_element_by_xpath('//*[@id="btnPrev"]/img')
+next_btn = driver.find_element(by=By.XPATH,value='//*[@id="btnNext"]/img')
+prev_btn = driver.find_element(by=By.XPATH,value='//*[@id="btnPrev"]/img')
 
 db_connect = pymysql.connect(
     user='root',
@@ -61,7 +61,7 @@ for i in range(prev_day):
     
     time.sleep(10)
 
-    contents = driver.find_elements_by_xpath('//*[@id="tblSchedule"]/tbody/tr')
+    contents = driver.find_elements(by=By.XPATH,value='//*[@id="tblSchedule"]/tbody/tr')
 
     for i in contents:
         result = i.text.split(' ')
@@ -108,7 +108,7 @@ for i in range(prev_day):
             result[0] = year + result[0][:2] + result[0][3:5]
             
             sql = "update schedule_game_result set team1_score='"+result[3]+"',team2_score='"+result[4]+"',note='"+result[7]+"' where g_date= "+result[0]
-            print(sql)
+            
             cursor.execute(sql)
             db_connect.commit()
 

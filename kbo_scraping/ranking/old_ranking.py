@@ -51,13 +51,16 @@ cursor = db_connect.cursor(cursors.DictCursor)
 
 # 1999,2000 양대리그
 for year in range(1982,2022):
-    select = Select(driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_ddlYear"]')).select_by_value(str(year))
+    # select = Select(driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_ddlYear"]')).select_by_value(str(year))
+    select = Select(driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ddlYear"]')).select_by_value(str(year))
     time.sleep(1)
     if year == 1999 or year == 2000:
         # 드림리그
-        tbody1 = driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_udpRecord"]/table/tbody').text
+        # tbody1 = driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_udpRecord"]/table/tbody').text
+        tbody1 = driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_udpRecord"]/table/tbody').text
         # 매직리그
-        tbody2 = driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_pnlMagicLeague"]/table/tbody').text
+        # tbody2 = driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_pnlMagicLeague"]/table/tbody').text
+        tbody2 = driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_pnlMagicLeague"]/table/tbody').text
         
         tbody1 = tbody1.split('\n')
         tbody2 = tbody2.split('\n')
@@ -91,7 +94,8 @@ for year in range(1982,2022):
             cursor.execute(sql)
             db_connect.commit()
     else:
-        tbody = driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_udpRecord"]/table/tbody').text
+        # tbody = driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_udpRecord"]/table/tbody').text
+        tbody = driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_udpRecord"]/table/tbody').text
         tbody = tbody.split('\n')
         for rank in tbody:
             save_data = rank.split(' ')
@@ -109,22 +113,27 @@ for year in range(1982,2022):
             db_connect.commit()
     time.sleep(5)
 
-select = Select(driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_ddlYear"]')).select_by_value("2022")
+# select = Select(driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_ddlYear"]')).select_by_value("2022")
+select = Select(driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ddlYear"]')).select_by_value("2022")
 # prev_btn = driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_btnPreDate"]')
 # prev_btn.click()
 
-date = driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_lblSearchDateTitle"]').text
+# date = driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_lblSearchDateTitle"]').text
+date = driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_lblSearchDateTitle"]').text
 
 while date != "2022.04.02(토)":
     # driver.implicitly_wait(10)
-    prev_btn = driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_btnPreDate"]')
+    # prev_btn = driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_btnPreDate"]')
+    prev_btn = driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_btnPreDate"]')
     prev_btn.click()
 
     time.sleep(10)
-    date = driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_lblSearchDateTitle"]').text
+    # date = driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_lblSearchDateTitle"]').text
+    date = driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_lblSearchDateTitle"]').text
     save_date = date[:4] + date[5:7] + date[8:10]
     
-    tbody = driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_udpRecord"]/table/tbody').text
+    # tbody = driver.find_element_by_xpath('//*[@id="cphContents_cphContents_cphContents_udpRecord"]/table/tbody').text
+    tbody = driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_udpRecord"]/table/tbody').text
     tbody = tbody.split('\n')
     
     time.sleep(10)

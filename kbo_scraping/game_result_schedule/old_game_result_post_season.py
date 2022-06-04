@@ -23,7 +23,7 @@ driver = webdriver.Chrome(service=service,options=options)
 driver.implicitly_wait(5)
 driver.get("https://www.koreabaseball.com/Schedule/Schedule.aspx")
 
-select = Select(driver.find_element_by_xpath('//*[@id="ddlSeries"]')).select_by_value("3,4,5,7")
+select = Select(driver.find_element(by=By.XPATH,value='//*[@id="ddlSeries"]')).select_by_value("3,4,5,7")
 
 db_connect = pymysql.connect(
     user='root',
@@ -44,18 +44,81 @@ cursor = db_connect.cursor(cursors.DictCursor)
 
 for year in range(2010,2022):
     year = str(year)
-    select = Select(driver.find_element_by_xpath('//*[@id="ddlYear"]')).select_by_value(str(year))
+    select = Select(driver.find_element(by=By.XPATH,value='//*[@id="ddlYear"]')).select_by_value(str(year))
 
-    contents = driver.find_elements_by_xpath('//*[@id="tblSchedule"]/tbody/tr')
+    contents = driver.find_elements(by=By.XPATH,value='//*[@id="tblSchedule"]/tbody/tr')
 
     for i in contents:
-        result = i.text.split(' ')
-
+        result = i.text.replace('\n',' ')
+        result = result.split(' ')
+        
         if result[1] == "이동일":
             continue
-
         
-        if len(result) == 9:
+        if len(result) == 16:
+            del result[13]
+            del result[12]
+            del result[11]
+            del result[10]
+            del result[9]
+            del result[8]
+            del result[7]
+            del result[6]
+            del result[5]
+            del result[4]
+            del result[3]
+        elif len(result) == 15:
+            del result[12]
+            del result[11]
+            del result[10]
+            del result[9]
+            del result[8]
+            del result[7]
+            del result[6]
+            del result[5]
+            del result[4]
+            del result[3]
+        elif len(result) == 14:
+            del result[11]
+            del result[10]
+            del result[9]
+            del result[8]
+            del result[7]
+            del result[6]
+            del result[5]
+            del result[4]
+            del result[3]
+        elif len(result) == 13:
+            del result[10]
+            del result[9]
+            del result[8]
+            del result[7]
+            del result[6]
+            del result[5]
+            del result[4]
+            del result[3]
+        elif len(result) == 12:
+            del result[9]
+            del result[8]
+            del result[7]
+            del result[6]
+            del result[5]
+            del result[4]
+            del result[3]
+        elif len(result) == 11:
+            del result[8]
+            del result[7]
+            del result[6]
+            del result[5]
+            del result[4]
+            del result[3]
+        elif len(result) == 10:
+            del result[7]
+            del result[6]
+            del result[5]
+            del result[4]
+            del result[3]
+        elif len(result) == 9:
             del result[6]
             del result[5]
             del result[4]
@@ -102,11 +165,14 @@ for year in range(2010,2022):
         result[0] = year + result[0][:2] + result[0][3:5]
         save_data = "'" + "','".join(result) + "'" + ",'포스트시즌'"
         save_data = save_data[1:9]+save_data[10:]
-
+        
         sql = "insert into schedule_game_result(g_date,g_time,team1,team1_score,team2_score,team2,baseball_stadium,note,season)values(" + save_data + ')'
-              
-        cursor.execute(sql)
-        db_connect.commit()
+           
+        try:
+            cursor.execute(sql)
+            db_connect.commit()
+        except:
+            print(save_data)
     
     time.sleep(5)
 
