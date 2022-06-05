@@ -60,7 +60,13 @@
                             <tr>
                                 <td>${item.date}</td>
                                 <td>${item.g_time}</td>
-                                <td>${item.team1} ${item.print_team1_score} VS ${item.print_team2_score} ${item.team2}</td>
+                                <td>
+                                    ${item.team1} 
+                                    <c:if test="${item.team1_score != -1}">${item.team1_score}</c:if> 
+                                    VS 
+                                    <c:if test="${item.team2_score != -1}">${item.team2_score}</c:if>
+                                     ${item.team2}
+                                </td>
                                 <td>${item.baseball_stadium}</td>
                                 <td>${item.note}</td>
                                 <td>${item.season}</td>

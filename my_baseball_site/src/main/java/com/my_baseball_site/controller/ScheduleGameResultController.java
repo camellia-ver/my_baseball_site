@@ -16,7 +16,7 @@ public class ScheduleGameResultController {
     @GetMapping("/schedule_game_result")
     public String getScheduleGameResultController(Model model){
         model.addAttribute("years", sgr_mapper.selectYear());
-        model.addAttribute("cur_data", sgr_service.selectScheduleGameResultByYearMonth());
+        model.addAttribute("cur_data", sgr_service.selectScheduleGameResultCurrent());
 
         return "schedule_game_result/schedule_game_result";
     }

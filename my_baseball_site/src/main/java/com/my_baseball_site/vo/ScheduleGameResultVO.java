@@ -19,6 +19,4 @@ public class ScheduleGameResultVO {
 
     private String result;
     private String date;
-    private String print_team1_score;
-    private String print_team2_score;
 }
