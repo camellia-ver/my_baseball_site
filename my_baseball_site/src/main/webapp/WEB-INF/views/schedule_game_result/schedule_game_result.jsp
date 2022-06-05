@@ -12,11 +12,11 @@
     <body>
         <div class="contents">
             <div class="title">
-                <p>순위</p>
+                <p>경기 일정/결과</p>
             </div>
             <div class="date_div">
                 <div class="btn_left">
-                    <button class="btn btn-primary" type="submit" id="left_btn"><</button>
+                    <button class="btn btn-primary" id="left_btn"><</button>
                 </div>
                 <div class="date_select">
                     <select class="form-select" aria-label="Default select example" id="year_select">
@@ -40,7 +40,7 @@
                     </select><p>월</p>
                 </div>
                 <div class="btn_right">
-                    <button class="btn btn-primary" type="submit" id="right_btn">></button>
+                    <button class="btn btn-primary" id="right_btn">></button>
                 </div>
             </div>
             <div class="schedule_game_result">
@@ -55,7 +55,7 @@
                         <th scope="col">시즌</th>
                       </tr>
                     </thead>
-                    <tbody id="ranking_tbody">
+                    <tbody id="schedule_game_result_tbody">
                         <c:forEach items="${cur_data}" var="item">
                             <tr>
                                 <td>${item.date}</td>
@@ -73,7 +73,12 @@
                             </tr>
                         </c:forEach>
                     </tbody>
-                  </table>
+                </table>
+                <c:if test="${cur_data == null}">
+                    <tr colspan="6">
+                        <td>데이터가 없습니다.</td>
+                    </tr>
+                </c:if>
             </div>
         </div>
     </body>
