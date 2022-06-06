@@ -18,6 +18,6 @@ public class ScheduleGameResultController {
         model.addAttribute("years", sgr_mapper.selectYear());
         model.addAttribute("cur_data", sgr_service.selectScheduleGameResultCurrent());
 
-        return "schedule_game_result/schedule_game_result";
+        return "/schedule_game_result/schedule_game_result";
     }
 }

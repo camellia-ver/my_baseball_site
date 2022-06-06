@@ -50,7 +50,7 @@
                   HISTORY
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">관중현황</a></li>
+                  <li><a class="dropdown-item" href="/num_of_spactoators">관중현황</a></li>
                   <li><a class="dropdown-item" href="#">역대 개인수상</a></li>
                   <li><a class="dropdown-item" href="#">역대 골든글로브</a></li>
                 </ul>

@@ -18,6 +18,6 @@ public class RankingCotroller {
         model.addAttribute("today_ranking", r_service.selectRankingToday());
         model.addAttribute("years", r_mapper.selectYear());
         model.addAttribute("startDate", r_service.selectStartDate());
-        return "ranking/ranking";
+        return "/ranking/ranking";
     }
 }
