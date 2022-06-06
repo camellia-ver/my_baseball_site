@@ -46,7 +46,7 @@ for i in range(prev_day):
     time.sleep(10)
 
     date = driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_lblSearchDateTitle"]').text
-    save_date = date[:4] + date[5:7] + date[8:10]
+    save_date = date[:4] + "1231"
 
     tbody = driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_udpRecord"]/table/tbody').text
     tbody = tbody.split('\n')

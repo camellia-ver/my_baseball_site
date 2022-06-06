@@ -45,8 +45,15 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">선수단</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">관중현황</a>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  HISTORY
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">관중현황</a></li>
+                  <li><a class="dropdown-item" href="#">역대 개인수상</a></li>
+                  <li><a class="dropdown-item" href="#">역대 골든글로브</a></li>
+                </ul>
               </li>
               <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

@@ -115,6 +115,7 @@ public class RankingService {
         if(list.size() == 0){
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
             String cur_year = formatter.format(date);
+
             cur_year += "1231";
 
             list = mapper.selectRankingByDate(cur_year);
