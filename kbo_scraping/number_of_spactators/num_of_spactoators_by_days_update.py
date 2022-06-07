@@ -42,9 +42,11 @@ cursor = db_connect.cursor(cursors.DictCursor)
 search_btn = driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_btnSearch"]')
 select = Select(driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ddlTeam"]')).select_by_value("SS")
 
+prev_day = 1 # 몇일 전부터인지
 today = datetime.datetime.now() 
-month = today.month
-day = today.day
+yesterday = datetime.datetime.now() - datetime.timedelta(days=prev_day)
+month = yesterday.month
+day = yesterday.day
 
 select = Select(driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ddlSeason"]')).select_by_value(str(today.year))
 search_btn = driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_btnSearch"]')
@@ -65,7 +67,7 @@ for data in tbody:
             result[0] = result[0][:4] + result[0][5:7] + result[0][8:10]
             result[5] = result[5].replace(',','')
             save_data = "'" + "','".join(result) + "'"
-
+           
             sql = "insert into num_of_spactoators(nos_date,day_of_the_weeks,home,away,baseball_stadium,spactoators)values(" + save_data + ')'
             
             cursor.execute(sql)
