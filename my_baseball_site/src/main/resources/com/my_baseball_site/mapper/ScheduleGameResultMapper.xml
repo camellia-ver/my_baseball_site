@@ -15,7 +15,12 @@
     <select id="selectYear" resultType="java.lang.Integer">
         select distinct year(g_date) as years from schedule_game_result order by years desc
     </select>
-    <select id="selectScheduleGameResultByYearMonth" resultType="com.my_baseball_site.vo.ScheduleGameResultVO">
-        select * from schedule_game_result where year(g_date) = #{year} and month(g_date) = #{month}
+    <select id="selectScheduleGameResultByYearMonthSeason" resultType="com.my_baseball_site.vo.ScheduleGameResultVO">
+        select * from schedule_game_result 
+        where year(g_date) = #{year} 
+        <if test="month != null">
+            and month(g_date) = #{month} 
+        </if>
+        and season = #{season}
     </select>
 </mapper>

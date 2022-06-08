@@ -108,7 +108,7 @@ public class ScheduleGameResultService {
         
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd");
 
-        List<ScheduleGameResultVO> list = sgr_mapper.selectScheduleGameResultByYearMonth(year, month);
+        List<ScheduleGameResultVO> list = sgr_mapper.selectScheduleGameResultByYearMonthSeason(year, month,"정규시즌");
 
         for(ScheduleGameResultVO item : list){
             item.setDate(dateFormat.format(item.getG_date()));
@@ -117,10 +117,12 @@ public class ScheduleGameResultService {
         return list;
     }
 
-    public List<ScheduleGameResultVO> selectScheduleGameResultByYearMonth(String year,String month){
+    public List<ScheduleGameResultVO> selectScheduleGameResultByYearMonth(String year,String month,String season){
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd");
 
-        List<ScheduleGameResultVO> list = sgr_mapper.selectScheduleGameResultByYearMonth(year, month);
+        if(month.equals("")) month = null;
+
+        List<ScheduleGameResultVO> list = sgr_mapper.selectScheduleGameResultByYearMonthSeason(year, month,season);
 
         for(ScheduleGameResultVO item : list){
             item.setDate(dateFormat.format(item.getG_date()));

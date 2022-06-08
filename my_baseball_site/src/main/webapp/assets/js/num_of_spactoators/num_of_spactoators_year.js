@@ -36,7 +36,7 @@ $(function(){
     getNumOfSpactoatorsInfo("avg_one_game")
 
     function getNumOfSpactoatorsInfo(selectData){
-        let url = "/num_of_spactoators/year/api/"+selectData
+        let url = "/num_of_spactoators/api/year/"+selectData
         
         $.ajax({
             type:"get",
@@ -44,16 +44,16 @@ $(function(){
             success:function(r) {
                 if(selectData == "sum_year"){
                     if(r.data != null) {
-                        let Label = new Array();
-                        let Data = new Array();
+                        let sumYearChartLabel = new Array();
+                        let sumYearChartData = new Array();
                         for(let i=0; i<r.data.length; i++) {
-                            Label.push(r.data[i].nosby_year);
-                            Data.push(r.data[i].sum_year);
+                            sumYearChartLabel.push(r.data[i].nosby_year);
+                            sumYearChartData.push(r.data[i].sum_year);
                         }
                         sumYearChart.data.datasets = new Array(); // 데이터 셋 초기화
-                        sumYearChart.data.labels = Label; // 레이블 교체
+                        sumYearChart.data.labels = sumYearChartLabel; // 레이블 교체
                         sumYearChart.data.datasets.push({
-                            label:'연도별 총 관중수', data:Data,
+                            label:'연도별 총 관중수', data:sumYearChartData,
                             backgroundColor:['rgba(30, 30, 255, 0.7)']
                         });
                         sumYearChart.update();
@@ -61,16 +61,16 @@ $(function(){
                 }
                 else{
                     if(r.data != null) {
-                        let Label = new Array();
-                        let Data = new Array();
+                        let avgOneGameChartLabel = new Array();
+                        let avgOneGameChartData = new Array();
                         for(let i=0; i<r.data.length; i++) {
-                            Label.push(r.data[i].nosby_year);
-                            Data.push(r.data[i].avg_one_game);
+                            avgOneGameChartLabel.push(r.data[i].nosby_year);
+                            avgOneGameChartData.push(r.data[i].avg_one_game);
                         }
                         avgOneGameChart.data.datasets = new Array(); // 데이터 셋 초기화
-                        avgOneGameChart.data.labels = Label; // 레이블 교체
+                        avgOneGameChart.data.labels = avgOneGameChartLabel; // 레이블 교체
                         avgOneGameChart.data.datasets.push({
-                            label:'연도별 한 경기 당 평균 관중수', data:Data,
+                            label:'연도별 한 경기 당 평균 관중수', data:avgOneGameChartData,
                             backgroundColor:['rgba(225, 30, 30, 0.7)']
                         });
                         avgOneGameChart.update();

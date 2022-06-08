@@ -43,6 +43,12 @@
                     <button class="btn btn-primary" id="right_btn">></button>
                 </div>
             </div>
+            <div class="season_select">
+                <select class="form-select" aria-label="Default select example" id="season">
+                    <option value="정규시즌">정규시즌</option>
+                    <option value="포스트시즌">포스트시즌</option>
+                </select>
+            </div>
             <div class="schedule_game_result">
                 <table class="table table-striped">
                     <thead>

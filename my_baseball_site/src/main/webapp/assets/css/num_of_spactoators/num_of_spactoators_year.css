@@ -6,3 +6,4 @@
 .sum_year_area > h1{font-size: 25px;}
 .avg_one_game_area{height: 400px; margin: 10px; padding: 10px;}
 .avg_one_game_area > h1{font-size: 25px; margin-top: 10px; padding-top: 10px;}
+#avgOneGameChart{padding-bottom: 10px;}

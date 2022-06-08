@@ -22,6 +22,7 @@ public class RankingVO {
     private Date r_date;
     private String uniqueness;
 
+    private String year;
     private String print_game_difference;
     private String print_win_rate;
     private String print_date;

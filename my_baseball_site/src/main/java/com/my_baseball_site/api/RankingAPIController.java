@@ -29,4 +29,18 @@ public class RankingAPIController {
 
         return resultMap;
     }
+
+    @GetMapping("/ranking/api/graph/{year_or_daily}")
+    public Map<String,Object> getRankingGraph(
+        @PathVariable String year_or_daily
+    ){
+        Map<String, Object> resultMap = new LinkedHashMap<String,Object>();
+        
+        List<RankingVO> list = null;
+
+        resultMap.put("status", true);
+        resultMap.put("data", list);
+
+        return resultMap;
+    }
 }

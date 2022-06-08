@@ -11,4 +11,6 @@
 #year_select{margin: 10px; padding: 10px; width: 80px; margin-top: 0px; margin-bottom: 20px;}
 #month_select{margin: 10px; padding: 10px; width: 60px; margin-top: 0px; margin-bottom: 20px;}
 
+#season{margin: 10px; padding: 10px; width: 120px; margin-left: 90%;}
+
 .schedule_game_result{margin: 10px; padding: 10px; font-size: 20px; text-align: center;}

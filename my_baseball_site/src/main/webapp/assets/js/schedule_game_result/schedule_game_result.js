@@ -63,6 +63,21 @@ $(function(){
         }
     })
 
+    $("#season").change(function(){
+        let season = $("#season option:selected").val()
+
+        if(season == "포스트시즌"){
+            $("#month_select").css("display","none")
+            $(".date_select > p").css("display","none")
+            getScheduleGameResult()
+        }
+        else{
+            $("#month_select").css("display","block")
+            $(".date_select > p").css("display","block")
+            getScheduleGameResult()
+        }
+    })
+
     function eqFormatting(input_num){
         if(input_num < 10) input_num = '0' + input_num.toString()
         
@@ -72,9 +87,14 @@ $(function(){
     function getScheduleGameResult(){
         let change_year = $("#year_select option:selected").val()
         let change_month = $("#month_select option:selected").val()
+        let change_season = $("#season option:selected").val()
+        let url_month
+        let url = "/schedule_game_result/api/list?year=" + change_year
 
-        let url = "/schedule_game_result/api/"+ change_year+'&'+change_month
-
+        if(change_season == "포스트시즌")  url_month = ""
+        else url_month = change_month
+        url += "&month=" + url_month + "&season=" + change_season
+        
         month = change_month - 1
         year = change_year - now.getFullYear()
         if(year < 0) year = -year
