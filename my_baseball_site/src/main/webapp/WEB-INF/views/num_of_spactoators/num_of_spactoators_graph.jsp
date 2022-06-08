@@ -6,8 +6,8 @@
     <head>
         <meta charset="UTF-8">
         <title>baseball data site</title>
-        <link rel="stylesheet" href="/assets/css/num_of_spactoators.css">
-        <script src="/assets/js/num_of_spactoators.js"></script>
+        <link rel="stylesheet" href="/assets/css/num_of_spactoators_graph.css">
+        <!-- <script src="/assets/js/num_of_spactoators_graph.js"></script> -->
     </head>
     <body>
         <div class="contents">
@@ -63,35 +63,7 @@
                 <button class="btn btn-primary" type="submit" id="select_area_btn">검색</button>
             </div>
             <div class="num_of_spactoators">
-                <table class="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">날짜</th>
-                        <th scope="col">요일</th>
-                        <th scope="col">홈</th>
-                        <th scope="col">방문</th>
-                        <th scope="col">구장</th>
-                        <th scope="col">관중수</th>
-                      </tr>
-                    </thead>
-                    <tbody id="num_of_spactoators_tbody">
-                        <c:if test="${num_of_spactoators == null}">
-                            <tr colspan="6">
-                                <td>데이터가 없습니다.</td>
-                            </tr>
-                        </c:if>
-                        <c:forEach items="${num_of_spactoators}" var="item">
-                            <tr>
-                                <td>${item.date}</td>
-                                <td>${item.day_of_the_weeks}</td>
-                                <td>${item.home}</td>
-                                <td>${item.away}</td>
-                                <td>${item.baseball_stadium}</td>
-                                <td>${item.spactoators}</td>
-                            </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
+                
             </div>
         </div>
     </body>

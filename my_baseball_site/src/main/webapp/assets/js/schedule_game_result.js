@@ -73,13 +73,13 @@ $(function(){
         let change_year = $("#year_select option:selected").val()
         let change_month = $("#month_select option:selected").val()
 
-        let url = "/schedule_game_result/"+ change_year+'&'+change_month
+        let url = "/schedule_game_result/api/"+ change_year+'&'+change_month
 
         month = change_month - 1
         year = change_year - now.getFullYear()
         if(year < 0) year = -year
 
-        $("#schedule_game_result_tbody").html("");
+        $("#schedule_game_result_tbody").html("")
 
         $.ajax({
             type:"get",
@@ -120,7 +120,7 @@ $(function(){
                             '<td>'+r.data[i].note+'</td>'+
                             '<td>'+r.data[i].season+'</td>'+
                         '</tr>'
-                        $("#schedule_game_result_tbody").append(tag);
+                        $("#schedule_game_result_tbody").append(tag)
                     }
                 }
             }

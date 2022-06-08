@@ -138,11 +138,11 @@ $(function(){
     }
 
     function getRanking(date){
-        $("#ranking_tbody").html("");
+        $("#ranking_tbody").html("")
 
         $.ajax({
             type:"get",
-            url:"/ranking/"+date,
+            url:"/ranking/api/"+date,
             success:function(r){
                 for(let i = 0;i < r.data.length;i++){
                     let tag = 
@@ -161,7 +161,7 @@ $(function(){
                         '<td>'+r.data[i].away+'</td>'+
                         '<td>'+r.data[i].uniqueness+'</td>'+
                     '</tr>'
-                    $("#ranking_tbody").append(tag);
+                    $("#ranking_tbody").append(tag)
                 }
             }
         })

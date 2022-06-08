@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.my_baseball_site.mapper.NumOfSpactoatorsMapper">
+    <select id="selectNumOfSpactoators" resultType="com.my_baseball_site.vo.NumOfSpactoatorsVO">
+        select * from num_of_spactoators 
+        where 
+        <if test="year != null">
+            year(nos_date) = #{year}
+        </if>
+        <if test="month != null">
+            and month(nos_date) = #{month}
+        </if>
+        <if test="home_away != null and home_away.equals('home')">
+            and home = '삼성'
+        </if>
+        <if test="home_away != null and home_away.equals('away')">
+            and away = '삼성'
+        </if>
+        <if test="stadium != null">
+            and baseball_stadium = #{stadium}
+        </if>
+        <if test="day_of_week != null">
+            and day_of_the_weeks = #{day_of_week}
+        </if>
+    </select>
+    <select id="selectYear" resultType="java.lang.Integer">
+        select distinct year(nos_date) as years from num_of_spactoators order by years desc
+    </select>
+    <select id="selectBaseballStadium" resultType="java.lang.String">
+        select distinct baseball_stadium from num_of_spactoators
+    </select>
+</mapper>

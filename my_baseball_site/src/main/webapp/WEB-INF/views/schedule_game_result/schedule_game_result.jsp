@@ -56,6 +56,11 @@
                       </tr>
                     </thead>
                     <tbody id="schedule_game_result_tbody">
+                        <c:if test="${cur_data == null}">
+                            <tr colspan="6">
+                                <td>데이터가 없습니다.</td>
+                            </tr>
+                        </c:if>
                         <c:forEach items="${cur_data}" var="item">
                             <tr>
                                 <td>${item.date}</td>
@@ -74,11 +79,6 @@
                         </c:forEach>
                     </tbody>
                 </table>
-                <c:if test="${cur_data == null}">
-                    <tr colspan="6">
-                        <td>데이터가 없습니다.</td>
-                    </tr>
-                </c:if>
             </div>
         </div>
     </body>

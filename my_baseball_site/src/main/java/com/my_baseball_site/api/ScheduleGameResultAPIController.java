@@ -16,7 +16,7 @@ import com.my_baseball_site.vo.ScheduleGameResultVO;
 public class ScheduleGameResultAPIController {
     @Autowired ScheduleGameResultService sgr_service;
 
-    @GetMapping("/schedule_game_result/{year}&{month}")
+    @GetMapping("/schedule_game_result/api/{year}&{month}")
     public Map<String,Object> getScheduleGameResultByDate(
         @PathVariable String year,
         @PathVariable String month

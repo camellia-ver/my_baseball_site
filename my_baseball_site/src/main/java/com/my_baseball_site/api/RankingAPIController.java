@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class RankingAPIController {
     @Autowired RankingService r_service;
 
-    @GetMapping("/ranking/{date}")
+    @GetMapping("/ranking/api/{date}")
     public Map<String, Object> getRankingByDate(
         @PathVariable String date
     ){
