@@ -29,6 +29,7 @@
         select r_date,no from ranking 
         where team_name = '삼성'
         and r_date between #{start_date} and #{end_date}
+        and note = '리그진행중'
         order by r_date 
     </select>
 </mapper>

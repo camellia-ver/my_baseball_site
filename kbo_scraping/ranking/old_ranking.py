@@ -63,8 +63,8 @@ for year in range(1982,2022):
             save_data[9] = "'" + save_data[9] + "'"
             save_data[10] = "'" + save_data[10] + "'"
             save_data[11] = "'" + save_data[11] + "'"
-            save_data = ','.join(save_data) + ',' + save_date + ",'드림리그'"
-            sql = "insert into ranking(no,team_name,game,win,lose,tie,win_rate,game_difference,last_10_matches,continuity,home,away,r_date,uniqueness)values(" + save_data + ')'
+            save_data = ','.join(save_data) + ',' + save_date + ",'드림리그','최종순위'"
+            sql = "insert into ranking(no,team_name,game,win,lose,tie,win_rate,game_difference,last_10_matches,continuity,home,away,r_date,uniqueness,note)values(" + save_data + ')'
         
             cursor.execute(sql)
             db_connect.commit()
@@ -77,9 +77,9 @@ for year in range(1982,2022):
             save_data[9] = "'" + save_data[9] + "'"
             save_data[10] = "'" + save_data[10] + "'"
             save_data[11] = "'" + save_data[11] + "'"
-            save_data = ','.join(save_data) + ',' + save_date + ",'매직리그'"
+            save_data = ','.join(save_data) + ',' + save_date + ",'매직리그','최종순위'"
     
-            sql = "insert into ranking(no,team_name,game,win,lose,tie,win_rate,game_difference,last_10_matches,continuity,home,away,r_date,uniqueness)values(" + save_data + ')'
+            sql = "insert into ranking(no,team_name,game,win,lose,tie,win_rate,game_difference,last_10_matches,continuity,home,away,r_date,uniqueness,note)values(" + save_data + ')'
             
             cursor.execute(sql)
             db_connect.commit()
@@ -94,9 +94,9 @@ for year in range(1982,2022):
             save_data[9] = "'" + save_data[9] + "'"
             save_data[10] = "'" + save_data[10] + "'"
             save_data[11] = "'" + save_data[11] + "'"
-            save_data = ','.join(save_data) + ',' + save_date + ",'단일리그'"
+            save_data = ','.join(save_data) + ',' + save_date + ",'단일리그','최종순위'"
     
-            sql = "insert into ranking(no,team_name,game,win,lose,tie,win_rate,game_difference,last_10_matches,continuity,home,away,r_date,uniqueness)values(" + save_data + ')'
+            sql = "insert into ranking(no,team_name,game,win,lose,tie,win_rate,game_difference,last_10_matches,continuity,home,away,r_date,uniqueness,note)values(" + save_data + ')'
     
             cursor.execute(sql)
             db_connect.commit()
@@ -126,9 +126,9 @@ while date != "2022.04.02(토)":
         save_data[9] = "'" + save_data[9] + "'"
         save_data[10] = "'" + save_data[10] + "'"
         save_data[11] = "'" + save_data[11] + "'"
-        save_data = ','.join(save_data) + ',' + save_date + ",'단일리그'"
+        save_data = ','.join(save_data) + ',' + save_date + ",'단일리그','리그진행중'"
 
-        sql = "insert into ranking(no,team_name,game,win,lose,tie,win_rate,game_difference,last_10_matches,continuity,home,away,r_date,uniqueness)values(" + save_data + ')'
+        sql = "insert into ranking(no,team_name,game,win,lose,tie,win_rate,game_difference,last_10_matches,continuity,home,away,r_date,uniqueness,note)values(" + save_data + ')'
     
         cursor.execute(sql)
         db_connect.commit()
