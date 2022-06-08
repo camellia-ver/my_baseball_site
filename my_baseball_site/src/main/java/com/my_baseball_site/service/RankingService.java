@@ -154,4 +154,29 @@ public class RankingService {
 
         return list;
     }
+
+    public List<RankingVO> selectRankingGraphByYear(){
+        Date now = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
+        String cur_year = formatter.format(now);
+
+        List<RankingVO> list = mapper.selectRankingGraphByYear(cur_year);
+        list.add(mapper.selectRankingGraphByCurYear(cur_year));
+
+        return list;
+    }
+
+    public List<RankingVO> selectRankingGraphByDay(String start_date,String end_date){
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd");
+        String date;
+
+        List<RankingVO> list = mapper.selectRankingGraphByDay(start_date, end_date);
+
+        for(RankingVO item:list){
+            date = formatter.format(item.getR_date());
+            item.setPrint_date(date);
+        }
+
+        return list;
+    }
 }

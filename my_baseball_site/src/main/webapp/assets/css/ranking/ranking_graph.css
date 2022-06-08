@@ -4,7 +4,11 @@
 
 .select{margin: 10px; padding: 10px; width: 150px;}
 
+.date_select{display:inline-flex; margin: 10px; padding: 10px;}
+.date_select > input{margin-right: 10px; margin-left: 10px;}
+
 .ranking_graph{margin: 10px; padding: 10px; font-size: 25px; text-align: center;}
-#graph_title{font-weight: 500;}
+#graph_title{font-weight: 500; font-size: 30px; margin-bottom: 20px;}
 
 .graph_area{height: 400px;}
+#rankingChart{margin: 10px; padding: 10px; margin-bottom: 20px;}

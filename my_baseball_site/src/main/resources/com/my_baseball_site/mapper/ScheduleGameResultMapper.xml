@@ -4,7 +4,8 @@
 
 <mapper namespace="com.my_baseball_site.mapper.ScheduleGameResultMapper">
     <select id="selectScheduleThreeGame" resultType="com.my_baseball_site.vo.ScheduleGameResultVO">
-        select * from schedule_game_result where g_date >= #{date} limit 3
+        select * from schedule_game_result 
+        where g_date >= #{date} limit 3
     </select>
     <select id="isGame" resultType="java.lang.Integer">
         select count(*) from schedule_game_result where g_date = #{date}
@@ -13,7 +14,8 @@
         select * from schedule_game_result where g_date = #{date} 
     </select>
     <select id="selectYear" resultType="java.lang.Integer">
-        select distinct year(g_date) as years from schedule_game_result order by years desc
+        select distinct year(g_date) as years 
+        from schedule_game_result order by years desc
     </select>
     <select id="selectScheduleGameResultByYearMonthSeason" resultType="com.my_baseball_site.vo.ScheduleGameResultVO">
         select * from schedule_game_result 

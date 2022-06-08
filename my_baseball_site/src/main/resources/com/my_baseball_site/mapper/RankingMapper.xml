@@ -10,9 +10,25 @@
         <![CDATA[select * from ranking where r_date < #{date} order by r_date desc,no asc limit 10]]>
     </select> -->
     <select id="selectYear" resultType="java.lang.Integer">
-        select distinct year(r_date) as years from ranking order by years desc
+        select distinct year(r_date) as years from ranking 
+        order by years desc
     </select>
     <select id="selectStartDate" resultType="java.util.Date">
-        select r_date from ranking where r_date > #{date} order by r_date limit 1
+        select r_date from ranking 
+        where r_date > #{date} order by r_date limit 1
+    </select>
+    <select id="selectRankingGraphByYear" resultType="com.my_baseball_site.vo.RankingVO">
+        <![CDATA[select year(r_date) as year,no from ranking where team_name = '삼성' and year(r_date) < #{cur_year}]]>
+    </select>
+    <select id="selectRankingGraphByCurYear" resultType="com.my_baseball_site.vo.RankingVO">
+        select year(r_date) as year,no from ranking 
+        where team_name = '삼성' and year(r_date) = #{cur_year}
+        order by r_date desc limit 1
+    </select>
+    <select id="selectRankingGraphByDay" resultType="com.my_baseball_site.vo.RankingVO">
+        select r_date,no from ranking 
+        where team_name = '삼성'
+        and r_date between #{start_date} and #{end_date}
+        order by r_date 
     </select>
 </mapper>
