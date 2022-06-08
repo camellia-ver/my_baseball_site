@@ -53,10 +53,22 @@ public class ScheduleGameResultService {
                 return data;
             }
         }
-
+        
         ScheduleGameResultVO data = sgr_mapper.selectRecentlyGameResult(today);
         SimpleDateFormat formatter2 = new SimpleDateFormat("MM월 dd일");
         String print_date;
+
+        /*if(sgr_mapper.isGame(today) != 1){
+            print_date = formatter2.format(data.getG_date());
+            data.setDate(print_date);
+            data.setNote("경기없음");
+        }
+
+        if(date.getWeekYear() != cur_year){
+            ScheduleGameResultVO data2 = null;
+
+            return data2;
+        }*/
 
         if(!data.getNote().equals("-")){
             print_date = formatter2.format(data.getG_date());

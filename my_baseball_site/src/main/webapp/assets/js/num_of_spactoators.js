@@ -10,7 +10,9 @@ $(function(){
         let stadium = $("#stadium_select option:selected").val()
         let day_of_week = $("#day_of_week_select option:selected").val()
 
-        url = "/num_of_spactoators/api/list?year=" + year + "&month=" + month
+        url = "/num_of_spactoators/api/list?year=" + year
+        if(month == '0') month = ""
+        url += "&month=" + month
         if(home_away == '0') home_away = ""
         url += "&home_away=" + home_away
         if(stadium == '0') stadium = ""
@@ -41,7 +43,7 @@ $(function(){
                             '<td>'+r.data[i].home+'</td>'+
                             '<td>'+r.data[i].away+'</td>'+
                             '<td>'+r.data[i].baseball_stadium+'</td>'+
-                            '<td>'+r.data[i].spactoators+'</td>'+
+                            '<td>'+r.data[i].print_spactoators+'</td>'+
                         '</tr>'
                         $("#num_of_spactoators_tbody").append(tag)
                     }

@@ -11,13 +11,7 @@
     </head>
     <body>
         <div class="contents">
-            <div class="title">
-                <p>관중현황</p>
-            </div>
-            <div class="select_table_graph">
-                <a class="btn btn-primary" href="/num_of_spactoators" role="button">일자별 관중현황</a>
-                <a class="btn btn-primary" href="/num_of_spactoators/graph" role="button">관중현황 그래프</a>
-            </div>
+            <%@include file="/WEB-INF/views/includes/num_of_spactoators_title.jsp"%>
             <div class="select_area">
                 <p>검색항목</p>
                 <select class="form-select" aria-label="Default select example" id="year_select">
@@ -27,7 +21,7 @@
                     </c:forEach>
                 </select>
                 <select class="form-select" aria-label="Default select example" id="month_select">
-                    <option value=${num_of_spactoators[0].cur_month} selected>월별</option>
+                    <option value="0" selected>월별</option>
                     <option value="03">03월</option>
                     <option value="04">04월</option>
                     <option value="05">05월</option>
@@ -87,7 +81,7 @@
                                 <td>${item.home}</td>
                                 <td>${item.away}</td>
                                 <td>${item.baseball_stadium}</td>
-                                <td>${item.spactoators}</td>
+                                <td>${item.print_spactoators}</td>
                             </tr>
                         </c:forEach>
                     </tbody>

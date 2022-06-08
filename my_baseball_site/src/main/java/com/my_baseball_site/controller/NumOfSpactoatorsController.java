@@ -15,15 +15,15 @@ public class NumOfSpactoatorsController {
 
     @GetMapping("/num_of_spactoators")
     public String getNumOfSpactoators(Model model){
-        model.addAttribute("num_of_spactoators",nos_service.selectNumOfSpactoatorsByCurMonth());
+        model.addAttribute("num_of_spactoators",nos_service.selectNumOfSpactoatorsByCurYear());
         model.addAttribute("years", nos_mapper.selectYear());
         model.addAttribute("baseball_stadiums", nos_mapper.selectBaseballStadium());
 
         return "/num_of_spactoators/num_of_spactoators";
     }
 
-    @GetMapping("/num_of_spactoators/graph")
+    @GetMapping("/num_of_spactoators/year")
     public String getNumOfSpactoatorsGraph(){
-        return "/num_of_spactoators/num_of_spactoators_graph";
+        return "/num_of_spactoators/num_of_spactoators_by_year";
     }
 }

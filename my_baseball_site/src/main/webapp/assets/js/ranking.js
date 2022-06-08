@@ -53,6 +53,7 @@ $(function(){
 
     $("#input_date").change(function(){
         let input_date = $("#input_date").val()
+        $("#input_date").val(input_date)
         let dateArr = input_date.split("-")
         let date = dateArr[0] + dateArr[1] + dateArr[2]
         let print_today = dateArr[0] +"년 " + dateArr[1]+"월 " + dateArr[2]+"일"

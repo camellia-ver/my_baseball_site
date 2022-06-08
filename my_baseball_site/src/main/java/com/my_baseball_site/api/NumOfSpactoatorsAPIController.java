@@ -20,7 +20,7 @@ public class NumOfSpactoatorsAPIController {
     @GetMapping("/num_of_spactoators/api/list")
     public Map<String,Object> getNumOfSpactoators(
         @RequestParam String year,
-        @RequestParam String month,
+        @RequestParam @Nullable String month,
         @RequestParam @Nullable String home_away,
         @RequestParam @Nullable String stadium,
         @RequestParam @Nullable String day_of_week
