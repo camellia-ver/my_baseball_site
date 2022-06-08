@@ -24,16 +24,12 @@ public class RankingService {
 
         SimpleDateFormat formatter2 = new SimpleDateFormat("MM월 dd일");
         String print_date;
-
         SimpleDateFormat formatter3 = new SimpleDateFormat("yyyy-MM-dd");
         String max_date;
-
         SimpleDateFormat formatter4 = new SimpleDateFormat("yyyy년 MM월 dd일");
         String print_full_date;
-
         DecimalFormat n_formatter = new DecimalFormat("0.000");
         String print_win_rate;
-
         DecimalFormat n_formatter2 = new DecimalFormat("0.#");
         String print_game_difference;
 
@@ -102,13 +98,10 @@ public class RankingService {
 
         SimpleDateFormat formatter2 = new SimpleDateFormat("MM월 dd일");
         String print_date;
-
         SimpleDateFormat formatter4 = new SimpleDateFormat("yyyy년 MM월 dd일");
         String print_full_date;
-
         DecimalFormat n_formatter = new DecimalFormat("0.000");
         String print_win_rate;
-
         DecimalFormat n_formatter2 = new DecimalFormat("0.#");
         String print_game_difference;
 

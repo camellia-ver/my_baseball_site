@@ -3,6 +3,11 @@ $(function(){
         type:"line",
         options:{
             responsive:false,
+            scales: {
+                y: {
+                    reverse: true,
+                }
+            }
         },
         data:{
             labels:null,

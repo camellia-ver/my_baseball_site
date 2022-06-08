@@ -21,12 +21,12 @@
                 <option value="일자">일자</option>
                 <option value="연도">연도</option>
             </select>
-        </div>
-        <div class="date_select">
-            <input type="date" min="${start_date}" max="${end_date}" value="${start_date}" id="start_date">  
-            ~  
-            <input type="date" min="${start_date}" max="${end_date}" value="${end_date}" id="end_date">
-            <p>일자 지정(최대 30일까지 가능)</p>
+            <div class="date_select">
+                <input type="date" min="${start_date}" max="${end_date}" value="${start_date}" id="start_date">  
+                <p>~</p> 
+                <input type="date" min="${start_date}" max="${end_date}" value="${end_date}" id="end_date">
+                <p>일자 지정(최대 30일까지 가능)</p>
+            </div>
         </div>
         <div class="ranking_graph">
             <div class="graph_area">
