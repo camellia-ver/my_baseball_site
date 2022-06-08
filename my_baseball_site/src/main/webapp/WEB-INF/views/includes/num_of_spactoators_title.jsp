@@ -5,7 +5,7 @@
     <head>
         <meta charset="UTF-8">
         <title>my baseball data site</title>
-        <link rel="stylesheet" href="/assets/css/num_of_spactoators_title.css">
+        <link rel="stylesheet" href="/assets/css/include/num_of_spactoators_title.css">
     </head>
     <body>
         <div class="title">

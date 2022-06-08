@@ -8,7 +8,7 @@
         <title>baseball data site</title>
         <link rel="stylesheet" href="/assets/css/num_of_spactoators_year.css">
         <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.0/dist/chart.min.js"></script>
-        <script src="/assets/js/num_of_spactoators_year.js"></script>
+        <script src="/assets/js/num_of_spactoators/num_of_spactoators_year.js"></script>
     </head>
     <body>
         <div class="contents">

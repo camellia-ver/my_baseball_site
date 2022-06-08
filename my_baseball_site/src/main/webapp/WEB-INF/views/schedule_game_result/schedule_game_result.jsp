@@ -6,8 +6,8 @@
     <head>
         <meta charset="UTF-8">
         <title>baseball data site</title>
-        <link rel="stylesheet" href="/assets/css/schedule_game_result.css">
-        <script src="/assets/js/schedule_game_result.js"></script>
+        <link rel="stylesheet" href="/assets/css/schedule_game_result/schedule_game_result.css">
+        <script src="/assets/js/schedule_game_result/schedule_game_result.js"></script>
     </head>
     <body>
         <div class="contents">

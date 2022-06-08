@@ -20,4 +20,9 @@ public class RankingCotroller {
         model.addAttribute("startDate", r_service.selectStartDate());
         return "/ranking/ranking";
     }
+
+    @GetMapping("/ranking/graph")
+    public String getRankingGraph(){
+        return "/ranking/ranking_graph";
+    }
 }

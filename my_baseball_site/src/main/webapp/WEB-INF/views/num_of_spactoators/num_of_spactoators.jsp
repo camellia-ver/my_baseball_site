@@ -6,8 +6,8 @@
     <head>
         <meta charset="UTF-8">
         <title>baseball data site</title>
-        <link rel="stylesheet" href="/assets/css/num_of_spactoators.css">
-        <script src="/assets/js/num_of_spactoators.js"></script>
+        <link rel="stylesheet" href="/assets/css/num_of_spactoators/num_of_spactoators.css">
+        <script src="/assets/js/num_of_spactoators/num_of_spactoators.js"></script>
     </head>
     <body>
         <div class="contents">
