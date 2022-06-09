@@ -32,7 +32,7 @@
         </div>
         <div class="ranking_graph">
             <div class="graph_area">
-                <h1 id="graph_title">순위 변동</h1>
+                <h1 id="graph_title">일자별 순위 변동</h1>
                 <canvas id="rankingChart" style="width:100%; height:100%;"></canvas>
             </div>
         </div>

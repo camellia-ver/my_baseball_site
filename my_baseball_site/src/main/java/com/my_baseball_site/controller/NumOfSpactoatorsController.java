@@ -23,7 +23,12 @@ public class NumOfSpactoatorsController {
     }
 
     @GetMapping("/num_of_spactoators/year")
-    public String getNumOfSpactoatorsGraph(){
+    public String getNumOfSpactoatorsYear(){
         return "/num_of_spactoators/num_of_spactoators_by_year";
+    }
+
+    @GetMapping("/num_of_spactoators/graph")
+    public String getNumOfSpactoatorsGraph(){
+        return "/num_of_spactoators/num_of_spactoators_graph";
     }
 }

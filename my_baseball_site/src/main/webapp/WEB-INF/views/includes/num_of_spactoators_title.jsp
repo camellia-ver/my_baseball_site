@@ -13,6 +13,7 @@
         </div>
         <div class="select_table_graph">
             <a class="btn btn-primary" href="/num_of_spactoators" role="button">일자별 관중현황</a>
+            <a class="btn btn-primary" href="/num_of_spactoators/graph" role="button">일자별 관중현황 그래프</a>
             <a class="btn btn-primary" href="/num_of_spactoators/year" role="button">연도별 관중현황</a>
         </div>
     </body>

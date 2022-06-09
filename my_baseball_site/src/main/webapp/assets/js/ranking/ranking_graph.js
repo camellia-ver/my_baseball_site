@@ -38,6 +38,9 @@ $(function(){
         let start_date
         let end_date
 
+        $("#graph_title").html("")
+        $("#graph_title").append(label)
+
         if(year_or_daily == "일자"){
             $(".date_select").css("display","inline-flex")
             start_date = $("#start_date").val()
