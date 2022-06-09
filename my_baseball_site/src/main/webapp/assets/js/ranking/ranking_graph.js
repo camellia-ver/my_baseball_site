@@ -26,10 +26,7 @@ $(function(){
         
         getRankingChart(year_or_daily)
     })
-    $("#start_date").change(function(){
-        getRankingChart("일자")
-    })
-    $("#end_date").change(function(){
+    $("#search_btn").click(function(){
         getRankingChart("일자")
     })
 

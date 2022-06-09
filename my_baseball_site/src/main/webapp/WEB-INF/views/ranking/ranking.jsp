@@ -36,7 +36,6 @@
             </div>
             <div class="date">
                 <p id="print_date">${today_ranking[0].print_date}</p>
-                <!-- <p>현재 출력되고 있는 순위의 날짜</p> -->
             </div>
         </div>
         <div class="ranking">

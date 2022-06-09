@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>baseball data site</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.0/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
     <link rel="stylesheet" href="/assets/css/ranking/ranking_graph.css">
     <script src="/assets/js/ranking/ranking_graph.js"></script>
 </head>
@@ -22,10 +22,12 @@
                 <option value="연도">연도</option>
             </select>
             <div class="date_select">
+                <p>비교분석 구간 지정</p>
                 <input type="date" min="${start_date}" max="${end_date}" value="${start_date}" id="start_date">  
                 <p>~</p> 
                 <input type="date" min="${start_date}" max="${end_date}" value="${end_date}" id="end_date">
-                <p>일자 지정(최대 30일까지 가능)</p>
+                <p>최대 30일까지 가능</p>
+                <button class="btn btn-primary" type="submit" id="search_btn">검색</button>
             </div>
         </div>
         <div class="ranking_graph">
