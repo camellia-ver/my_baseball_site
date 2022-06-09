@@ -6,7 +6,9 @@
 #isYearDaily{width: 150px; height: 40px; margin-right: 10px;}
 
 .date_select{display:inline-flex;}
-.date_select > input{margin-right: 10px; margin-left: 10px;}
+.date_select > input{
+    margin-right: 10px; margin-left: 10px; border: 0; box-shadow: 0 0 4px rgba(0,0,0,0.2);
+    outline:none; font-family: "Roboto", sans-serif; border-radius: 3px;}
 .date_select > p{margin-right: 10px; margin-left: 10px; margin-top: 10px;}
 
 .ranking_graph{margin: 10px; padding: 10px; font-size: 25px; text-align: center;}
