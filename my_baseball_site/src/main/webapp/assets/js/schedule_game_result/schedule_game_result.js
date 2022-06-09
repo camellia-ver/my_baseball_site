@@ -3,7 +3,7 @@ $(function(){
     let now = new Date()
     let month = now.getMonth()
     let year = 0
-    
+   
     month_select += eqFormatting(month) + ")"
     $(month_select).prop("selected",true)
 
@@ -17,9 +17,21 @@ $(function(){
     $("#left_btn").click(function(){
         let change_year = $("#year_select option:selected").val()
         let change_month = $("#month_select option:selected").val()
+        let season = $("#season option:selected").val()
 
         if(change_year == 2001 && change_month == 1){
             alert("마지막입니다.")
+        }
+        else if(season == "포스트시즌" && change_year == 2001){
+            alert("마지막입니다.")
+        }
+        else if(season == "포스트시즌"){
+            year += 1
+
+            if(year < 0) year = -year
+
+            select_year(year)
+            getScheduleGameResult()
         }
         else if(change_month == 1){
             year += 1
@@ -41,9 +53,21 @@ $(function(){
     $("#right_btn").click(function(){
         let change_year = $("#year_select option:selected").val()
         let change_month = $("#month_select option:selected").val()
+        let season = $("#season option:selected").val()
         
         if(change_year == now.getFullYear() && change_month == 12){
             alert("마지막입니다.")
+        }
+        else if(season == "포스트시즌" && change_year == now.getFullYear()){
+            alert("마지막입니다.")
+        }
+        else if(season == "포스트시즌"){
+            year -= 1
+
+            if(year < 0) year = -year
+
+            select_year(year)
+            getScheduleGameResult()
         }
         else if(change_month == 12){
             year -= 1
@@ -109,12 +133,10 @@ $(function(){
                 let print_team1_score
                 let print_team2_score
                 if(r.data.length == 0){
-                    tag = 
-                    '<tr>'+
-                        '<td colspan="6">데이터가 없습니다.</td>'+
-                    '</tr>'
+                    year += 1
 
-                    $("#schedule_game_result_tbody").append(tag);
+                    select_year(year)
+                    getScheduleGameResult()
                 }
                 else{
                     for(let i = 0;i < r.data.length;i++){
@@ -152,5 +174,9 @@ $(function(){
         $(year_select).prop("selected",true)
         month_select = "#month_select option:eq("+ eqFormatting(month) +")"
         $(month_select).prop("selected",true)
+    }
+    function select_year(year){
+        year_select = "#year_select option:eq(" + eqFormatting(year) + ')'
+        $(year_select).prop("selected",true)
     }
 })
