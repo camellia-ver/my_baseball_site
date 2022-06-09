@@ -19,7 +19,8 @@
                     <option value="home_away">홈/방문</option>
                     <option value="stadium">구장</option>
                     <option value="day_of_the_weeks">요일</option>
-                    <option value="team">상대 팀</option>
+                    <option value="team_home">상대 팀이 홈일 시</option>
+                    <option value="team_away">상대 팀이 방문일 시</option>
                 </select>
             </div>
             <div class="num_of_spactoators">
