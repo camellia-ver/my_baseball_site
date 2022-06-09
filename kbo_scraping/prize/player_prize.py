@@ -1,6 +1,7 @@
-# 삼성 라이온즈 연도별 총 관중수와 평균 관중수
+# 역대 개인수상 기록 수집
 
 from unittest import result
+from certifi import contents
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -20,7 +21,7 @@ service = Service(executable_path=ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service,options=options)
 
 driver.implicitly_wait(5)
-driver.get("https://www.koreabaseball.com/History/Crowd/History.aspx")
+driver.get("https://www.koreabaseball.com/History/Etc/PlayerPrize.aspx")
 
 db_connect = pymysql.connect(
     user='root',
@@ -42,23 +43,28 @@ cursor = db_connect.cursor(cursors.DictCursor)
 now = datetime.datetime.now()
 cur_year = now.year
 
-# 1982 ~ 2021
 for i in range(1982,2022):
     i -= cur_year
     if i < 0: i = -i
 
     n = str(i)
-    year = driver.find_element(by=By.XPATH,value=f'//*[@id="tblHistory"]/tbody/tr[{n}]/td[1]').text
-    spactoators = driver.find_element(by=By.XPATH,value=f'//*[@id="tblHistory"]/tbody/tr[{n}]/td[2]').text
-    spactoators = spactoators.replace("\n"," ")
-    spactoators = spactoators.replace("(","")
-    spactoators = spactoators.replace(")","")
-    spactoators = spactoators.replace(",","")
-    spactoators = spactoators.split(" ")
 
-    save_data = "'" + year + "','" + "','".join(spactoators) + "'"
+    content = driver.find_element(by=By.XPATH,value=f'//*[@id="contents"]/div[2]/table/tbody/tr[{n}]').text
+    content = content.replace('(',' ')
+    content = content.replace(')','')
+    content = content.replace(',',' ')
+    content = content.split(' ')
 
-    sql = "insert into num_of_spactoators_by_year(nosby_year,sum_year,avg_one_game)values(" + save_data + ')'
+    for idx,c in enumerate(content):
+        if c == '해당자':
+            content[idx] = content[idx] + ' ' + content[idx+1]
+            del content[idx+1]
+            content.insert(idx+1,'')
+            content.insert(idx+2,'')
+
+    save_data = "'" + "','".join(content) + "'"
+
+    sql = "insert into player_prize(pp_year,kbo_mvp_name,kbo_mvp_team,kbo_mvp_position,kbo_new_man_name,kbo_new_man_team,kbo_new_man_position,kbo_all_star_mvp_name,kbo_all_star_mvp_team,kbo_all_star_mvp_position,kbo_korea_series_mvp_name,kbo_korea_series_mvp_team,kbo_korea_series_mvp_position)values(" + save_data + ')'
             
     cursor.execute(sql)
     db_connect.commit()
