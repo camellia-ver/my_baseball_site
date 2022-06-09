@@ -14,8 +14,8 @@
         <div class="contents">
             <%@include file="/WEB-INF/views/includes/num_of_spactoators_title.jsp"%>
             <div class="select_area">
-                <select class="form-select" aria-label="Default select example" id="content_select">
-                    <option value="" selected>확인할 데이터 선택</option>
+                <select class="form-select" aria-label="Default select example" id="data_select">
+                    <option value="home_away" selected>확인할 데이터 선택</option>
                     <option value="home_away">홈/방문</option>
                     <option value="stadium">구장</option>
                     <option value="day_of_the_weeks">요일</option>
@@ -27,6 +27,7 @@
                 <div class="spactoators_chart_area">
                     <h1 id="chart_title">홈/방문 별 관중수</h1>
                     <canvas id="spactoatorsChart" style="width:100%; height:100%;"></canvas>
+                    <canvas id="spactoatorsChart2" style="width:100%; height:100%;"></canvas>
                 </div>
             </div>
         </div>

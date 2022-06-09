@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.my_baseball_site.mapper.NumOfSpactoatorsMapper;
+import com.my_baseball_site.vo.NumOfSpactoatorsGraphVO;
 import com.my_baseball_site.vo.NumOfSpactoatorsVO;
 
 @Service
@@ -63,6 +64,28 @@ public class NumOfSpactoatorsService {
 
             print_spactoators = n_formatter.format(item.getSpactoators());
             item.setPrint_spactoators(print_spactoators);
+        }
+
+        return list;
+    }
+
+    public List<NumOfSpactoatorsGraphVO> selectGraphData(String selectData){
+        List<NumOfSpactoatorsGraphVO> list = null;
+
+        if(selectData.equals("home_away")){
+            list = mapper.selectHomeAwaySum();
+        }
+        else if(selectData.equals("stadium")){
+            list = mapper.selectStadiumSum();
+        }
+        else if(selectData.equals("day_of_the_weeks")){
+            list = mapper.selectDayOfTheWeeksSum();
+        }
+        else if(selectData.equals("team_home")){
+            list = mapper.selectTeamHomeSum();
+        }
+        else{
+            list = mapper.selectTeamAwaySum();
         }
 
         return list;

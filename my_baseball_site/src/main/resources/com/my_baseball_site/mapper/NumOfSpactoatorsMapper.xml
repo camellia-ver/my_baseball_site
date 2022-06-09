@@ -32,10 +32,35 @@
     <select id="selectBaseballStadium" resultType="java.lang.String">
         select distinct baseball_stadium from num_of_spactoators
     </select>
+
     <select id="selectSumYear" resultType="com.my_baseball_site.vo.NumOfSpactoatorsByYearVO">
-        select nosby_year,sum_year from num_of_spactoators_by_year
+        select nosby_year,sum_year as spactoators from num_of_spactoators_by_year
     </select>
     <select id="selectAvgOneGame" resultType="com.my_baseball_site.vo.NumOfSpactoatorsByYearVO">
-        select nosby_year,avg_one_game from num_of_spactoators_by_year
+        select nosby_year,avg_one_game as spactoators from num_of_spactoators_by_year
+    </select>
+
+    <select id="selectHomeAwaySum" resultType="com.my_baseball_site.vo.NumOfSpactoatorsGraphVO">
+        select '홈' as label,sum(spactoators) as sum_spactoators 
+        from num_of_spactoators where home = '삼성' group by home
+        union all
+        select '방문',sum(spactoators) as sum_spactoators 
+        from num_of_spactoators where away = '삼성' group by away
+    </select>
+    <select id="selectStadiumSum" resultType="com.my_baseball_site.vo.NumOfSpactoatorsGraphVO">
+        select baseball_stadium as label,sum(spactoators) as sum_spactoators 
+        from num_of_spactoators group by baseball_stadium
+    </select>
+    <select id="selectDayOfTheWeeksSum" resultType="com.my_baseball_site.vo.NumOfSpactoatorsGraphVO">
+        select day_of_the_weeks as label,sum(spactoators) as sum_spactoators 
+        from num_of_spactoators group by day_of_the_weeks
+    </select>
+    <select id="selectTeamHomeSum" resultType="com.my_baseball_site.vo.NumOfSpactoatorsGraphVO">
+        select home as label,sum(spactoators) as sum_spactoators
+        from num_of_spactoators where home != '삼성' group by home
+    </select>
+    <select id="selectTeamAwaySum" resultType="com.my_baseball_site.vo.NumOfSpactoatorsGraphVO">
+        select away as label,sum(spactoators) as sum_spactoators
+        from num_of_spactoators where away != '삼성' group by away
     </select>
 </mapper>

@@ -43,42 +43,29 @@ $(function(){
             url:url,
             success:function(r) {
                 if(selectData == "sum_year"){
-                    if(r.data != null) {
-                        let sumYearChartLabel = new Array();
-                        let sumYearChartData = new Array();
-                        for(let i=0; i<r.data.length; i++) {
-                            sumYearChartLabel.push(r.data[i].nosby_year);
-                            sumYearChartData.push(r.data[i].sum_year);
-                        }
-                        sumYearChart.data.datasets = new Array(); // 데이터 셋 초기화
-                        sumYearChart.data.labels = sumYearChartLabel; // 레이블 교체
-                        sumYearChart.data.datasets.push({
-                            label:'연도별 총 관중수', data:sumYearChartData,
-                            backgroundColor:['rgba(30, 30, 255, 0.7)']
-                        });
-                        sumYearChart.update();
-                    }
+                    createChart(r,sumYearChart,"연도별 총",'rgba(30, 30, 255, 0.7)')
                 }
                 else{
-                    if(r.data != null) {
-                        let avgOneGameChartLabel = new Array();
-                        let avgOneGameChartData = new Array();
-                        for(let i=0; i<r.data.length; i++) {
-                            avgOneGameChartLabel.push(r.data[i].nosby_year);
-                            avgOneGameChartData.push(r.data[i].avg_one_game);
-                        }
-                        avgOneGameChart.data.datasets = new Array(); // 데이터 셋 초기화
-                        avgOneGameChart.data.labels = avgOneGameChartLabel; // 레이블 교체
-                        avgOneGameChart.data.datasets.push({
-                            label:'연도별 한 경기 당 평균 관중수', data:avgOneGameChartData,
-                            backgroundColor:['rgba(225, 30, 30, 0.7)']
-                        });
-                        avgOneGameChart.update();
-                    }
-                }
-                
+                    createChart(r,avgOneGameChart,"연도별 한 경기 당 평균",'rgba(225, 30, 30, 0.7)')
+                } 
             }
         })
     }
-
+    function createChart(r,chart,label,color){
+        if(r.data != null) {
+            let chartLabel = new Array();
+            let chartData = new Array();
+            for(let i=0; i<r.data.length; i++) {
+                chartLabel.push(r.data[i].nosby_year);
+                chartData.push(r.data[i].spactoators);
+            }
+            chart.data.datasets = new Array(); // 데이터 셋 초기화
+            chart.data.labels = chartLabel; // 레이블 교체
+            chart.data.datasets.push({
+                label:label+' 관중수', data:chartData,
+                backgroundColor:[color]
+            });
+            chart.update();
+        }
+    }
 })

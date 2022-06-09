@@ -6,6 +6,5 @@ import lombok.Data;
 public class NumOfSpactoatorsByYearVO {
     private Integer nosby_seq;
     private String nosby_year;
-    private Integer sum_year;
-    private Integer avg_one_game;
+    private Integer spactoators;
 }

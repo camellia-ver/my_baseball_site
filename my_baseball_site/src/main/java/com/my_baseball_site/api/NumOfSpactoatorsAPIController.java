@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.my_baseball_site.mapper.NumOfSpactoatorsMapper;
 import com.my_baseball_site.service.NumOfSpactoatorsService;
 import com.my_baseball_site.vo.NumOfSpactoatorsByYearVO;
+import com.my_baseball_site.vo.NumOfSpactoatorsGraphVO;
 import com.my_baseball_site.vo.NumOfSpactoatorsVO;
 
 @RestController
@@ -51,6 +52,20 @@ public class NumOfSpactoatorsAPIController {
         else
             list = nos_mapper.selectAvgOneGame();
         
+        resultMap.put("status", true);
+        resultMap.put("data", list);
+
+        return resultMap;
+    }
+
+    @GetMapping("/num_of_spactoators/api/graph/{selectData}")
+    public Map<String,Object> getNumOfSpactoatorsGraph(
+        @PathVariable String selectData
+    ){
+        Map<String,Object> resultMap = new LinkedHashMap<String,Object>();
+
+        List<NumOfSpactoatorsGraphVO> list = nos_service.selectGraphData(selectData);
+
         resultMap.put("status", true);
         resultMap.put("data", list);
 
