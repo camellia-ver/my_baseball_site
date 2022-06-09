@@ -63,8 +63,8 @@
                     </thead>
                     <tbody id="schedule_game_result_tbody">
                         <c:if test="${cur_data == null}">
-                            <tr colspan="6">
-                                <td>데이터가 없습니다.</td>
+                            <tr>
+                                <td colspan="6">데이터가 없습니다.</td>
                             </tr>
                         </c:if>
                         <c:forEach items="${cur_data}" var="item">

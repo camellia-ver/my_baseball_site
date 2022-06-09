@@ -121,6 +121,7 @@ $(function(){
         
         month = change_month - 1
         year = change_year - now.getFullYear()
+        temp_year = year
         if(year < 0) year = -year
 
         $("#schedule_game_result_tbody").html("")
@@ -133,10 +134,18 @@ $(function(){
                 let print_team1_score
                 let print_team2_score
                 if(r.data.length == 0){
-                    year += 1
+                    alert((temp_year + now.getFullYear()))
+                    if((temp_year + now.getFullYear()) == 2001){
+                        tag = 
+                        '<tr><td colspan="6">데이터가 없습니다.</td></tr>'
+                        $("#schedule_game_result_tbody").append(tag)
+                    }
+                    else{
+                        year += 1
 
-                    select_year(year)
-                    getScheduleGameResult()
+                        select_year(year)
+                        getScheduleGameResult()
+                    }
                 }
                 else{
                     for(let i = 0;i < r.data.length;i++){
