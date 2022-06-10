@@ -44,8 +44,8 @@ $(function(){
         if(data_type == "home_away") label = "홈/방문 별"
         if(data_type == "stadium") label = "구장 별"
         if(data_type == "day_of_the_weeks") label = "요일 별"
-        if(data_type == "team_home") label = "상대 팀이 홈일 시"
-        if(data_type == "team_away") label = "상대 팀이 방문일 시"
+        if(data_type == "team_home") label = "원정 시"
+        if(data_type == "team_away") label = "홈일 시"
 
         title = label + " 평균 관중수"
         $("#chart_title").html("")

@@ -19,9 +19,10 @@
                     <option value="home_away">홈/방문</option>
                     <option value="stadium">구장</option>
                     <option value="day_of_the_weeks">요일</option>
-                    <option value="team_home">상대 팀이 홈일 시</option>
-                    <option value="team_away">상대 팀이 방문일 시</option>
+                    <option value="team_home">원정 시</option>
+                    <option value="team_away">홈일 시</option>
                 </select>
+                <p>2021년 이후 관중현황 데이터를 토대로 제작한 그래프</p>
             </div>
             <div class="num_of_spactoators">
                 <div class="spactoators_chart_area">

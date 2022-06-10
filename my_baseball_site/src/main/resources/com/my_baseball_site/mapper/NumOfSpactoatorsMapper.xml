@@ -80,7 +80,7 @@
             select 
                 home as label,avg(spactoators) as sum_spactoators
             from num_of_spactoators 
-            where home != '삼성' and home != 'SK' and year(nos_date) >= 2021 
+            where home != '삼성' and year(nos_date) >= 2021 
             group by home
         ]]>
     </select>
@@ -89,7 +89,7 @@
             select 
                 away as label,avg(spactoators) as sum_spactoators
             from num_of_spactoators 
-            where away != '삼성' and away != 'SK' and year(nos_date) >= 2021 
+            where away != '삼성' and year(nos_date) >= 2021 
             group by away
         ]]>
     </select>
