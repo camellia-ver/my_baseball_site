@@ -25,7 +25,7 @@
             </div>
             <div class="num_of_spactoators">
                 <div class="spactoators_chart_area">
-                    <h1 id="chart_title">홈/방문 별 관중수</h1>
+                    <h1 id="chart_title">홈/방문 별 평균 관중수</h1>
                     <canvas id="spactoatorsChart" style="width:100%; height:100%;"></canvas>
                     <canvas id="spactoatorsChart2" style="width:100%; height:100%;"></canvas>
                 </div>

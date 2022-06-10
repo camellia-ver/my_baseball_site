@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.my_baseball_site.vo.NumOfSpactoatorsByYearVO;
-import com.my_baseball_site.vo.NumOfSpactoatorsGraphVO;
 import com.my_baseball_site.vo.NumOfSpactoatorsVO;
 
 @Mapper
@@ -14,12 +12,12 @@ public interface NumOfSpactoatorsMapper {
     public List<Integer> selectYear();
     public List<String> selectBaseballStadium();
 
-    public List<NumOfSpactoatorsByYearVO> selectSumYear();
-    public List<NumOfSpactoatorsByYearVO> selectAvgOneGame();
+    public List<NumOfSpactoatorsVO> selectSumYear();
+    public List<NumOfSpactoatorsVO> selectAvgOneGame();
 
-    public List<NumOfSpactoatorsGraphVO> selectHomeAwaySum();
-    public List<NumOfSpactoatorsGraphVO> selectStadiumSum();
-    public List<NumOfSpactoatorsGraphVO> selectDayOfTheWeeksSum();
-    public List<NumOfSpactoatorsGraphVO> selectTeamHomeSum();
-    public List<NumOfSpactoatorsGraphVO> selectTeamAwaySum();
+    public List<NumOfSpactoatorsVO> selectHomeAwaySum();
+    public List<NumOfSpactoatorsVO> selectStadiumSum();
+    public List<NumOfSpactoatorsVO> selectDayOfTheWeeksSum();
+    public List<NumOfSpactoatorsVO> selectTeamHomeSum();
+    public List<NumOfSpactoatorsVO> selectTeamAwaySum();
 }

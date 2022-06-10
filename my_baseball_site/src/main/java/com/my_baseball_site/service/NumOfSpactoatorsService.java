@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.my_baseball_site.mapper.NumOfSpactoatorsMapper;
-import com.my_baseball_site.vo.NumOfSpactoatorsGraphVO;
 import com.my_baseball_site.vo.NumOfSpactoatorsVO;
 
 @Service
@@ -69,8 +68,8 @@ public class NumOfSpactoatorsService {
         return list;
     }
 
-    public List<NumOfSpactoatorsGraphVO> selectGraphData(String selectData){
-        List<NumOfSpactoatorsGraphVO> list = null;
+    public List<NumOfSpactoatorsVO> selectGraphData(String selectData){
+        List<NumOfSpactoatorsVO> list = null;
 
         if(selectData.equals("home_away")){
             list = mapper.selectHomeAwaySum();

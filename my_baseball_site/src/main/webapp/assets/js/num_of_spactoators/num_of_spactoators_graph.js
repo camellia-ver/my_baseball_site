@@ -7,7 +7,7 @@ $(function(){
         data:{
             labels:null,
             datasets:[{
-                label:'홈/방문 별 관중수',
+                label:'홈/방문 별 평균 관중수',
                 data:null,
                 backgroundColor:[
                     'rgba(30, 30, 255, 0.7)'
@@ -23,7 +23,7 @@ $(function(){
         data:{
             labels:null,
             datasets:[{
-                label:'홈/방문 별 관중수',
+                label:'홈/방문 별  평균 관중수',
                 data:null,
                 backgroundColor:[
                     'rgba(30, 30, 255, 0.7)'
@@ -47,7 +47,7 @@ $(function(){
         if(data_type == "team_home") label = "상대 팀이 홈일 시"
         if(data_type == "team_away") label = "상대 팀이 방문일 시"
 
-        title = label + " 관중수"
+        title = label + " 평균 관중수"
         $("#chart_title").html("")
         $("#chart_title").append(title)
 
@@ -90,7 +90,7 @@ $(function(){
             chart.data.datasets = new Array(); // 데이터 셋 초기화
             chart.data.labels = chartLabel; // 레이블 교체
             chart.data.datasets.push({
-                label:label+' 관중수', data:chartData,
+                label:label+' 평균 관중수', data:chartData,
                 backgroundColor:['rgb(255, 99, 132)','rgb(54, 162, 235)']
             });
             chart.update();

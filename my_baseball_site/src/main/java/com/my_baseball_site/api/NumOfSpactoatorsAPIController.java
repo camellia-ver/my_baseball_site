@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.my_baseball_site.mapper.NumOfSpactoatorsMapper;
 import com.my_baseball_site.service.NumOfSpactoatorsService;
-import com.my_baseball_site.vo.NumOfSpactoatorsByYearVO;
-import com.my_baseball_site.vo.NumOfSpactoatorsGraphVO;
 import com.my_baseball_site.vo.NumOfSpactoatorsVO;
 
 @RestController
@@ -45,7 +43,7 @@ public class NumOfSpactoatorsAPIController {
         @PathVariable String selectData
     ){
         Map<String, Object> resultMap = new LinkedHashMap<String,Object>();
-        List<NumOfSpactoatorsByYearVO> list = null;
+        List<NumOfSpactoatorsVO> list = null;
 
         if(selectData.equals("sum_year"))
             list = nos_mapper.selectSumYear();
@@ -64,7 +62,7 @@ public class NumOfSpactoatorsAPIController {
     ){
         Map<String,Object> resultMap = new LinkedHashMap<String,Object>();
 
-        List<NumOfSpactoatorsGraphVO> list = nos_service.selectGraphData(selectData);
+        List<NumOfSpactoatorsVO> list = nos_service.selectGraphData(selectData);
 
         resultMap.put("status", true);
         resultMap.put("data", list);

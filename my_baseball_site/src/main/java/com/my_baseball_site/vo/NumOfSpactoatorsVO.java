@@ -17,4 +17,9 @@ public class NumOfSpactoatorsVO {
     private String date;
     private String cur_year;
     private String print_spactoators;
+
+    private String nosby_year;
+
+    private String label;
+    private Integer sum_spactoators;
 }

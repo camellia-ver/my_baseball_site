@@ -6,9 +6,6 @@
     <select id="selectRankingByDate" resultType="com.my_baseball_site.vo.RankingVO">
         select * from ranking where r_date = #{date}
     </select>
-    <!-- <select id="selectRankingLast" resultType="com.my_baseball_site.vo.RankingVO">
-        <![CDATA[select * from ranking where r_date < #{date} order by r_date desc,no asc limit 10]]>
-    </select> -->
     <select id="selectYear" resultType="java.lang.Integer">
         select distinct year(r_date) as years from ranking 
         order by years desc
