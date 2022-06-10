@@ -34,33 +34,63 @@
     </select>
 
     <select id="selectSumYear" resultType="com.my_baseball_site.vo.NumOfSpactoatorsVO">
-        select nosby_year,sum_year as spactoators from num_of_spactoators_by_year
+        select nosby_year,sum_year as spactoators 
+        from num_of_spactoators_by_year
     </select>
     <select id="selectAvgOneGame" resultType="com.my_baseball_site.vo.NumOfSpactoatorsVO">
-        select nosby_year,avg_one_game as spactoators from num_of_spactoators_by_year
+        select nosby_year,avg_one_game as spactoators 
+        from num_of_spactoators_by_year
     </select>
 
     <select id="selectHomeAwaySum" resultType="com.my_baseball_site.vo.NumOfSpactoatorsVO">
-        select '홈' as label,avg(spactoators) as sum_spactoators 
-        from num_of_spactoators where home = '삼성' group by home
-        union all
-        select '방문',avg(spactoators) as sum_spactoators 
-        from num_of_spactoators where away = '삼성' group by away
+        <![CDATA[
+            select 
+                '홈' as label,avg(spactoators) as sum_spactoators 
+            from num_of_spactoators 
+            where home = '삼성' and year(nos_date) >= 2021 
+            group by home
+            union all
+            select 
+                '방문',avg(spactoators) as sum_spactoators 
+            from num_of_spactoators 
+            where away = '삼성' and year(nos_date) >= 2021 
+            group by away 
+        ]]>
     </select>
     <select id="selectStadiumSum" resultType="com.my_baseball_site.vo.NumOfSpactoatorsVO">
-        select baseball_stadium as label,avg(spactoators) as sum_spactoators 
-        from num_of_spactoators group by baseball_stadium
+        <![CDATA[
+            select 
+                baseball_stadium as label,avg(spactoators) as sum_spactoators 
+            from num_of_spactoators 
+            where year(nos_date) >= 2021 
+            group by baseball_stadium
+        ]]>
     </select>
     <select id="selectDayOfTheWeeksSum" resultType="com.my_baseball_site.vo.NumOfSpactoatorsVO">
-        select day_of_the_weeks as label,avg(spactoators) as sum_spactoators 
-        from num_of_spactoators group by day_of_the_weeks
+        <![CDATA[
+            select 
+                day_of_the_weeks as label,avg(spactoators) as sum_spactoators 
+            from num_of_spactoators
+            where year(nos_date) >= 2021 
+            group by day_of_the_weeks
+        ]]>
     </select>
     <select id="selectTeamHomeSum" resultType="com.my_baseball_site.vo.NumOfSpactoatorsVO">
-        select home as label,avg(spactoators) as sum_spactoators
-        from num_of_spactoators where home != '삼성' and home != 'SK' group by home
+        <![CDATA[
+            select 
+                home as label,avg(spactoators) as sum_spactoators
+            from num_of_spactoators 
+            where home != '삼성' and home != 'SK' and year(nos_date) >= 2021 
+            group by home
+        ]]>
     </select>
     <select id="selectTeamAwaySum" resultType="com.my_baseball_site.vo.NumOfSpactoatorsVO">
-        select away as label,avg(spactoators) as sum_spactoators
-        from num_of_spactoators where away != '삼성' and away != 'SK' group by away
+        <![CDATA[
+            select 
+                away as label,avg(spactoators) as sum_spactoators
+            from num_of_spactoators 
+            where away != '삼성' and away != 'SK' and year(nos_date) >= 2021 
+            group by away
+        ]]>
     </select>
 </mapper>

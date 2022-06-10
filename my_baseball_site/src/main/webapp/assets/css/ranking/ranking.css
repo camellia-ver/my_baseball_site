@@ -14,7 +14,6 @@
 .date_pick{display: inline-flex;margin-left: 40%; }
 .btn_left{margin: 10px; padding: 10px;}
 .today{margin: 10px; padding: 10px; text-align: center; }
-#input_date{border: 0; outline:none; font-family: "Roboto", sans-serif;}
 .btn_right{margin: 10px; padding: 10px;}
 
 .ranking{margin: 10px; padding: 10px; font-size: 20px; text-align: center;}

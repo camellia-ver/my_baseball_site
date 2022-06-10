@@ -23,9 +23,9 @@
             </select>
             <div class="date_select">
                 <p>비교분석 구간 지정</p>
-                <input type="date" min="${start_date}" max="${end_date}" value="${start_date}" id="start_date">  
+                <input type="date" class="form-control" aria-describedby="basic-addon1" min="${start_date}" max="${end_date}" value="${start_date}" id="start_date">  
                 <p>~</p> 
-                <input type="date" min="${start_date}" max="${end_date}" value="${end_date}" id="end_date">
+                <input type="date" class="form-control" aria-describedby="basic-addon1" min="${start_date}" max="${end_date}" value="${end_date}" id="end_date">
                 <p>최대 30일까지 가능</p>
                 <button class="btn btn-primary" type="submit" id="search_btn">검색</button>
             </div>
