@@ -43,6 +43,8 @@ $(function(){
 
         if(data_type == "home_away") label = "홈/방문 별"
         if(data_type == "stadium") label = "구장 별"
+        if(data_type == "month") label = "월 별"
+        if(data_type == "day") label = "일 별"
         if(data_type == "day_of_the_weeks") label = "요일 별"
         if(data_type == "team_home") label = "원정 시"
         if(data_type == "team_away") label = "홈일 시"
@@ -85,7 +87,7 @@ $(function(){
             let chartData = new Array();
             for(let i=0; i<r.data.length; i++) {
                 chartLabel.push(r.data[i].label);
-                chartData.push(r.data[i].sum_spactoators);
+                chartData.push(r.data[i].avg_spactoators);
             }
             chart.data.datasets = new Array(); // 데이터 셋 초기화
             chart.data.labels = chartLabel; // 레이블 교체

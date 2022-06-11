@@ -15,9 +15,11 @@ public interface NumOfSpactoatorsMapper {
     public List<NumOfSpactoatorsVO> selectSumYear();
     public List<NumOfSpactoatorsVO> selectAvgOneGame();
 
-    public List<NumOfSpactoatorsVO> selectHomeAwaySum();
-    public List<NumOfSpactoatorsVO> selectStadiumSum();
-    public List<NumOfSpactoatorsVO> selectDayOfTheWeeksSum();
-    public List<NumOfSpactoatorsVO> selectTeamHomeSum();
-    public List<NumOfSpactoatorsVO> selectTeamAwaySum();
+    public List<NumOfSpactoatorsVO> selectHomeAwayAvg();
+    public List<NumOfSpactoatorsVO> selectStadiumAvg();
+    public List<NumOfSpactoatorsVO> selectMonthAvg();
+    public List<NumOfSpactoatorsVO> selectDayAvg();
+    public List<NumOfSpactoatorsVO> selectDayOfTheWeeksAvg();
+    public List<NumOfSpactoatorsVO> selectTeamHomeAvg();
+    public List<NumOfSpactoatorsVO> selectTeamAwayAvg();
 }

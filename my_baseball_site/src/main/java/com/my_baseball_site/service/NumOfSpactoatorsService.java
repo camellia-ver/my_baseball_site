@@ -72,19 +72,25 @@ public class NumOfSpactoatorsService {
         List<NumOfSpactoatorsVO> list = null;
 
         if(selectData.equals("home_away")){
-            list = mapper.selectHomeAwaySum();
+            list = mapper.selectHomeAwayAvg();
         }
         else if(selectData.equals("stadium")){
-            list = mapper.selectStadiumSum();
+            list = mapper.selectStadiumAvg();
+        }
+        else if(selectData.equals("month")){
+            list = mapper.selectMonthAvg();
+        }
+        else if(selectData.equals("day")){
+            list = mapper.selectDayAvg();
         }
         else if(selectData.equals("day_of_the_weeks")){
-            list = mapper.selectDayOfTheWeeksSum();
+            list = mapper.selectDayOfTheWeeksAvg();
         }
         else if(selectData.equals("team_home")){
-            list = mapper.selectTeamHomeSum();
+            list = mapper.selectTeamHomeAvg();
         }
         else{
-            list = mapper.selectTeamAwaySum();
+            list = mapper.selectTeamAwayAvg();
         }
 
         return list;

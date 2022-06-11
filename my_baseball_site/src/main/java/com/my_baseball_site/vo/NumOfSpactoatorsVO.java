@@ -21,5 +21,5 @@ public class NumOfSpactoatorsVO {
     private String nosby_year;
 
     private String label;
-    private Integer sum_spactoators;
+    private Integer avg_spactoators;
 }

@@ -18,6 +18,8 @@
                     <option value="home_away" selected>확인할 데이터 선택</option>
                     <option value="home_away">홈/방문</option>
                     <option value="stadium">구장</option>
+                    <option value="month">월</option>
+                    <option value="day">일</option>
                     <option value="day_of_the_weeks">요일</option>
                     <option value="team_home">원정 시</option>
                     <option value="team_away">홈일 시</option>
