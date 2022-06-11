@@ -28,7 +28,8 @@ time.sleep(5)
 
 paging = driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ucPager_btnNo1"]')
 
-f = open(r"C:\Users\jyr\Desktop\study\portfolio\my_baseball_site\kbo_scraping\player_data\players_url\play_data_list.csv","w")
+f = open(r"C:\Users\jyr\Desktop\study\portfolio\my_baseball_site\kbo_scraping\player_data\players_url\futures_play_data_list.csv","w")
+f2 = open(r"C:\Users\jyr\Desktop\study\portfolio\my_baseball_site\kbo_scraping\player_data\players_url\play_data_list.csv","w")
 
 # 페이지 변화 (1~5)
 for i in range(1,6):
@@ -39,9 +40,12 @@ for i in range(1,6):
     contents = driver.find_elements(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_udpRecord"]/div[2]/table/tbody/tr/td/a')
     
     for content in contents:
-        name = content.text
         url = content.get_attribute('href')
         
-        f.write(f"{name},{url}\n")
+        if "Futures" in url:
+            f2.write(f"{url}\n")
+        else:
+            f.write(f"{url}\n")
 
 f.close()
+f2.close()
