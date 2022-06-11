@@ -58,17 +58,19 @@ public class ScheduleGameResultService {
         SimpleDateFormat formatter2 = new SimpleDateFormat("MM월 dd일");
         String print_date;
 
-        /*if(sgr_mapper.isGame(today) != 1){
-            print_date = formatter2.format(data.getG_date());
-            data.setDate(print_date);
-            data.setNote("경기없음");
-        }
+        print_date = formatter2.format(data.getG_date());
+        data.setDate(print_date);
 
-        if(date.getWeekYear() != cur_year){
-            ScheduleGameResultVO data2 = null;
+        // if(sgr_mapper.isGame(today) != 1){
+        //     data.setNote("경기없음");
+        //     return data;
+        // }
 
-            return data2;
-        }*/
+        // if(date.getWeekYear() != cur_year){
+        //     ScheduleGameResultVO data2 = null;
+
+        //     return data2;
+        // }
 
         if(!data.getNote().equals("-")){
             print_date = formatter2.format(data.getG_date());
@@ -91,9 +93,6 @@ public class ScheduleGameResultService {
         else{
             data.setResult("무승부");
         }
-
-        print_date = formatter2.format(data.getG_date());
-        data.setDate(print_date);
 
         return data;
     }
