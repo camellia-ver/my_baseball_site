@@ -45,8 +45,14 @@
               <li class="nav-item">
                 <a class="nav-link" href="/schedule_game_result">경기일정/결과</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">선수단</a>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  선수
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">선수목록</a></li>
+                  <li><a class="dropdown-item" href="#">선수등록현황</a></li>
+                </ul>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
