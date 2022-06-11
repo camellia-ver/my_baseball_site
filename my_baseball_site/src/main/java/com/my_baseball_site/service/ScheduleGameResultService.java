@@ -49,7 +49,7 @@ public class ScheduleGameResultService {
 
             if(date.getWeekYear() != cur_year){
                 ScheduleGameResultVO data = null;
-
+                
                 return data;
             }
         }

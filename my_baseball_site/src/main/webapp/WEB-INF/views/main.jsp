@@ -17,6 +17,11 @@
                     <p>올해 시즌 시작 전</p>
                 </div>    
             </c:if>
+            <c:if test="${recently_game.note == '경기없음'}">
+                <div class="today_game_result">
+                    <p>${recently_game.note}</p>
+                </div>    
+            </c:if>
             <c:if test="${recently_game.note != '-'}">
                 <div class="today_game_result">
                     <span>${recently_game.date}</span>
