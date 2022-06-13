@@ -19,6 +19,7 @@
             </c:if>
             <c:if test="${recently_game.note == '경기없음'}">
                 <div class="today_game_result">
+                    <span>${recently_game.date}</span>
                     <p>${recently_game.note}</p>
                 </div>    
             </c:if>
