@@ -26,10 +26,8 @@ driver.get("https://www.koreabaseball.com/Player/Search.aspx")
 select = Select(driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ddlTeam"]')).select_by_value('SS')
 time.sleep(5)
 
-paging = driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ucPager_btnNo1"]')
-
-f = open(r"C:\Users\jyr\Desktop\study\portfolio\my_baseball_site\kbo_scraping\player_data\players_url\futures_play_data_list.csv","w")
-f2 = open(r"C:\Users\jyr\Desktop\study\portfolio\my_baseball_site\kbo_scraping\player_data\players_url\play_data_list.csv","w")
+f = open(r"C:\Users\jyr\Desktop\study\portfolio\my_baseball_site\kbo_scraping\player_data\players_url\futures_play_data_url.csv","w")
+f2 = open(r"C:\Users\jyr\Desktop\study\portfolio\my_baseball_site\kbo_scraping\player_data\players_url\play_data_url.csv","w")
 
 # 페이지 변화 (1~5)
 for i in range(1,6):
@@ -43,9 +41,9 @@ for i in range(1,6):
         url = content.get_attribute('href')
         
         if "Futures" in url:
-            f2.write(f"{url}\n")
-        else:
             f.write(f"{url}\n")
+        else:
+            f2.write(f"{url}\n")
 
 f.close()
 f2.close()
