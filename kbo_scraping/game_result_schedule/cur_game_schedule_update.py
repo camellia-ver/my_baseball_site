@@ -11,7 +11,7 @@ from selenium.webdriver.support.ui import Select
 from webdriver_manager.chrome import ChromeDriverManager
 import pymysql
 from pymysql import cursors
-import time,datetime
+import time
 
 options = Options()
 options.add_experimental_option("detach",True)
