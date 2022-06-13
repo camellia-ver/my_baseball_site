@@ -14,22 +14,17 @@
         <div class="content_left">
             <c:if test="${recently_game == null}">
                 <div class="today_game_result">
-                    <p>올해 시즌 시작 전</p>
+                    <span></span>
+                    <p id="not_game">경기없음</p>
                 </div>    
             </c:if>
-            <c:if test="${recently_game.note == '경기없음'}">
-                <div class="today_game_result">
-                    <span>${recently_game.date}</span>
-                    <p>${recently_game.note}</p>
-                </div>    
-            </c:if>
-            <c:if test="${recently_game.note != '-'}">
+            <c:if test="${recently_game.note != '-' && recently_game != null}">
                 <div class="today_game_result">
                     <span>${recently_game.date}</span>
                     <p id="game_cancel">${recently_game.note}</p>
                 </div>
             </c:if>
-            <c:if test="${recently_game.note == '-'}">
+            <c:if test="${recently_game.note == '-' && recently_game != null}">
                 <div class="today_game_result">
                     <span>${recently_game.date} ${recently_game.team1} ${recently_game.team1_score} VS ${recently_game.team2_score} ${recently_game.team2}</span>
                     <p id="game_result">${recently_game.result}</p> 

@@ -8,10 +8,10 @@
         where g_date >= #{date} and (team1 = '삼성' or team2 = '삼성')
         limit 3
     </select>
-    <select id="isGame" resultType="java.lang.Integer">
+    <!-- <select id="isGame" resultType="java.lang.Integer">
         select count(*) from schedule_game_result 
         where g_date = #{date} and (team1 = '삼성' or team2 = '삼성')
-    </select>
+    </select> -->
     <select id="selectRecentlyGameResult" resultType="com.my_baseball_site.vo.ScheduleGameResultVO">
         select * from schedule_game_result 
         where g_date = #{date} and (team1 = '삼성' or team2 = '삼성')

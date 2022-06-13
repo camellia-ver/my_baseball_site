@@ -33,44 +33,36 @@ public class ScheduleGameResultService {
 
     public ScheduleGameResultVO selectRecentlyGameResult(){   
         Calendar date = Calendar.getInstance();
-        Integer cur_year = date.getWeekYear();
         date.add(Calendar.DATE,-1);
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
         String today = formatter.format(date.getTime());
 
-        while(true){
-            if(sgr_mapper.isGame(today) == 1){
-                break;
-            }
-            else{
-                date.add(Calendar.DATE,-1);
-                today = formatter.format(date.getTime());
-            }
+        // while(true){
+        //     if(sgr_mapper.isGame(today) == 1){
+        //         break;
+        //     }
+        //     else{
+        //         date.add(Calendar.DATE,-1);
+        //         today = formatter.format(date.getTime());
+        //     }
 
-            if(date.getWeekYear() != cur_year){
-                ScheduleGameResultVO data = null;
+        //     if(date.getWeekYear() != cur_year){
+        //         ScheduleGameResultVO data = null;
                 
-                return data;
-            }
-        }
+        //         return data;
+        //     }
+        // }
         
         ScheduleGameResultVO data = sgr_mapper.selectRecentlyGameResult(today);
         SimpleDateFormat formatter2 = new SimpleDateFormat("MM월 dd일");
         String print_date;
 
+        if(data == null){
+            return null;
+        }
+
         print_date = formatter2.format(data.getG_date());
         data.setDate(print_date);
-
-        // if(sgr_mapper.isGame(today) != 1){
-        //     data.setNote("경기없음");
-        //     return data;
-        // }
-
-        // if(date.getWeekYear() != cur_year){
-        //     ScheduleGameResultVO data2 = null;
-
-        //     return data2;
-        // }
 
         if(!data.getNote().equals("-")){
             print_date = formatter2.format(data.getG_date());
