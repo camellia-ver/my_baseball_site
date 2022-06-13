@@ -15,14 +15,17 @@
         where r_date > #{date} order by r_date limit 1
     </select>
     <select id="selectRankingGraphByYear" resultType="com.my_baseball_site.vo.RankingVO">
-        <![CDATA[select year(r_date) as year,no 
-        from ranking where team_name = '삼성' 
-        and year(r_date) < #{cur_year}]]>
-    </select>
-    <select id="selectRankingGraphByCurYear" resultType="com.my_baseball_site.vo.RankingVO">
-        select year(r_date) as year,no from ranking 
-        where team_name = '삼성' and year(r_date) = #{cur_year}
-        order by r_date desc limit 1
+        <![CDATA[
+            select year(r_date) as year,no 
+            from ranking where team_name = '삼성' 
+            and year(r_date) < 2022
+            union all
+            (
+                select year(r_date),no from ranking 
+                where team_name = '삼성' and year(r_date) = 2022
+                order by r_date desc limit 1
+            )
+        ]]>
     </select>
     <select id="selectRankingGraphByDay" resultType="com.my_baseball_site.vo.RankingVO">
         select r_date,no from ranking 

@@ -154,7 +154,6 @@ public class RankingService {
         String cur_year = formatter.format(now);
 
         List<RankingVO> list = mapper.selectRankingGraphByYear(cur_year);
-        list.add(mapper.selectRankingGraphByCurYear(cur_year));
 
         return list;
     }
