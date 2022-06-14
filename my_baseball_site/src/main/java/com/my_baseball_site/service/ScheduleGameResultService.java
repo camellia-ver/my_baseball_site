@@ -36,22 +36,6 @@ public class ScheduleGameResultService {
         date.add(Calendar.DATE,-1);
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
         String today = formatter.format(date.getTime());
-
-        // while(true){
-        //     if(sgr_mapper.isGame(today) == 1){
-        //         break;
-        //     }
-        //     else{
-        //         date.add(Calendar.DATE,-1);
-        //         today = formatter.format(date.getTime());
-        //     }
-
-        //     if(date.getWeekYear() != cur_year){
-        //         ScheduleGameResultVO data = null;
-                
-        //         return data;
-        //     }
-        // }
         
         ScheduleGameResultVO data = sgr_mapper.selectRecentlyGameResult(today);
         SimpleDateFormat formatter2 = new SimpleDateFormat("MM월 dd일");
@@ -85,7 +69,7 @@ public class ScheduleGameResultService {
         else{
             data.setResult("무승부");
         }
-
+        
         return data;
     }
 

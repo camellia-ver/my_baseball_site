@@ -12,7 +12,7 @@ $(function(){
         $("#game_cancel").css("color","mediumpurple")
 
     let not_game = $('#not_game').text()
-    if(not_game = "경기없음"){
+    if(not_game == "경기없음"){
         let now = new Date()
         let yesterday = new Date(now.setDate(now.getDate()-1))
         let game_date = printDate(yesterday)

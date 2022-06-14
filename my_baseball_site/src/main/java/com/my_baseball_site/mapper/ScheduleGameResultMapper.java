@@ -11,6 +11,5 @@ public interface ScheduleGameResultMapper {
     List<ScheduleGameResultVO> selectScheduleThreeGame(String date); 
     ScheduleGameResultVO selectRecentlyGameResult(String date);
     List<ScheduleGameResultVO> selectScheduleGameResultByYearMonthSeason(String year,String month,String season);
-    // Integer isGame(String date);
     List<Integer> selectYear();
 }
