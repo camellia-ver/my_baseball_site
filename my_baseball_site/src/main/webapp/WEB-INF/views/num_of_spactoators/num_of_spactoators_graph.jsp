@@ -24,7 +24,7 @@
                     <option value="team_home">원정 시</option>
                     <option value="team_away">홈일 시</option>
                 </select>
-                <p>2021년 이후 일자별 관중현황(삼성경기) 데이터를 토대로 제작한 그래프</p>
+                <p>2021년 이후 일자별 관중현황 데이터를 토대로 제작한 그래프</p>
             </div>
             <div class="num_of_spactoators">
                 <div class="spactoators_chart_area">

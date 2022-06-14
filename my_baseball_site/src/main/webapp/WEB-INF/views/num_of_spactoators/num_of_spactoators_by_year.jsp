@@ -15,11 +15,11 @@
             <%@include file="/WEB-INF/views/includes/num_of_spactoators_title.jsp"%>
             <div class="num_of_spactoators">
                 <div class="sum_year_area">
-                    <h1>연도별 총 관중수(전구단)</h1>
+                    <h1>연도별 총 관중수</h1>
                     <canvas id="sumYearChart" style="width:100%; height:100%;"></canvas>
                 </div>
                 <div class="avg_one_game_area">
-                    <h1>연도별 한경기 당 평균 관중수(전구단)</h1>
+                    <h1>연도별 한경기 당 평균 관중수</h1>
                     <canvas id="avgOneGameChart" style="width:100%; height:100%;"></canvas>
                 </div>
             </div>
