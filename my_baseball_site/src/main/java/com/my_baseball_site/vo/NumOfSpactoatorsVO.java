@@ -14,6 +14,7 @@ public class NumOfSpactoatorsVO {
     private String baseball_stadium;
     private Integer spactoators;
 
+    private String team_name;
     private String date;
     private String cur_year;
     private String print_spactoators;

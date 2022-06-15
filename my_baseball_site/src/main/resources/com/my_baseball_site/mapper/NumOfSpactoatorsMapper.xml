@@ -18,6 +18,9 @@
         <if test="home_away != null and home_away.equals('away')">
             and away = '삼성'
         </if>
+        <if test="team != null">
+            and (home = #{team} or away = #{team})
+        </if>
         <if test="stadium != null">
             and baseball_stadium = #{stadium}
         </if>
@@ -31,6 +34,10 @@
     </select>
     <select id="selectBaseballStadium" resultType="java.lang.String">
         select distinct baseball_stadium from num_of_spactoators
+    </select>
+    <select id="selectTeams" resultType="java.lang.String">
+        select distinct home as team_name from num_of_spactoators
+        where home != '삼성'
     </select>
 
     <select id="selectSumYear" resultType="com.my_baseball_site.vo.NumOfSpactoatorsVO">

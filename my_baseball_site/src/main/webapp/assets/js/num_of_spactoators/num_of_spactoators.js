@@ -7,6 +7,7 @@ $(function(){
         let year = $("#year_select option:selected").val()
         let month = $("#month_select option:selected").val()
         let home_away = $("#home_away_select option:selected").val()
+        let team = $("#team_select option:selected").val()
         let stadium = $("#stadium_select option:selected").val()
         let day_of_week = $("#day_of_week_select option:selected").val()
 
@@ -15,6 +16,8 @@ $(function(){
         url += "&month=" + month
         if(home_away == '0') home_away = ""
         url += "&home_away=" + home_away
+        if(team == '0') team = ""
+        url += "&team=" + team
         if(stadium == '0') stadium = ""
         url += "&stadium=" + stadium
         if(day_of_week == '0') day_of_week = ""

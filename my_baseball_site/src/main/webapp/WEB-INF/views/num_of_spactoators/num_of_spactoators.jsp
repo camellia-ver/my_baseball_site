@@ -38,6 +38,12 @@
                     <option value="home">홈</option>
                     <option value="away">방문</option>
                 </select>
+                <select class="form-select" aria-label="Default select example" id="team_select">
+                    <option value="0" selected>상대팀별</option>
+                    <c:forEach items="${teams}" var="item">
+                        <option value=${item}>${item}</option>
+                    </c:forEach>
+                </select>
                 <select class="form-select" aria-label="Default select example" id="stadium_select">
                     <option value="0" selected>구장별</option>
                     <c:forEach items="${baseball_stadiums}" var="item">

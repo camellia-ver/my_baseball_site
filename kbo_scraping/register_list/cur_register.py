@@ -1,5 +1,3 @@
-# 2022 ~ yesterday 선수등록 현황 수집
-
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options

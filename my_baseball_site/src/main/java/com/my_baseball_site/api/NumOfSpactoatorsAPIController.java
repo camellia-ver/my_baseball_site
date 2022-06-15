@@ -25,12 +25,13 @@ public class NumOfSpactoatorsAPIController {
         @RequestParam String year,
         @RequestParam @Nullable String month,
         @RequestParam @Nullable String home_away,
+        @RequestParam @Nullable String team,
         @RequestParam @Nullable String stadium,
         @RequestParam @Nullable String day_of_week
     ){
         Map<String, Object> resultMap = new LinkedHashMap<String,Object>();
         
-        List<NumOfSpactoatorsVO> list = nos_service.selectNumOfSpactoators(year, month, home_away, stadium,day_of_week);
+        List<NumOfSpactoatorsVO> list = nos_service.selectNumOfSpactoators(year, month, home_away,team,stadium,day_of_week);
 
         resultMap.put("status", true);
         resultMap.put("data", list);

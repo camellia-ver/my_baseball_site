@@ -18,6 +18,7 @@ public class NumOfSpactoatorsController {
         model.addAttribute("num_of_spactoators",nos_service.selectNumOfSpactoatorsByCurYear());
         model.addAttribute("years", nos_mapper.selectYear());
         model.addAttribute("baseball_stadiums", nos_mapper.selectBaseballStadium());
+        model.addAttribute("teams", nos_mapper.selectTeams());
 
         return "/num_of_spactoators/num_of_spactoators";
     }

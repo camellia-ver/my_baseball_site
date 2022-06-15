@@ -25,7 +25,7 @@ public class NumOfSpactoatorsService {
         String printDate;
         String print_spactoators;
         
-        List<NumOfSpactoatorsVO> list = mapper.selectNumOfSpactoators(curYear, null,null,null,null);
+        List<NumOfSpactoatorsVO> list = mapper.selectNumOfSpactoators(curYear,null, null,null,null,null);
 
         for(NumOfSpactoatorsVO item:list){
             printDate = dateFormat.format(item.getNos_date());
@@ -41,7 +41,7 @@ public class NumOfSpactoatorsService {
     }
 
     public List<NumOfSpactoatorsVO> selectNumOfSpactoators(
-        String year,String month,String home_away,
+        String year,String month,String home_away,String team,
         String stadium,String day_of_week
     ){
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
@@ -52,10 +52,11 @@ public class NumOfSpactoatorsService {
         
         if(month.equals("")) month = null;
         if(home_away.equals("")) home_away = null;
+        if(team.equals("")) team = null;
         if(stadium.equals("")) stadium = null;
         if(day_of_week.equals("")) day_of_week = null;
         
-        List<NumOfSpactoatorsVO> list = mapper.selectNumOfSpactoators(year, month,home_away,stadium,day_of_week);
+        List<NumOfSpactoatorsVO> list = mapper.selectNumOfSpactoators(year, month,home_away,team,stadium,day_of_week);
         
         for(NumOfSpactoatorsVO item:list){
             printDate = dateFormat.format(item.getNos_date());
