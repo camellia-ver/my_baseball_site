@@ -8,9 +8,9 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 import pymysql
 from pymysql import cursors
-import time,datetime
+import time
 
-def create_data(scraping_data,date,position,is_regist):
+def create_datas(scraping_data,date,position,is_regist):
     date = date.replace('.','')
 
     for data in scraping_data:
@@ -39,6 +39,26 @@ def create_data(scraping_data,date,position,is_regist):
             
         cursor.execute(sql)
         db_connect.commit()
+
+def create_data(data,date):
+    date = date.replace('.','')
+
+    data = data.text.split(' ')
+
+    if data[0] == "당일":
+        return
+
+    data[3] = data[3].replace('-','')
+    data[4] = data[4][:-3]
+    data[5] = data[5][:-2]
+    data.append(date)
+
+    save_manager = "'" + "','".join(data) + "','감독',''"
+
+    sql = "insert into register(rg_back_number,rg_name,rg_p_b_type,rg_brith,rg_height,rg_weight,rg_date,rg_position,is_regist)values(" + save_manager + ')'
+            
+    cursor.execute(sql)
+    db_connect.commit()
 
 options = Options()
 options.add_experimental_option("detach",True)
@@ -85,19 +105,25 @@ while(date != '2022.04.02'):
     date = driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_lblGameDate"]').text
     date = date[:-3]
 
+    manager = driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_udpRecord"]/div[3]/table[1]/tbody/tr')
+    create_data(manager,date)
+
+    coachs = driver.find_elements(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_udpRecord"]/div[3]/table[2]/tbody/tr')
+    create_datas(coachs,date,"코치",'')
+
     p_player = driver.find_elements(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_udpRecord"]/div[3]/table[3]/tbody/tr')
-    create_data(p_player,date,"투수",'')
+    create_datas(p_player,date,"투수",'')
     c_player = driver.find_elements(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_udpRecord"]/div[3]/table[4]/tbody/tr')
-    create_data(c_player,date,"포수",'')
+    create_datas(c_player,date,"포수",'')
     if_player = driver.find_elements(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_udpRecord"]/div[3]/table[5]/tbody/tr')
-    create_data(if_player,date,"내야수",'')
+    create_datas(if_player,date,"내야수",'')
     of_player = driver.find_elements(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_udpRecord"]/div[3]/table[6]/tbody/tr')
-    create_data(of_player,date,"외야수",'')
+    create_datas(of_player,date,"외야수",'')
 
     regist_player = driver.find_elements(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_udpRecord"]/div[4]/table[1]/tbody/tr')
-    create_data(regist_player,date,'',"등록")
+    create_datas(regist_player,date,'',"등록")
     out_register_player = driver.find_elements(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_udpRecord"]/div[4]/table[2]/tbody/tr')
-    create_data(out_register_player,date,'',"말소")
+    create_datas(out_register_player,date,'',"말소")
 
     time.sleep(5)
 
