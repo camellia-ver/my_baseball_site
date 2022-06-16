@@ -40,11 +40,16 @@ def getData(series,year):
         del content[0]
 
         result_data[i].extend(content)
+        result_data[i].extend(series)
+        result_data[i].extend(year)
 
-    result_data.append(series)
-    result_data.append(year)
+    for data in result_data:
+        sql_data = "'" + ",'".join(data) + "'"
 
-    sql_data = "'" + ",'".join(result_data) + "'"
+        sql = "insert into ranking(no,team_name,game,win,lose,tie,win_rate,game_difference,last_10_matches,continuity,home,away,r_date,uniqueness,note)values(" + sql_data + ')'
+        
+        cursor.execute(sql)
+        db_connect.commit()
 
 options = Options()
 options.add_experimental_option("detach",True)
@@ -57,8 +62,27 @@ driver = webdriver.Chrome(service=service,options=options)
 driver.implicitly_wait(5)
 driver.get("https://www.koreabaseball.com/Record/Team/Runner/Basic.aspx")
 
+db_connect = pymysql.connect(
+    user='root',
+    passwd='1234',
+    host='127.0.0.1',
+    db='kbo_data',
+    charset='utf8'
+)
+
+if not db_connect:
+    print("연결 실패")    
+    db_connect.close()
+    exit(0)
+else:
+    print("연결 성공")
+
+cursor = db_connect.cursor(cursors.DictCursor)
+
 now = datetime.datetime.now()
 cur_year = now.year
 
 time.sleep(5)
 data = getData("정규시즌",cur_year)
+
+db_connect.close()

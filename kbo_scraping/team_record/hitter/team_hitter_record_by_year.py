@@ -47,6 +47,11 @@ def getData(series,year):
     for data in result_data:
         sql_data = "'" + ",'".join(data) + "'"
 
+        sql = "insert into ranking(no,team_name,game,win,lose,tie,win_rate,game_difference,last_10_matches,continuity,home,away,r_date,uniqueness,note)values(" + sql_data + ')'
+        
+        cursor.execute(sql)
+        db_connect.commit()
+
 options = Options()
 options.add_experimental_option("detach",True)
 options.add_experimental_option("excludeSwitches",["enable-logging"])
@@ -57,6 +62,23 @@ driver = webdriver.Chrome(service=service,options=options)
 
 driver.implicitly_wait(5)
 driver.get("https://www.koreabaseball.com/Record/Team/Hitter/Basic1.aspx")
+
+db_connect = pymysql.connect(
+    user='root',
+    passwd='1234',
+    host='127.0.0.1',
+    db='kbo_data',
+    charset='utf8'
+)
+
+if not db_connect:
+    print("연결 실패")    
+    db_connect.close()
+    exit(0)
+else:
+    print("연결 성공")
+
+cursor = db_connect.cursor(cursors.DictCursor)
 
 # 2001년~2022년
 for year in range(2001,2023):
@@ -72,3 +94,5 @@ for year in range(2001,2023):
         select = Select(driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ddlSeries_ddlSeries"]')).select_by_value(str(i))
         time.sleep(5)
         getData(series,year)
+
+db_connect.close()
