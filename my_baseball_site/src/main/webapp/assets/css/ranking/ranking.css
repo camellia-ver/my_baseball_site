@@ -17,3 +17,6 @@
 .btn_right{margin: 10px; padding: 10px;}
 
 .ranking{margin: 10px; padding: 10px; font-size: 20px; text-align: center;}
+.ranking > h1{margin: 10px; padding: 10px; text-align: left; display: none;}
+#table_two{display: none;}
+#h_one{margin-top: 50px;}

@@ -39,6 +39,7 @@
             </div>
         </div>
         <div class="ranking">
+            <h1 id="h_one">드림리그</h1>
             <table class="table table-striped">
                 <thead>
                   <tr>
@@ -54,7 +55,6 @@
                     <th scope="col">연속</th>
                     <th scope="col">홈</th>
                     <th scope="col">방문</th>
-                    <th scope="col">리그</th>
                   </tr>
                 </thead>
                 <tbody id="ranking_tbody">
@@ -72,11 +72,31 @@
                             <td>${item.continuity}</td>
                             <td>${item.home}</td>
                             <td>${item.away}</td>
-                            <td>${item.uniqueness}</td>
                         </tr>
                     </c:forEach>
                 </tbody>
-              </table>
+            </table>
+            <h1>매직리그</h1>
+            <table class="table table-striped" id="table_two">
+                <thead>
+                  <tr>
+                    <th scope="col">순위</th>
+                    <th scope="col">팀명</th>
+                    <th scope="col">게임수</th>
+                    <th scope="col">승</th>
+                    <th scope="col">패</th>
+                    <th scope="col">무</th>
+                    <th scope="col">승률</th>
+                    <th scope="col">게임차</th>
+                    <th scope="col">최근 10경기</th>
+                    <th scope="col">연속</th>
+                    <th scope="col">홈</th>
+                    <th scope="col">방문</th>
+                  </tr>
+                </thead>
+                <tbody id="table_two_ranking_tbody">     
+                </tbody>
+            </table>
         </div>
     </div>
 </body>

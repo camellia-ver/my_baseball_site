@@ -140,6 +140,17 @@ $(function(){
 
     function getRanking(date){
         $("#ranking_tbody").html("")
+        $("#table_two_ranking_tbody").html("")
+        
+        let check_year = $(".select option:selected").val()
+        if(check_year == 1999 || check_year == 2000){
+            $(".ranking > h1").css("display","table")
+            $("#table_two").css("display","table")
+        }
+        else{
+            $(".ranking > h1").css("display","none")
+            $("#table_two").css("display","none")
+        }
 
         $.ajax({
             type:"get",
@@ -160,9 +171,14 @@ $(function(){
                         '<td>'+r.data[i].continuity+'</td>'+
                         '<td>'+r.data[i].home+'</td>'+
                         '<td>'+r.data[i].away+'</td>'+
-                        '<td>'+r.data[i].uniqueness+'</td>'+
                     '</tr>'
-                    $("#ranking_tbody").append(tag)
+
+                    if(r.data[i].uniqueness == "매직리그")
+                        $("#table_two_ranking_tbody").append(tag)
+                    else if(r.data[i].uniqueness == "드림리그")
+                        $("#ranking_tbody").append(tag)
+                    else
+                        $("#ranking_tbody").append(tag)
                 }
             }
         })
