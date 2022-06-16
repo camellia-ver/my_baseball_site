@@ -51,7 +51,7 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="#">선수목록</a></li>
-                  <li><a class="dropdown-item" href="#">선수등록현황</a></li>
+                  <li><a class="dropdown-item" href="/register">선수등록현황</a></li>
                 </ul>
               </li>
               <li class="nav-item dropdown">
