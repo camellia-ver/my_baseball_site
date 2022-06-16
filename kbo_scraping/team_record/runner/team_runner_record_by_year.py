@@ -40,8 +40,8 @@ def getData(series,year):
         del content[0]
 
         result_data[i].extend(content)
-        result_data[i].extend(series)
-        result_data[i].extend(year)
+        result_data[i].append(year)
+        result_data[i].append(series)
 
     for data in result_data:
         sql_data = "'" + ",'".join(data) + "'"

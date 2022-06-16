@@ -41,13 +41,13 @@ def getData(series,year):
         del content[0]
 
         result_data[i].extend(content)
-        result_data[i].extend(series)
-        result_data[i].extend(year)
+        result_data[i].append(year)
+        result_data[i].append(series)
 
     for data in result_data:
-        sql_data = "'" + ",'".join(data) + "'"
+        sql_data = "'" + "','".join(data) + "'"
 
-        sql = "insert into ranking(no,team_name,game,win,lose,tie,win_rate,game_difference,last_10_matches,continuity,home,away,r_date,uniqueness,note)values(" + sql_data + ')'
+        sql = "insert into team_hitter_record(thr_team_name,thr_AVG,thr_G,thr_PA,thr_AB,thr_R,thr_H,thr_2B,thr_3B,thr_HR,thr_TB,thr_RBI,thr_SAC,thr_SF,thr_BB,thr_IBB,thr_HBP,thr_SO,thr_GDP,thr_SLG,thr_OBP,thr_OPS,thr_MH,thr_RISP,thr_PH_BA,thr_year,thr_series)values(" + sql_data + ')'
         
         cursor.execute(sql)
         db_connect.commit()
@@ -86,13 +86,13 @@ for year in range(2001,2023):
     select = Select(driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ddlSeason_ddlSeason"]')).select_by_value(str(year))
 
     time.sleep(5)
-    # data = getData("정규시즌",year)
+    data = getData("정규시즌",year)
 
-    select_series = {'와일드카드':4,'준플레이오프':3,'플레이오프':5,'한국시리즈':7}
+    # select_series = {'와일드카드':4,'준플레이오프':3,'플레이오프':5,'한국시리즈':7}
     
-    for series,i in select_series.items():
-        select = Select(driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ddlSeries_ddlSeries"]')).select_by_value(str(i))
-        time.sleep(5)
-        getData(series,year)
+    # for series,i in select_series.items():
+    #     select = Select(driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ddlSeries_ddlSeries"]')).select_by_value(str(i))
+    #     time.sleep(5)
+    #     getData(series,year)
 
 db_connect.close()
