@@ -21,9 +21,6 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">Home</a>
-              </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   순위
@@ -40,6 +37,7 @@
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="#">팀 기록</a></li>
                   <li><a class="dropdown-item" href="#">개인 기록</a></li>
+                  <li><a class="dropdown-item" href="/baseball_word">기록 용어</a></li>
                 </ul>
               </li>
               <li class="nav-item">
