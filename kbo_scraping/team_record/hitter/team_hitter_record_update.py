@@ -13,7 +13,7 @@ import pymysql
 from pymysql import cursors
 import time,datetime
 
-def getData(year):
+def getData(series,year):
     result_data = []
 
     contents = driver.find_elements(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_udpContent"]/div[2]/table/tbody/tr')
@@ -52,7 +52,7 @@ def getData(year):
         +"',thr_MH='"+data[22]+"',thr_RISP='"+data[23]\
         +"',thr_PH_BA='"+data[24]\
         + "' where thr_team_name ='" + data[0] \
-        + "' and thr_year = '" + year +"'"
+        + "' and thr_year = '" + year + "' and tpr_series = '" + series +"'"
         
         cursor.execute(sql)
         db_connect.commit()
@@ -89,6 +89,6 @@ now = datetime.datetime.now()
 cur_year = now.year
 
 time.sleep(5)
-data = getData(str(cur_year))
+data = getData('정규시즌',str(cur_year))
 
 db_connect.close()

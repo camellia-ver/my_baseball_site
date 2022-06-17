@@ -61,7 +61,8 @@ def getData(series,year):
         +"', tpr_3B = '"+data[25]+"', tpr_SAC = '"+data[26]\
         +"', tpr_SF = '"+data[27]+"', tpr_IBB = '"+data[28]\
         +"', tpr_WP = '"+data[29]+"', tpr_BK = '"+data[30]\
-        +"' where tpr_team_name = '" + data[0] + "' and tpr_year = '" + year + "'"
+        +"' where tpr_team_name = '" + data[0] \
+        + "' and tpr_year = '" + year + "' and tpr_series = '" + series +"'"
         
         cursor.execute(sql)
         db_connect.commit()

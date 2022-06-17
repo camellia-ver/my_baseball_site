@@ -25,7 +25,17 @@ def getData(series,year):
 
         del content[0]
 
-        sql = "update team_hitter_record set "
+        sql = "update team_hitter_record set "+\
+            "thr_AVG = '"+content[1]+"', thr_G = '"+content[2]+\
+            "', thr_AB = '"+content[3]+"', thr_R = '"+content[1]+\
+            "', thr_H = '"+content[1]+"', thr_2B = '"+content[1]+\
+            "', thr_3B = '"+content[1]+"', thr_HR = '"+content[1]+\
+            "', thr_TB = '"+content[1]+"', thr_RBI = '"+content[1]+\
+            "', thr_SB = '"+content[1]+"', thr_CS = '"+content[1]+\
+            "', thr_BB = '"+content[1]+"', thr_HBP = '"+content[1]+\
+            "', thr_SO = '"+content[1]+"', thr_GDP = '"+content[1]+\
+            "', thr_E = '"+content[1]+\
+            "' where thr_team_name = '" +content[0]+ "' and thr_year = '" + year + "' and thr_series = '" + series + "'"
       
         cursor.execute(sql)
         db_connect.commit()
@@ -59,21 +69,13 @@ else:
 cursor = db_connect.cursor(cursors.DictCursor)
 
 select_series = {'와일드카드':4,'준플레이오프':3,'플레이오프':5,'한국시리즈':7}
-select = Select(driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ddlSeries_ddlSeries"]')).select_by_value("4")
 
-# 1982년~2022년
-for year in range(1982,2023):
-    year = str(year)
-    select = Select(driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ddlSeason_ddlSeason"]')).select_by_value(year)
+now = datetime.datetime.now()
+cur_year = now.year
 
+for series,i in select_series.items():
+    select = Select(driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ddlSeries_ddlSeries"]')).select_by_value(str(i))
     time.sleep(5)
-
-    for series,i in select_series.items():
-        if i == 4:
-            continue
-
-        select = Select(driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ddlSeries_ddlSeries"]')).select_by_value(str(i))
-        time.sleep(5)
-        getData(series,year)
+    getData(series,str(cur_year))
 
 db_connect.close()

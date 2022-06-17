@@ -23,9 +23,23 @@ def getData(series,year):
     for content in contents:
         content = content.text.split(' ')
 
+        if len(content) == 21:
+            content[12] = content[12] + ' ' + content[13]
+            del content[13]
+
         del content[0]
 
-        sql = "update team_pitcher_record set "
+        sql = "update team_pitcher_record set " + \
+            "tpr_ERA = '"+content[1]+"', tpr_G = '"+content[2]+\
+            "', tpr_CG = '"+content[3]+"', tpr_SHO = '"+content[4]+\
+            "', tpr_W = '"+content[5]+"', tpr_L = '"+content[6]+\
+            "', tpr_SV = '"+content[7]+"', tpr_HLD = '"+content[8]+\
+            "', tpr_WPCT = '"+content[9]+"', tpr_TBF = '"+content[10]+\
+            "', tpr_IP = '"+content[11]+"', tpr_H = '"+content[12]+\
+            "', tpr_HR = '"+content[13]+"', tpr_BB = '"+content[14]+\
+            "', tpr_HBP = '"+content[15]+"', tpr_SO = '"+content[16]+\
+            "', tpr_R = '"+content[17]+"', tpr_ER = '"+content[18]+\
+            "' where tpr_team_name = '"+content[0]+"' and tpr_year = '" + year + "' and tpr_series = '" + series + "'"
       
         cursor.execute(sql)
         db_connect.commit()
@@ -39,7 +53,7 @@ service = Service(executable_path=ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service,options=options)
 
 driver.implicitly_wait(5)
-driver.get("https://www.koreabaseball.com/Record/Team/Hitter/Basic1.aspx")
+driver.get("https://www.koreabaseball.com/Record/Team/Pitcher/Basic1.aspx")
 
 db_connect = pymysql.connect(
     user='root',
@@ -59,21 +73,15 @@ else:
 cursor = db_connect.cursor(cursors.DictCursor)
 
 select_series = {'와일드카드':4,'준플레이오프':3,'플레이오프':5,'한국시리즈':7}
-select = Select(driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ddlSeries_ddlSeries"]')).select_by_value("4")
 
-# 1982년~2022년
-for year in range(1982,2023):
-    year = str(year)
-    select = Select(driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ddlSeason_ddlSeason"]')).select_by_value(year)
+now = datetime.datetime.now()
+cur_year = now.year
 
+for series,i in select_series.items():
+    select = Select(driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ddlSeries_ddlSeries"]')).select_by_value(str(i))
     time.sleep(5)
+    getData(series,str(cur_year))
 
-    for series,i in select_series.items():
-        if i == 4:
-            continue
-
-        select = Select(driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ddlSeries_ddlSeries"]')).select_by_value(str(i))
-        time.sleep(5)
-        getData(series,year)
+    
 
 db_connect.close()
