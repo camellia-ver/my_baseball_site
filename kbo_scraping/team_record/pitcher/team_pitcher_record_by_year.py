@@ -95,11 +95,4 @@ for year in range(2001,2023):
     prev_btn = driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_udpContent"]/div[2]/div/div/a[1]')
     prev_btn.click()
 
-    # select_series = {'와일드카드':4,'준플레이오프':3,'플레이오프':5,'한국시리즈':7}
-    
-    # for series,i in select_series.items():
-    #     select = Select(driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ddlSeries_ddlSeries"]')).select_by_value(str(i))
-    #     time.sleep(5)
-    #     getData(series,year)
-
 db_connect.close()

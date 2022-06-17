@@ -100,11 +100,4 @@ cur_year = now.year
 time.sleep(5)
 data = getData("정규시즌",str(cur_year))
 
-# select_series = {'와일드카드':4,'준플레이오프':3,'플레이오프':5,'한국시리즈':7}
-    
-# for series,i in select_series.items():
-#     select = Select(driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ddlSeries_ddlSeries"]')).select_by_value(str(i))
-#     time.sleep(5)
-#     getData(series,cur_year)
-
 db_connect.close()

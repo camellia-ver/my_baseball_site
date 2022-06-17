@@ -15,41 +15,20 @@ from pymysql import NULL, cursors
 import time,datetime
 
 def getData(series,year):
-    result_data = []
-
     contents = driver.find_elements(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_udpContent"]/div[2]/table/tbody/tr')
+
+    if len(contents) == 0:
+        return
 
     for content in contents:
         content = content.text.split(' ')
-        del content[0]
-        result_data.append(content)
 
-    next_btn = driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_udpContent"]/div[2]/div/div/a[2]')
-    next_btn.click()
-
-    time.sleep(5)
-
-    contents = driver.find_elements(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_udpContent"]/div[2]/table/tbody/tr')
-
-    for i,content in enumerate(contents):
-        content = content.text.split(' ')
-        del content[2]
-        del content[1]
         del content[0]
 
-        result_data[i].extend(content)
-        result_data[i].append(year)
-        result_data[i].append(series)
-
-    for data in result_data:
-        sql_data = "'" + "','".join(data) + "'"
+        sql_data = "'" + "','".join(content) + "'"
 
         sql = "insert into team_hitter_record\
-            (thr_team_name,thr_AVG,thr_G,thr_PA,thr_AB,\
-            thr_R,thr_H,thr_2B,thr_3B,thr_HR,thr_TB,thr_RBI,\
-            thr_SAC,thr_SF,thr_BB,thr_IBB,thr_HBP,thr_SO,thr_GDP,\
-            thr_SLG,thr_OBP,thr_OPS,thr_MH,thr_RISP,thr_PH_BA,\
-            thr_year,thr_series)values(" + sql_data + ')'
+            ()values(" + sql_data + ')'
       
         cursor.execute(sql)
         db_connect.commit()
@@ -82,15 +61,22 @@ else:
 
 cursor = db_connect.cursor(cursors.DictCursor)
 
-# 2001년~2022년
-for year in range(2001,2023):
+select_series = {'와일드카드':4,'준플레이오프':3,'플레이오프':5,'한국시리즈':7}
+select = Select(driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ddlSeries_ddlSeries"]')).select_by_value("4")
+
+# 1982년~2022년
+for year in range(1982,2023):
     year = str(year)
     select = Select(driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ddlSeason_ddlSeason"]')).select_by_value(year)
 
     time.sleep(5)
-    data = getData("정규시즌",year)
 
-    prev_btn = driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_udpContent"]/div[2]/div/div/a[1]')
-    prev_btn.click()
+    for series,i in select_series.items():
+        if i == 4:
+            continue
+
+        select = Select(driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ddlSeries_ddlSeries"]')).select_by_value(str(i))
+        time.sleep(5)
+        getData(series,year)
 
 db_connect.close()
