@@ -11,16 +11,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from webdriver_manager.chrome import ChromeDriverManager
 import pymysql
-from pymysql import cursors
+from pymysql import NULL, cursors
 import time,datetime
 
 def getData(series,year):
     result_data = []
 
     contents = driver.find_elements(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_udpContent"]/div[2]/table/tbody/tr')
-
-    if len(contents) == 0:
-        return
 
     for content in contents:
         content = content.text.split(' ')
@@ -47,8 +44,13 @@ def getData(series,year):
     for data in result_data:
         sql_data = "'" + "','".join(data) + "'"
 
-        sql = "insert into team_hitter_record(thr_team_name,thr_AVG,thr_G,thr_PA,thr_AB,thr_R,thr_H,thr_2B,thr_3B,thr_HR,thr_TB,thr_RBI,thr_SAC,thr_SF,thr_BB,thr_IBB,thr_HBP,thr_SO,thr_GDP,thr_SLG,thr_OBP,thr_OPS,thr_MH,thr_RISP,thr_PH_BA,thr_year,thr_series)values(" + sql_data + ')'
-        
+        sql = "insert into team_hitter_record\
+            (thr_team_name,thr_AVG,thr_G,thr_PA,thr_AB,\
+            thr_R,thr_H,thr_2B,thr_3B,thr_HR,thr_TB,thr_RBI,\
+            thr_SAC,thr_SF,thr_BB,thr_IBB,thr_HBP,thr_SO,thr_GDP,\
+            thr_SLG,thr_OBP,thr_OPS,thr_MH,thr_RISP,thr_PH_BA,\
+            thr_year,thr_series)values(" + sql_data + ')'
+      
         cursor.execute(sql)
         db_connect.commit()
 
@@ -83,10 +85,13 @@ cursor = db_connect.cursor(cursors.DictCursor)
 # 2001년~2022년
 for year in range(2001,2023):
     year = str(year)
-    select = Select(driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ddlSeason_ddlSeason"]')).select_by_value(str(year))
+    select = Select(driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ddlSeason_ddlSeason"]')).select_by_value(year)
 
     time.sleep(5)
     data = getData("정규시즌",year)
+
+    prev_btn = driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_udpContent"]/div[2]/div/div/a[1]')
+    prev_btn.click()
 
     # select_series = {'와일드카드':4,'준플레이오프':3,'플레이오프':5,'한국시리즈':7}
     

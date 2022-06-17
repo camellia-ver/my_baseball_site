@@ -18,11 +18,11 @@ def getData(series,year):
 
     contents = driver.find_elements(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_udpContent"]/div[2]/table/tbody/tr')
 
-    if len(contents) == 0:
-        return
-
     for content in contents:
         content = content.text.split(' ')
+        if len(content) == 19:
+            content[9] = content[9] + ' ' + content[10]
+            del content[10]
         del content[0]
         result_data.append(content)
 
@@ -44,9 +44,14 @@ def getData(series,year):
         result_data[i].append(series)
 
     for data in result_data:
-        sql_data = "'" + ",'".join(data) + "'"
+        sql_data = "'" + "','".join(data) + "'"
 
-        sql = "insert into ranking(no,team_name,game,win,lose,tie,win_rate,game_difference,last_10_matches,continuity,home,away,r_date,uniqueness,note)values(" + sql_data + ')'
+        sql = "insert into team_pitcher_record\
+            (tpr_team_name,tpr_ERA,tpr_G,tpr_W,tpr_L,tpr_SV,tpr_HLD,\
+            tpr_WPCT,tpr_IP,tpr_H,tpr_HR,tpr_BB,tpr_HBP,tpr_SO,tpr_R,\
+            tpr_ER,tpr_WHIP,tpr_CG,tpr_SHO,tpr_QS,tpr_BSV,tpr_TBF,tpr_NP,\
+            tpr_AVG,tpr_2B,tpr_3B,tpr_SAC,tpr_SF,tpr_IBB,tpr_WP,tpr_BK,\
+            tpr_year,tpr_series)values(" + sql_data + ')'
         
         cursor.execute(sql)
         db_connect.commit()
@@ -87,11 +92,14 @@ for year in range(2001,2023):
     time.sleep(5)
     data = getData("정규시즌",year)
 
-    select_series = {'와일드카드':4,'준플레이오프':3,'플레이오프':5,'한국시리즈':7}
+    prev_btn = driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_udpContent"]/div[2]/div/div/a[1]')
+    prev_btn.click()
+
+    # select_series = {'와일드카드':4,'준플레이오프':3,'플레이오프':5,'한국시리즈':7}
     
-    for series,i in select_series.items():
-        select = Select(driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ddlSeries_ddlSeries"]')).select_by_value(str(i))
-        time.sleep(5)
-        getData(series,year)
+    # for series,i in select_series.items():
+    #     select = Select(driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ddlSeries_ddlSeries"]')).select_by_value(str(i))
+    #     time.sleep(5)
+    #     getData(series,year)
 
 db_connect.close()
