@@ -1,5 +1,5 @@
 # 2022 ~ yesterday 팀 기록 수집
-# 타자 기록
+# 수비 기록, 정규리그 기록만 존재
 
 from unittest import result
 from certifi import contents
@@ -13,40 +13,17 @@ import pymysql
 from pymysql import cursors
 import time,datetime
 
-def getData(series,year):
-    result_data = []
-
+def getData(year):
     contents = driver.find_elements(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_udpContent"]/div[2]/table/tbody/tr')
-
-    if len(contents) == 0:
-        return
 
     for content in contents:
         content = content.text.split(' ')
         del content[0]
-        result_data.append(content)
+        content.append(year)
 
-    next_btn = driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_udpContent"]/div[2]/div/div/a[2]')
-    next_btn.click()
+        sql_data = "'" + "','".join(content) + "'"
 
-    time.sleep(5)
-
-    contents = driver.find_elements(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_udpContent"]/div[2]/table/tbody/tr')
-
-    for i,content in enumerate(contents):
-        content = content.text.split(' ')
-        del content[2]
-        del content[1]
-        del content[0]
-
-        result_data[i].extend(content)
-        result_data[i].append(year)
-        result_data[i].append(series)
-
-    for data in result_data:
-        sql_data = "'" + ",'".join(data) + "'"
-
-        sql = "insert into ranking(no,team_name,game,win,lose,tie,win_rate,game_difference,last_10_matches,continuity,home,away,r_date,uniqueness,note)values(" + sql_data + ')'
+        sql = "insert into team_defense_record(tdr_team_name,tdr_G,tdr_E,tdr_PKO,tdr_PO,tdr_A,tdr_DP,tdr_FPCT,tdr_PB,tdr_SB,tdr_CS,tdr_CS_PERSENT,tdr_year)values(" + sql_data + ')'
         
         cursor.execute(sql)
         db_connect.commit()
@@ -82,9 +59,9 @@ cursor = db_connect.cursor(cursors.DictCursor)
 # 2001년~2022년
 for year in range(2001,2023):
     year = str(year)
-    select = Select(driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ddlSeason_ddlSeason"]')).select_by_value(str(year))
+    select = Select(driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ddlSeason_ddlSeason"]')).select_by_value(year)
 
     time.sleep(5)
-    data = getData("정규시즌",year)
+    data = getData(year)
 
 db_connect.close()

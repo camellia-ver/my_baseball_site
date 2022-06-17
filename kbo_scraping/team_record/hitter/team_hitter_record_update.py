@@ -1,5 +1,5 @@
 # 올해 팀 기록 업데이트
-# 타자 기록
+# 타자 기록, 정규리그 기록만 수집
 
 from unittest import result
 from certifi import contents

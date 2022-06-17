@@ -1,5 +1,5 @@
 # 2022 ~ yesterday 팀 기록 수집
-# 타자 기록
+# 투수 기록, 정규리그 기록만 수집
 
 from unittest import result
 from certifi import contents

@@ -1,5 +1,5 @@
 # 올해 팀 기록 업데이트
-# 타자 기록
+# 투수 기록, 정규리그 기록만 수집
 
 from unittest import result
 from certifi import contents
@@ -43,8 +43,6 @@ def getData(series,year):
         del content[0]
 
         result_data[i].extend(content)
-        result_data[i].append(year)
-        result_data[i].append(series)
 
     for data in result_data:
         sql = "update team_pitcher_record set "\
