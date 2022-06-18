@@ -52,7 +52,7 @@ def getData(series,year):
         +"',thr_MH='"+data[22]+"',thr_RISP='"+data[23]\
         +"',thr_PH_BA='"+data[24]\
         + "' where thr_team_name ='" + data[0] \
-        + "' and thr_year = '" + year + "' and tpr_series = '" + series +"'"
+        + "' and thr_year = '" + year + "' and thr_series = '" + series +"'"
         
         cursor.execute(sql)
         db_connect.commit()
