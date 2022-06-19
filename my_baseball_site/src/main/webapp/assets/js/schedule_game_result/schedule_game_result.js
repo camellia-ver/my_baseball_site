@@ -134,17 +134,15 @@ $(function(){
                 let print_team1_score
                 let print_team2_score
                 if(r.data.length == 0){
-                    alert((temp_year + now.getFullYear()))
                     if((temp_year + now.getFullYear()) == 2001){
                         tag = 
                         '<tr><td colspan="6">데이터가 없습니다.</td></tr>'
                         $("#schedule_game_result_tbody").append(tag)
                     }
                     else{
-                        year += 1
-
-                        select_year(year)
-                        getScheduleGameResult()
+                        tag = 
+                        '<tr><td colspan="6">데이터가 없습니다.</td></tr>'
+                        $("#schedule_game_result_tbody").append(tag)
                     }
                 }
                 else{

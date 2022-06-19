@@ -28,7 +28,7 @@ public class RegisterService {
             today = formatter.format(now.getTime());
             list = rg_mapper.selectRegister(today);
         }
-
+        
         for(RegisterVO item:list){
             item.setPrint_date(dateFormatter.format(now.getTime()));
             item.setPrint_brith(printFormatter.format(item.getRg_brith()));

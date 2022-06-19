@@ -112,18 +112,18 @@
                         <span>OPS : 피출루율+피장타율</span>
                         <span>P/G : 투구수/경기</span>
                         <span>P/IP : 투구수/이닝</span>
-                        <span>QS : 퀄리티스타트</span>
                     </p> 
                     <p>
+                        <span>QS : 퀄리티스타트</span>
                         <span>R : 실점</span>
                         <span>SAC : 희생번트</span>
                         <span>SF : 희생플라이</span>
                         <span>SHO : 완봉</span>
                         <span>SLG : 피장타율</span>
                         <span>SO : 삼진</span>
-                        <span>SV : 세이브</span>
                     </p> 
                     <p>
+                        <span>SV : 세이브</span>
                         <span>SVO : 세이브기회</span>
                         <span>TBF : 타자수</span>
                         <span>TS : 터프세이브</span>
