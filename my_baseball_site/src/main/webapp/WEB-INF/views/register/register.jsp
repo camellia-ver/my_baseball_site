@@ -40,7 +40,7 @@
                   </tr>
                 </thead>
                 <tbody id="register_manager_tbody">
-                    <c:if test="{today_register == null">
+                    <c:if test="${today_register == null}">
                         <tr>
                             <td colspan="5">데이터가 없습니다.</td>
                         </tr>
@@ -70,7 +70,7 @@
                   </tr>
                 </thead>
                 <tbody id="register_coach_tbody">
-                    <c:if test="{today_register == null">
+                    <c:if test="${today_register == null}">
                         <tr>
                             <td colspan="5">데이터가 없습니다.</td>
                         </tr>
@@ -100,7 +100,7 @@
                   </tr>
                 </thead>
                 <tbody id="register_p_tbody">
-                    <c:if test="{today_register == null">
+                    <c:if test="${today_register == null}">
                         <tr>
                             <td colspan="5">데이터가 없습니다.</td>
                         </tr>
@@ -130,7 +130,7 @@
                   </tr>
                 </thead>
                 <tbody id="register_c_tbody">
-                    <c:if test="{today_register == null">
+                    <c:if test="${today_register == null}">
                         <tr>
                             <td colspan="5">데이터가 없습니다.</td>
                         </tr>
@@ -160,7 +160,7 @@
                   </tr>
                 </thead>
                 <tbody id="register_if_tbody">
-                    <c:if test="{today_register == null">
+                    <c:if test="${today_register == null}">
                         <tr>
                             <td colspan="5">데이터가 없습니다.</td>
                         </tr>
@@ -190,7 +190,7 @@
                   </tr>
                 </thead>
                 <tbody id="register_of_tbody">
-                    <c:if test="{today_register == null">
+                    <c:if test="${today_register == null}">
                         <tr>
                             <td colspan="5">데이터가 없습니다.</td>
                         </tr>
@@ -220,7 +220,7 @@
                   </tr>
                 </thead>
                 <tbody id="regist_tbody">
-                    <c:if test="{today_register == null">
+                    <c:if test="${is_regist_or_out_register[0] == '0'}">
                         <tr>
                             <td colspan="5">데이터가 없습니다.</td>
                         </tr>
@@ -250,7 +250,7 @@
                   </tr>
                 </thead>
                 <tbody id="register_out_tbody">
-                    <c:if test="{today_register == null">
+                    <c:if test="${is_regist_or_out_register[1] == '0'}">
                         <tr>
                             <td colspan="5">데이터가 없습니다.</td>
                         </tr>

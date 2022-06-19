@@ -14,6 +14,7 @@ public class RegisterController {
     @GetMapping("/register")
     public String getRegister(Model model){
         model.addAttribute("today_register", rg_service.todaySelectRegister());
+        model.addAttribute("is_regist_or_out_register", rg_service.isRegistOrOutRegister());
 
         return "/register/register";
     }

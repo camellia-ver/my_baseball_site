@@ -49,4 +49,14 @@ public class RegisterService {
 
         return list;
     }
+
+    public List<Integer> isRegistOrOutRegister(){
+        Calendar now = Calendar.getInstance();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+        String today = formatter.format(now.getTime());
+
+        List<Integer> list = rg_mapper.isRegistOrOutRegister(today);
+        
+        return list;
+    }
 }

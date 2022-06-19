@@ -9,4 +9,5 @@ import com.my_baseball_site.vo.RegisterVO;
 @Mapper
 public interface RegisterMapper {
     public List<RegisterVO> selectRegister(String date);
+    public List<Integer> isRegistOrOutRegister(String date);
 }

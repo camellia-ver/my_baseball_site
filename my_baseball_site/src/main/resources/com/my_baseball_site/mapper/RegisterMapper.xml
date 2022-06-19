@@ -6,4 +6,11 @@
     <select id="selectRegister" resultType="com.my_baseball_site.vo.RegisterVO">
         select * from register where rg_date = #{date}
     </select>
+    <select id="isRegistOrOutRegister" resultType="java.lang.Integer">
+        select count(is_regist) from register 
+        where rg_date = #{date} and is_regist = '등록'
+        union all
+        select count(is_regist) from register 
+        where rg_date = #{date} and is_regist = '말소'
+    </select>
 </mapper>
