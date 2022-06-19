@@ -9,4 +9,9 @@ public class RecordController {
     public String getBaseBallWord(){
         return "/record/baseball_word";
     }
+
+    @GetMapping("/team_record")
+    public String getTeamRecord(){
+        return "/record/team_record";
+    }
 }
