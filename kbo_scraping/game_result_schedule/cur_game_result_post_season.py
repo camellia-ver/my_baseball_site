@@ -44,54 +44,73 @@ else:
 
 cursor = db_connect.cursor(cursors.DictCursor)
 
+prev_btn = driver.find_element(by=By.XPATH,value='//*[@id="btnPrev"]/img')
+
 year = "2022"
-for i in contents:
-    result = i.text.split(' ')
-    print(result)
-    if len(result) == 8:
-            del result[5]
-            del result[4]
-            del result[3]
-    elif len(result) == 7:
-        del result[4]
-        del result[3]
-    elif len(result) == 6:
-        result[4] = result[4][-2:]
-        del result[3]
+prev_day = 1
 
-    ssg_idx = result[2].find("SSG")
-    kia_idx = result[2].find("KIA")
-    if kia_idx == -1 and ssg_idx == -1:
-        result.insert(3,result[2][:2])
-        result.insert(4,result[2][2:-2])
-        result.insert(5,result[2][-2:])
-    else:
-        if ssg_idx == 0 or kia_idx == 0:
-            result.insert(3,result[2][:3])
-            result.insert(4,result[2][3:-2])
-            result.insert(5,result[2][-2:])
-        else:
-            result.insert(3,result[2][:2])
-            result.insert(4,result[2][2:-3])
-            result.insert(5,result[2][-3:])
-    del result[2]
+for i in range(prev_day):
+    yesterday = str(datetime.datetime.now() - datetime.timedelta(days=i+1))
+    yesterday = yesterday[5:7] + '.'+ yesterday[8:10]
+    cur_month = str(datetime.datetime.now())
+    cur_month = cur_month[5:7]
 
-    vs_idx = result[3].find("vs")
-    if result[3][:vs_idx] == '':
-        result.insert(4,'-1')
-        result.insert(5,'-1')
-    else:
-        result.insert(4,result[3][:vs_idx])
-        result.insert(5,result[3][vs_idx+2:])
-    del result[3]
-
-    result[0] = year + result[0][:2] + result[0][3:5]
-    save_data = "'" + "','".join(result) + "','포스트시즌'"
+    if cur_month != yesterday[:2]:
+        prev_btn.click()
     
-    sql = "insert into schedule_game_result(g_date,g_time,team1,team1_score,team2_score,team2,baseball_stadium,note,season)values(" + save_data + ')'
-    print(sql)
+    time.sleep(10)
 
-    cursor.execute(sql)
-    # db_connect.commit()
+    contents = driver.find_elements(by=By.XPATH,value='//*[@id="tblSchedule"]/tbody/tr')
+
+    for i in contents:
+        result = i.text.split(' ')
+            
+        if yesterday in result[0]:
+            if len(result) == 9:
+                del result[6]
+                del result[5]
+                del result[4]
+                del result[3]
+            elif len(result) == 8:
+                del result[5]
+                del result[4]
+                del result[3]
+            elif len(result) == 7:
+                del result[4]
+                del result[3]
+            elif len(result) == 6:
+                del result[3]
+            ssg_idx = result[2].find("SSG")
+            kia_idx = result[2].find("KIA")
+            if kia_idx == -1 and ssg_idx == -1:
+                result.insert(3,result[2][:2])
+                result.insert(4,result[2][2:-2])
+                result.insert(5,result[2][-2:])
+            else:
+                if ssg_idx == 0 or kia_idx == 0:
+                    result.insert(3,result[2][:3])
+                    result.insert(4,result[2][3:-2])
+                    result.insert(5,result[2][-2:])
+                else:
+                    result.insert(3,result[2][:2])
+                    result.insert(4,result[2][2:-3])
+                    result.insert(5,result[2][-3:])
+            del result[2]
+            vs_idx = result[3].find("vs")
+            if result[3][:vs_idx] == '':
+                result.insert(4,'-1')
+                result.insert(5,'-1')
+            else:
+                result.insert(4,result[3][:vs_idx])
+                result.insert(5,result[3][vs_idx+2:])
+            del result[3]
+            result[0] = year + result[0][:2] + result[0][3:5]
+            
+            sql = "update schedule_game_result set team1_score='"+result[3]+"',team2_score='"+result[4]+"',note='"+result[7]+"' where g_date= "+result[0]
+            
+            cursor.execute(sql)
+            db_connect.commit()
+
+            break
 
 db_connect.close()
