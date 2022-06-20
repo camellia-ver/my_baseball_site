@@ -12,6 +12,11 @@
 <body>
     <div class="contents">
         <%@include file="/WEB-INF/views/includes/team_record_title.jsp"%>
+        <div class="search_option">
+            <select class="form-select" aria-label="Default select example" id="year_select">
+                <option value="2022" selected>2022</option>
+            </select>
+        </div>
     </div>
 </body>
 </html>

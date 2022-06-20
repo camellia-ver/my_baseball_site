@@ -6,12 +6,17 @@
 <head>
     <meta charset="UTF-8">
     <title>baseball data site</title>
-    <link rel="stylesheet" href="/assets/css/record/team_pitcher_record.css">
-    <script src="/assets/js/record/team_pitcher_record.js"></script>
+    <link rel="stylesheet" href="/assets/css/record/team_runner_record.css">
+    <script src="/assets/js/record/team_runner_record.js"></script>
 </head>
 <body>
     <div class="contents">
         <%@include file="/WEB-INF/views/includes/team_record_title.jsp"%>
+        <div class="search_option">
+            <select class="form-select" aria-label="Default select example" id="year_select">
+                <option value="2022" selected>2022</option>
+            </select>
+        </div>
     </div>
 </body>
 </html>
