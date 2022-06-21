@@ -14,6 +14,7 @@ import com.my_baseball_site.mapper.TeamRecordMapper;
 import com.my_baseball_site.service.TeamRecordService;
 import com.my_baseball_site.vo.TeamDefenseRecordVO;
 import com.my_baseball_site.vo.TeamHitterRecordVO;
+import com.my_baseball_site.vo.TeamPitcherRecordVO;
 import com.my_baseball_site.vo.TeamRunnerRecordVO;
 
 @RestController
@@ -57,6 +58,21 @@ public class TeamRecordAPIController {
         Map<String, Object> resultMap = new LinkedHashMap<String,Object>();
 
         List<TeamHitterRecordVO> list = service.selectTeamHitterRecord(year, series);
+        
+        resultMap.put("status", true);
+        resultMap.put("data", list);
+        
+        return resultMap;
+    }
+
+    @GetMapping("/team_pitcher_record/api/list")
+    public Map<String, Object> getTeamPitcherRecord(
+        @RequestParam String year,
+        @RequestParam String series
+    ){
+        Map<String, Object> resultMap = new LinkedHashMap<String,Object>();
+
+        List<TeamPitcherRecordVO> list = service.selectTeamPitcherRecord(year, series);
         
         resultMap.put("status", true);
         resultMap.put("data", list);

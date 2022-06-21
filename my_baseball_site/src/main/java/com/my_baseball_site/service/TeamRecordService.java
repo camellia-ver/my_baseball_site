@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.my_baseball_site.mapper.TeamRecordMapper;
 import com.my_baseball_site.vo.TeamDefenseRecordVO;
 import com.my_baseball_site.vo.TeamHitterRecordVO;
+import com.my_baseball_site.vo.TeamPitcherRecordVO;
 import com.my_baseball_site.vo.TeamRunnerRecordVO;
 
 @Service
@@ -89,6 +90,44 @@ public class TeamRecordService {
                 item.setPrint_ph_ba(n_formatter.format(item.getThr_PH_BA()));
                 item.setPrint_ops(n_formatter.format(item.getThr_OPS()));
                 item.setPrint_obp(n_formatter.format(item.getThr_OBP()));
+            }
+        }
+
+        return list;
+    }
+
+    public List<TeamPitcherRecordVO> selectTeamPitcherRecord(){
+        Calendar now = Calendar.getInstance();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
+        String cur_year = formatter.format(now.getTime());
+
+        DecimalFormat n_formatter = new DecimalFormat("0.00");
+        DecimalFormat n_formatter2 = new DecimalFormat("0.000");
+
+        List<TeamPitcherRecordVO> list = mapper.selectTeamPitcherRecord(cur_year,"정규시즌");
+
+        for(TeamPitcherRecordVO item:list){
+            item.setPrint_era(n_formatter.format(item.getTpr_ERA()));
+            item.setPrint_wptc(n_formatter2.format(item.getTpr_WPCT()));
+            item.setPrint_whip(n_formatter.format(item.getTpr_WHIP()));
+            item.setPrint_avg(n_formatter2.format(item.getTpr_AVG()));
+        }
+
+        return list;
+    }
+    public List<TeamPitcherRecordVO> selectTeamPitcherRecord(String year,String series){
+        DecimalFormat n_formatter = new DecimalFormat("0.00");
+        DecimalFormat n_formatter2 = new DecimalFormat("0.000");
+
+        List<TeamPitcherRecordVO> list = mapper.selectTeamPitcherRecord(year,series);
+
+        for(TeamPitcherRecordVO item:list){
+            item.setPrint_era(n_formatter.format(item.getTpr_ERA()));
+            item.setPrint_wptc(n_formatter2.format(item.getTpr_WPCT()));
+
+            if(series.equals("정규시즌")){
+                item.setPrint_whip(n_formatter.format(item.getTpr_WHIP()));
+                item.setPrint_avg(n_formatter2.format(item.getTpr_AVG()));
             }
         }
 

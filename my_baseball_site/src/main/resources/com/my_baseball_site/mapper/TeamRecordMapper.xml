@@ -17,4 +17,8 @@
     <select id="selectTeamHitterRecord" resultType="com.my_baseball_site.vo.TeamHitterRecordVO">
         select * from team_hitter_record where thr_year = #{year} and thr_series = #{series}
     </select>
+    <select id="selectTeamPitcherRecord" resultType="com.my_baseball_site.vo.TeamPitcherRecordVO">
+        select * from team_pitcher_record where tpr_year = #{year} and tpr_series = #{series}
+    </select>
+    
 </mapper>

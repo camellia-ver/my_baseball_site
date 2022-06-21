@@ -29,6 +29,7 @@ public class TeamRecordController {
     @GetMapping("/team_pitcher_record")
     public String getTeamPitcherRecord(Model model){
         model.addAttribute("regular_serise_year", mapper.selectRegularSeriseYear());
+        model.addAttribute("pitcher", service.selectTeamPitcherRecord());
 
         return "/record/team_pitcher_record";
     }

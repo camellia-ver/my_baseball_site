@@ -5,4 +5,6 @@
 #year_select{width: 100px;}
 #series_select{width: 150px;}
 
-.team_pitcher_record{margin: 10px; padding: 10px; font-size: 20px; text-align: center;}
+.team_pitcher_record{margin: 10px; padding: 10px; font-size: 18px; text-align: center;}
+#regular_serise{font-size: 17px;}
+#other_serise{display: none;}
