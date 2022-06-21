@@ -41,9 +41,9 @@ for i in range(1,6):
         url = content.get_attribute('href')
         
         if "Futures" in url:
-            f.write(f"{url}\n")
+            f.write(f"{url},2군\n")
         else:
-            f2.write(f"{url}\n")
+            f2.write(f"{url},1군\n")
 
 f.close()
 f2.close()
