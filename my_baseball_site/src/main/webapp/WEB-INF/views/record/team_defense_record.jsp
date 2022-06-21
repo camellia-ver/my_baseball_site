@@ -38,11 +38,6 @@
                   </tr>
                 </thead>
                 <tbody id="team_defense_record_tbody">
-                    <c:if test="${defense == null}">
-                        <tr colspan="12">
-                            <td>데이터가 없습니다.</td>
-                        </tr>
-                    </c:if>
                     <c:forEach items="${defense}" var="item">
                         <tr>
                             <td>${item.tdr_team_name}</td>

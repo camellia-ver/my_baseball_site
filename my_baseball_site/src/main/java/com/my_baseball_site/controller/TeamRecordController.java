@@ -5,12 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.my_baseball_site.mapper.RecordMapper;
+import com.my_baseball_site.mapper.TeamRecordMapper;
 import com.my_baseball_site.service.TeamRecordService;
 
 @Controller
 public class TeamRecordController {
-    @Autowired RecordMapper mapper;
+    @Autowired TeamRecordMapper mapper;
     @Autowired TeamRecordService service;
 
     @GetMapping("/baseball_word")
@@ -21,6 +21,7 @@ public class TeamRecordController {
     @GetMapping("/team_hitter_record")
     public String getTeamHitterRecord(Model model){
         model.addAttribute("regular_serise_year", mapper.selectRegularSeriseYear());
+        model.addAttribute("hitter", service.selectTeamHitterRecord());
 
         return "/record/team_hitter_record";
     }

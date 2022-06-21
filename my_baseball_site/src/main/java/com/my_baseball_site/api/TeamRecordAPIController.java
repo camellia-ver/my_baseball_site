@@ -7,15 +7,19 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.my_baseball_site.mapper.TeamRecordMapper;
 import com.my_baseball_site.service.TeamRecordService;
 import com.my_baseball_site.vo.TeamDefenseRecordVO;
+import com.my_baseball_site.vo.TeamHitterRecordVO;
 import com.my_baseball_site.vo.TeamRunnerRecordVO;
 
 @RestController
 public class TeamRecordAPIController {
     @Autowired TeamRecordService service;
+    @Autowired TeamRecordMapper mapper;
 
     @GetMapping("/team_defense_record/api/{year}")
     public Map<String, Object> getTeamDefenseRecord(
@@ -37,8 +41,23 @@ public class TeamRecordAPIController {
     ){
         Map<String, Object> resultMap = new LinkedHashMap<String,Object>();
 
-        List<TeamRunnerRecordVO> list = service.selectTeamRunnerRecord(year);
+        List<TeamRunnerRecordVO> list = mapper.selectTeamRunnerRecord(year);
 
+        resultMap.put("status", true);
+        resultMap.put("data", list);
+        
+        return resultMap;
+    }
+
+    @GetMapping("/team_hitter_record/api/list")
+    public Map<String, Object> getTeamHitterRecord(
+        @RequestParam String year,
+        @RequestParam String series
+    ){
+        Map<String, Object> resultMap = new LinkedHashMap<String,Object>();
+
+        List<TeamHitterRecordVO> list = service.selectTeamHitterRecord(year, series);
+        
         resultMap.put("status", true);
         resultMap.put("data", list);
         

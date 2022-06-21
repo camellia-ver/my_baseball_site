@@ -34,11 +34,6 @@
                   </tr>
                 </thead>
                 <tbody id="team_runner_record_tbody">
-                    <c:if test="${runner == null}">
-                        <tr colspan="8">
-                            <td>데이터가 없습니다.</td>
-                        </tr>
-                    </c:if>
                     <c:forEach items="${runner}" var="item">
                         <tr>
                             <td>${item.trr_team_name}</td>

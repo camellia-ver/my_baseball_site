@@ -2,14 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.my_baseball_site.mapper.RecordMapper">
+<mapper namespace="com.my_baseball_site.mapper.TeamRecordMapper">
     <select id="selectRegularSeriseYear" resultType="java.lang.Integer">
         select distinct tdr_year from team_defense_record
         order by tdr_year desc
-    </select>
-    <select id="selectOtherSeriseYear" resultType="java.lang.Integer">
-        select distinct thr_year from team_hitter_record 
-        where thr_series != '정규시리즈' order by thr_year desc
     </select>
 
     <select id="selectTeamDefenseRecord" resultType="com.my_baseball_site.vo.TeamDefenseRecordVO">
@@ -17,5 +13,8 @@
     </select>
     <select id="selectTeamRunnerRecord" resultType="com.my_baseball_site.vo.TeamRunnerRecordVO">
         select * from team_runner_record where trr_year = #{year}
+    </select>
+    <select id="selectTeamHitterRecord" resultType="com.my_baseball_site.vo.TeamHitterRecordVO">
+        select * from team_hitter_record where thr_year = #{year} and thr_series = #{series}
     </select>
 </mapper>
