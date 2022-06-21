@@ -6,12 +6,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.my_baseball_site.mapper.RecordMapper;
-import com.my_baseball_site.service.RecordService;
+import com.my_baseball_site.service.TeamRecordService;
 
 @Controller
-public class RecordController {
+public class TeamRecordController {
     @Autowired RecordMapper mapper;
-    @Autowired RecordService service;
+    @Autowired TeamRecordService service;
 
     @GetMapping("/baseball_word")
     public String getBaseBallWord(){

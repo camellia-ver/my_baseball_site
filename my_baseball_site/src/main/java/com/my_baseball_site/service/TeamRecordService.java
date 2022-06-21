@@ -13,7 +13,7 @@ import com.my_baseball_site.vo.TeamDefenseRecordVO;
 import com.my_baseball_site.vo.TeamRunnerRecordVO;
 
 @Service
-public class RecordService {
+public class TeamRecordService {
     @Autowired RecordMapper mapper;
 
     public List<TeamDefenseRecordVO> selectTeamDefenseRecord(){
