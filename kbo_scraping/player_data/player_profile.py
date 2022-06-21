@@ -25,7 +25,10 @@ def save_profile(img,name,backnumber,birth,position,height_weight,career,payment
     position[1] = position[1][:-1]
     height = height_weight[:3]
     weight = height_weight[-4:-2]
-    payment = payment[:-2]
+    if payment != '':
+        payment = payment[:-2]
+    else:
+        payment = '-1'
     salary = salary[:-2]
 
     img_file_name = birth + '_' + position[1] + '_' + name
@@ -54,7 +57,7 @@ def save_profile(img,name,backnumber,birth,position,height_weight,career,payment
 
     save_data = "'" + "','".join(data) + "'"
 
-    sql = "insert into player_profile(name,backnumber,birth,position1,position2,height,weight,career,payment,salary,draft,join,image_url,create_date)values(" + save_data + ')'
+    sql = "insert into player_profile(name,backnumber,birth,position1,position2,height,weight,career,payment,salary,draft,join_year,image_url,create_date)values(" + save_data + ')'
             
     cursor.execute(sql)
     db_connect.commit()
@@ -108,10 +111,7 @@ for url in urls:
         payment = driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ucPlayerProfile_lblPayment"]').text
         salary = driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ucPlayerProfile_lblSalary"]').text
         draft = driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ucPlayerProfile_lblDraft"]').text
-        try:
-            join = driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ucPlayerProfile_lblJoinInfo"]').text
-        except:
-            join = '-'
+        join = driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ucPlayerProfile_lblJoinInfo"]').text
 
         save_profile(img,name,backnumber,birth,position,height_weight,career,payment,salary,draft,join)
     else:
