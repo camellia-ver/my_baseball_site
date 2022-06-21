@@ -23,7 +23,7 @@ def getData(year):
 
         sql_data = "'" + "','".join(content) + "'"
 
-        sql = "insert into team_runner_record(trr_team_name,trr_G,trr_SBA,trr_SB,trr_CS,trr_SB_PERSENT,trr_OOB,trr_PKO,tdr_year)values(" + sql_data + ')'
+        sql = "insert into team_runner_record(trr_team_name,trr_G,trr_SBA,trr_SB,trr_CS,trr_SB_PERSENT,trr_OOB,trr_PKO,trr_year)values(" + sql_data + ')'
         
         cursor.execute(sql)
         db_connect.commit()

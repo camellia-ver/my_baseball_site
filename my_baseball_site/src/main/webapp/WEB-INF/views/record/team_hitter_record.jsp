@@ -14,10 +14,16 @@
         <%@include file="/WEB-INF/views/includes/team_record_title.jsp"%>
         <div class="search_option">
             <select class="form-select" aria-label="Default select example" id="year_select">
-                <option value="2022" selected>2022</option>
+                <c:forEach items="${regular_serise_year}" var="item">
+                        <option value=${item}>${item}</option>
+                </c:forEach>
             </select>
             <select class="form-select" aria-label="Default select example" id="series_select">
-                <option value="정규시즌" selected>정규시즌</option>
+                <option value="정규시리즈" selected>정규시리즈</option>
+                <option value="와일드카드">와일드카드</option>
+                <option value="준플레이오프">준플레이오프</option>
+                <option value="플레이오프">플레이오프</option>
+                <option value="한국시리즈">한국시리즈</option>
             </select>
         </div>
     </div>

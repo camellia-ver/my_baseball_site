@@ -24,7 +24,7 @@ public class RankingAPIController {
     ){
         Map<String, Object> resultMap = new LinkedHashMap<String,Object>();
         
-        List<RankingVO> list = r_service.selectRankingByDate(date);
+        List<RankingVO> list = r_service.selectRanking(date);
 
         resultMap.put("status", true);
         resultMap.put("data", list);

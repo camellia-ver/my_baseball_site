@@ -27,7 +27,7 @@ def getData(year):
             +"', trr_SB = '"+content[3]+"', trr_CS = '"+content[4]\
             +"', trr_SB_PERSENT = '"+content[5]+"', trr_OOB = '"+content[6]\
             +"', trr_PKO = '" + content[7]\
-            +"' where trr_team_name = '" + content[0] + "' and tdr_year = '" + year + "'"
+            +"' where trr_team_name = '" + content[0] + "' and trr_year = '" + year + "'"
 
         cursor.execute(sql)
         db_connect.commit()

@@ -22,7 +22,7 @@ public class RegisterAPIController {
     ){
         Map<String, Object> resultMap = new LinkedHashMap<String,Object>();
 
-        List<RegisterVO> list = rg_service.selectRegisterByDate(date);
+        List<RegisterVO> list = rg_service.selectRegister(date);
 
         resultMap.put("status", true);
         resultMap.put("data", list);

@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 public class RankingService {
     @Autowired RankingMapper mapper;
 
-    public List<RankingVO> selectRankingToday(){
+    public List<RankingVO> selectRanking(){
         Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
         String today = formatter.format(date);
@@ -80,20 +80,7 @@ public class RankingService {
 
         return list;
     }
-
-    public String selectStartDate(){
-        Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
-        String cur_year = formatter.format(date) + "0101";
-
-        SimpleDateFormat formatter2 = new SimpleDateFormat("yyyy-MM-dd");
-        Date start_date = mapper.selectStartDate(cur_year);
-        String min_date = formatter2.format(start_date);
-
-        return min_date;
-    }
-
-    public List<RankingVO> selectRankingByDate(String date){
+    public List<RankingVO> selectRanking(String date){
         List<RankingVO> list = mapper.selectRankingByDate(date);
 
         SimpleDateFormat formatter2 = new SimpleDateFormat("MM월 dd일");
@@ -146,6 +133,18 @@ public class RankingService {
         }
 
         return list;
+    }
+
+    public String selectStartDate(){
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
+        String cur_year = formatter.format(date) + "0101";
+
+        SimpleDateFormat formatter2 = new SimpleDateFormat("yyyy-MM-dd");
+        Date start_date = mapper.selectStartDate(cur_year);
+        String min_date = formatter2.format(start_date);
+
+        return min_date;
     }
 
     public List<RankingVO> selectRankingGraphByYear(){

@@ -14,7 +14,7 @@ import com.my_baseball_site.vo.RegisterVO;
 public class RegisterService {
     @Autowired RegisterMapper rg_mapper;
 
-    public List<RegisterVO> todaySelectRegister(){
+    public List<RegisterVO> selectRegister(){
         Calendar now = Calendar.getInstance();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
         String today = formatter.format(now.getTime());
@@ -38,7 +38,7 @@ public class RegisterService {
         return list;
     }
     
-    public List<RegisterVO> selectRegisterByDate(String date){
+    public List<RegisterVO> selectRegister(String date){
         SimpleDateFormat printFormatter = new SimpleDateFormat("yyyy-MM-dd");
 
         List<RegisterVO> list = rg_mapper.selectRegister(date);

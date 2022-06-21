@@ -15,7 +15,7 @@ public class MainCotroller {
 
     @GetMapping("/")
     public String getMain(Model model){
-        model.addAttribute("today_ranking", r_service.selectRankingToday());
+        model.addAttribute("today_ranking", r_service.selectRanking());
         model.addAttribute("three_game_schedule", sgr_service.selectScheduleThreeGame());
         model.addAttribute("recently_game", sgr_service.selectRecentlyGameResult());
 

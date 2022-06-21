@@ -15,7 +15,7 @@ import com.my_baseball_site.vo.NumOfSpactoatorsVO;
 public class NumOfSpactoatorsService {
     @Autowired NumOfSpactoatorsMapper mapper;
 
-    public List<NumOfSpactoatorsVO> selectNumOfSpactoatorsByCurYear(){
+    public List<NumOfSpactoatorsVO> selectNumOfSpactoators(){
         Date date = new Date();
         SimpleDateFormat yearFormatter = new SimpleDateFormat("yyyy"); 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");

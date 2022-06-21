@@ -18,7 +18,7 @@ public class RankingCotroller {
 
     @GetMapping("/ranking")
     public String getRanking(Model model){
-        model.addAttribute("today_ranking", r_service.selectRankingToday());
+        model.addAttribute("today_ranking", r_service.selectRanking());
         model.addAttribute("years", r_mapper.selectYear());
         model.addAttribute("startDate", r_service.selectStartDate());
         return "/ranking/ranking";
