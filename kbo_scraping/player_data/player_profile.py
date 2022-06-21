@@ -87,11 +87,8 @@ else:
 
 cursor = db_connect.cursor(cursors.DictCursor)
 
-with open(r"C:\Users\jyr\Desktop\study\portfolio\my_baseball_site\kbo_scraping\player_data\players_url\futures_play_data_url.csv","r") as f:
+with open(r"C:\Users\jyr\Desktop\study\portfolio\my_baseball_site\kbo_scraping\player_data\players_url\player_data_url.csv","r") as f:
     urls = f.readlines()
-
-with open(r"C:\Users\jyr\Desktop\study\portfolio\my_baseball_site\kbo_scraping\player_data\players_url\play_data_url.csv","r") as f:
-    urls.extend(f.readlines())
 
 for url in urls:
     url = url.replace('\n','')

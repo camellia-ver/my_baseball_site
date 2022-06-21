@@ -1,9 +1,6 @@
 # 2022 ~ yesterday 팀 기록 수집
 # 타자 기록, 정규리그 기록만 수집
 
-from asyncio import constants
-from unittest import result
-from certifi import contents
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -11,8 +8,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from webdriver_manager.chrome import ChromeDriverManager
 import pymysql
-from pymysql import NULL, cursors
-import time,datetime
+from pymysql import cursors
+import time
 
 def getData(series,year):
     contents = driver.find_elements(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_udpContent"]/div[2]/table/tbody/tr')

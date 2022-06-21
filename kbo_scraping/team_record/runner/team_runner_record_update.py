@@ -1,8 +1,6 @@
 # 올해 팀 기록 업데이트
 # 주루 기록, 정규리그 기록만 존재
 
-from unittest import result
-from certifi import contents
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -64,6 +62,6 @@ now = datetime.datetime.now()
 cur_year = now.year
 
 time.sleep(5)
-data = getData(str(cur_year))
+getData(str(cur_year))
 
 db_connect.close()

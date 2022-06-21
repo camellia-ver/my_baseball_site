@@ -1,8 +1,6 @@
 # 2022 ~ yesterday 팀 기록 수집
 # 투수 기록, 정규리그 기록만 수집
 
-from unittest import result
-from certifi import contents
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -11,7 +9,7 @@ from selenium.webdriver.support.ui import Select
 from webdriver_manager.chrome import ChromeDriverManager
 import pymysql
 from pymysql import cursors
-import time,datetime
+import time
 
 def getData(series,year):
     result_data = []
@@ -90,7 +88,7 @@ for year in range(2001,2023):
     select = Select(driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ddlSeason_ddlSeason"]')).select_by_value(str(year))
 
     time.sleep(5)
-    data = getData("정규시즌",year)
+    getData("정규시즌",year)
 
     prev_btn = driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_udpContent"]/div[2]/div/div/a[1]')
     prev_btn.click()

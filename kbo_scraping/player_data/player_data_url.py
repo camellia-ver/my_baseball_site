@@ -26,12 +26,12 @@ driver.get("https://www.koreabaseball.com/Player/Search.aspx")
 select = Select(driver.find_element(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_ddlTeam"]')).select_by_value('SS')
 time.sleep(5)
 
-f = open(r"C:\Users\jyr\Desktop\study\portfolio\my_baseball_site\kbo_scraping\player_data\players_url\futures_play_data_url.csv","w")
-f2 = open(r"C:\Users\jyr\Desktop\study\portfolio\my_baseball_site\kbo_scraping\player_data\players_url\play_data_url.csv","w")
+f = open(r"C:\Users\jyr\Desktop\study\portfolio\my_baseball_site\kbo_scraping\player_data\players_url\player_data_url.csv","w")
 
 # 페이지 변화 (1~5)
-for i in range(1,6):
-    paging = driver.find_element(by=By.XPATH,value=f'//*[@id="cphContents_cphContents_cphContents_ucPager_btnNo{i}"]')
+page_num = driver.find_elements(by=By.XPATH,value='//*[@id="cphContents_cphContents_cphContents_udpRecord"]/div[2]/div/a')
+for i in range(len(page_num)-2):
+    paging = driver.find_element(by=By.XPATH,value=f'//*[@id="cphContents_cphContents_cphContents_ucPager_btnNo{i+1}"]')
     paging.click()
     time.sleep(5)
 
@@ -43,7 +43,4 @@ for i in range(1,6):
         if "Futures" in url:
             f.write(f"{url},2군\n")
         else:
-            f2.write(f"{url},1군\n")
-
-f.close()
-f2.close()
+            f.write(f"{url},1군\n")

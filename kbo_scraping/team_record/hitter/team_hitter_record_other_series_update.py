@@ -1,9 +1,6 @@
 # 2022 ~ yesterday 팀 기록 수집
 # 타자 기록, 정규리그 기록만 수집
 
-from asyncio import constants
-from unittest import result
-from certifi import contents
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -11,7 +8,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from webdriver_manager.chrome import ChromeDriverManager
 import pymysql
-from pymysql import NULL, cursors
+from pymysql import cursors
 import time,datetime
 
 def getData(series,year):
