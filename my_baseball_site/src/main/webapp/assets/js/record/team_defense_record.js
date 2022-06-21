@@ -9,7 +9,7 @@ $(function(){
 
         $.ajax({
             type:"get",
-            url:"/team_record/api/"+year,
+            url:"/team_defense_record/api/"+year,
             success:function(r){
                 for(let i = 0;i < r.data.length;i++){
                     let tag = 
