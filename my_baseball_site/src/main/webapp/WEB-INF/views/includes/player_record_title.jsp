@@ -9,7 +9,7 @@
     </head>
     <body>
         <div class="title">
-            <p>팀 기록</p>
+            <p>개인 기록</p>
         </div>
         <div class="select_position">
             <a class="btn btn-primary" href="/player_hitter_record" role="button">타자</a>
