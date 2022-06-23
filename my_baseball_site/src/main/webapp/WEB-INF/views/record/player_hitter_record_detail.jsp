@@ -6,8 +6,8 @@
 <head>
     <meta charset="UTF-8">
     <title>baseball data site</title>
-    <link rel="stylesheet" href="/assets/css/record/player_hitter_record.css">
-    <script src="/assets/js/record/player_hitter_record.js"></script>
+    <link rel="stylesheet" href="/assets/css/record/player_hitter_record_detail.css">
+    <script src="/assets/js/record/player_hitter_record_detail.js"></script>
 </head>
 <body>
     <%@include file="/WEB-INF/views/includes/player_record_title.jsp"%>
