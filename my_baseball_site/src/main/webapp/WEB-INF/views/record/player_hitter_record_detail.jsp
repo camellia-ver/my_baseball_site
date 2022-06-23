@@ -33,8 +33,8 @@
             </select>
         </div>
         <div class="select_data">
-            <a href="/player_pitcher_record">기본기록</a>
-            <a href="/player_pitcher_record_detail">세부기록</a>
+            <a href="/player_hitter_record">기본기록</a>
+            <a href="/player_hitter_record_detail">세부기록</a>
         </div>
     </div>
 </body>

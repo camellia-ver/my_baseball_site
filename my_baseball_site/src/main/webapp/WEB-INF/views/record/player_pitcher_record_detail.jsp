@@ -25,12 +25,6 @@
                 <option value="플레이오프">플레이오프</option>
                 <option value="한국시리즈">한국시리즈</option>
             </select>
-            <select class="form-select" aria-label="Default select example" id="series_position">
-                <option value="전체" selected>전체</option>
-                <option value="포수">포수</option>
-                <option value="내야수">내야수</option>
-                <option value="외야수">외야수</option>
-            </select>
         </div>
         <div class="select_data">
             <a href="/player_pitcher_record">기본기록</a>
