@@ -34,5 +34,9 @@
                 <option value="외야수">외야수</option>
             </select>
         </div>
+        <div class="select_data">
+            <button type="button" class="btn btn-link" id="basic_record">기본기록</button>
+            <button type="button" class="btn btn-link" id="detail_record">세부기록</button>
+        </div>
     </body>
 </html>

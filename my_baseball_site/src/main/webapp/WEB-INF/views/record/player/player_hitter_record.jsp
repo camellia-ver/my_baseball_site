@@ -12,10 +12,6 @@
 <body>
     <%@include file="/WEB-INF/views/includes/player_record_title.jsp"%>
     <div class="contents">
-        <div class="select_data">
-            <a href="/player_hitter_record">기본기록</a>
-            <a href="/player_hitter_record_detail">세부기록</a>
-        </div>
     </div>
 </body>
 </html>

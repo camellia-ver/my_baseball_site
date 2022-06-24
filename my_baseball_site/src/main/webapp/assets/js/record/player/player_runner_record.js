@@ -1,6 +1,8 @@
 $(function(){
     let now = new Date()
 
+    $(".select_data").css("display","none")
+
     $("#series_select").attr("disabled",true)
 
     $("#year_select").html("")

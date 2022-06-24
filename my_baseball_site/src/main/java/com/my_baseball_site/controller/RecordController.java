@@ -50,19 +50,11 @@ public class RecordController {
         return "/record/team/team_runner_record";
     }
 
-    @GetMapping("/player_hitter_record_detail")
-    public String getPlayerHitterRecordDetail(){
-        return "/record/player/player_hitter_record_detail";
-    }
     @GetMapping("/player_hitter_record")
     public String getPlayerHitterRecord(){
         return "/record/player/player_hitter_record";
     }
 
-    @GetMapping("/player_pitcher_record_detail")
-    public String getPlayerPitcherRecordDetail(){
-        return "/record/player/player_pitcher_record_detail";
-    }
     @GetMapping("/player_pitcher_record")
     public String getPlayerPitcherRecord(){
         return "/record/player/player_pitcher_record";
