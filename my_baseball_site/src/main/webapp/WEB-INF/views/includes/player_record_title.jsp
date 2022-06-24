@@ -19,9 +19,6 @@
         </div>
         <div class="search_option">
             <select class="form-select" aria-label="Default select example" id="year_select">
-                <c:forEach items="${regular_serise_year}" var="item">
-                        <option value=${item}>${item}</option>
-                </c:forEach>
             </select>
             <select class="form-select" aria-label="Default select example" id="series_select">
                 <option value="정규시즌" selected>정규시즌</option>
