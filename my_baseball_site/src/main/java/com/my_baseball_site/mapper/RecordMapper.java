@@ -10,7 +10,7 @@ import com.my_baseball_site.vo.TeamPitcherRecordVO;
 import com.my_baseball_site.vo.TeamRunnerRecordVO;
 
 @Mapper
-public interface TeamRecordMapper {
+public interface RecordMapper {
     public List<Integer> selectRegularSeriseYear();
 
     public List<TeamDefenseRecordVO> selectTeamDefenseRecord(String year);

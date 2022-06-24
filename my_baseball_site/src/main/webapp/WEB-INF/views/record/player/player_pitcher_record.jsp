@@ -6,12 +6,16 @@
 <head>
     <meta charset="UTF-8">
     <title>baseball data site</title>
-    <link rel="stylesheet" href="/assets/css/record/player_defense_record.css">
-    <script src="/assets/js/record/player_defense_record.js"></script>
+    <link rel="stylesheet" href="/assets/css/record/player/player_pitcher_record.css">
+    <script src="/assets/js/record/player/player_pitcher_record.js"></script>
 </head>
 <body>
     <%@include file="/WEB-INF/views/includes/player_record_title.jsp"%>
     <div class="contents">
+        <div class="select_data">
+            <a href="/player_pitcher_record">기본기록</a>
+            <a href="/player_pitcher_record_detail">세부기록</a>
+        </div>
     </div>
 </body>
 </html>

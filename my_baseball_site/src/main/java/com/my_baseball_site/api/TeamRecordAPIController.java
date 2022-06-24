@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.my_baseball_site.mapper.TeamRecordMapper;
-import com.my_baseball_site.service.TeamRecordService;
+import com.my_baseball_site.mapper.RecordMapper;
+import com.my_baseball_site.service.RecordService;
 import com.my_baseball_site.vo.TeamDefenseRecordVO;
 import com.my_baseball_site.vo.TeamHitterRecordVO;
 import com.my_baseball_site.vo.TeamPitcherRecordVO;
@@ -19,8 +19,8 @@ import com.my_baseball_site.vo.TeamRunnerRecordVO;
 
 @RestController
 public class TeamRecordAPIController {
-    @Autowired TeamRecordService service;
-    @Autowired TeamRecordMapper mapper;
+    @Autowired RecordService service;
+    @Autowired RecordMapper mapper;
 
     @GetMapping("/team_defense_record/api/{year}")
     public Map<String, Object> getTeamDefenseRecord(

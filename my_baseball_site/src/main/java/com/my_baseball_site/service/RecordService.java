@@ -8,15 +8,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.my_baseball_site.mapper.TeamRecordMapper;
+import com.my_baseball_site.mapper.RecordMapper;
 import com.my_baseball_site.vo.TeamDefenseRecordVO;
 import com.my_baseball_site.vo.TeamHitterRecordVO;
 import com.my_baseball_site.vo.TeamPitcherRecordVO;
 import com.my_baseball_site.vo.TeamRunnerRecordVO;
 
 @Service
-public class TeamRecordService {
-    @Autowired TeamRecordMapper mapper;
+public class RecordService {
+    @Autowired RecordMapper mapper;
 
     public List<TeamDefenseRecordVO> selectTeamDefenseRecord(){
         Calendar now = Calendar.getInstance();
