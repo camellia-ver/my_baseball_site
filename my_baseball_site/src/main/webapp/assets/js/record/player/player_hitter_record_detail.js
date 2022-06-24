@@ -1,6 +1,8 @@
 $(function(){
     let now = new Date()
 
+    $("#series_select").attr("disabled",true)
+
     $("#year_select").html("")
 
     for(let i = now.getFullYear();i >= 1982;i--){

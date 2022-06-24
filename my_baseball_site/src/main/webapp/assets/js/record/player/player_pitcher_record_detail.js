@@ -2,6 +2,7 @@ $(function(){
     let now = new Date()
 
     $("#position_select").attr("disabled",true)
+    $("#series_select").attr("disabled",true)
 
     $("#year_select").html("")
     
