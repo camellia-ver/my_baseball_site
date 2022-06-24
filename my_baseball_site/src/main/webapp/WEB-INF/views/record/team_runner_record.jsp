@@ -12,13 +12,6 @@
 <body>
     <div class="contents">
         <%@include file="/WEB-INF/views/includes/team_record_title.jsp"%>
-        <div class="search_option">
-            <select class="form-select" aria-label="Default select example" id="year_select">
-                <c:forEach items="${regular_serise_year}" var="item">
-                        <option value=${item}>${item}</option>
-                </c:forEach>
-            </select>
-        </div>
         <div class="team_runner_record">
             <table class="table table-striped">
                 <thead>

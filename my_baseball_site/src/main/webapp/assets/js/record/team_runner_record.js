@@ -1,4 +1,6 @@
 $(function(){
+    $("#series_select").attr("disabled",true)
+
     $("#year_select").change(function(){
         let year = $("#year_select option:selected").val()
         getTeamDefenseRecord(year)
