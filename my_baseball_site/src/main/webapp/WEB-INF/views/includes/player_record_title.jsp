@@ -30,7 +30,7 @@
                 <option value="플레이오프">플레이오프</option>
                 <option value="한국시리즈">한국시리즈</option>
             </select>
-            <select class="form-select" aria-label="Default select example" id="series_position">
+            <select class="form-select" aria-label="Default select example" id="position_select">
                 <option value="전체" selected>전체</option>
                 <option value="포수">포수</option>
                 <option value="내야수">내야수</option>
