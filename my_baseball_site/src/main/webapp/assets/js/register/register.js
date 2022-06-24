@@ -8,19 +8,7 @@ $(function(){
         btn_event(-1)
     })
     $("#right_btn").click(function(){
-        let end_date = $("#input_date").attr("max")
-        let endDateArr = end_date.split("-")
-        end_date = endDateArr[0] + endDateArr[1] + endDateArr[2]
-        
-        if(btn_url == end_date)
-        {
-                alert("마지막 날짜 입니다.")
-            btn_date = new Date(btn_date.setDate(btn_date.getDate() + 1))
-        }
-        else
-        {
-            btn_event(1)
-        }
+        btn_event(1)
     })
 
     $("#input_date").change(function(){

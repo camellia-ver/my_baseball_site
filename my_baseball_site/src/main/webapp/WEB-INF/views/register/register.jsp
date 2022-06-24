@@ -20,7 +20,7 @@
             </div>
             <div class="today">
                 <p id="print_today">${today_register[0].print_date}</p><br>
-                <input type="date" id="input_date" class="form-control" aria-describedby="basic-addon1" max=${today_register[0].max_date} value=${today_register[0].max_date}>
+                <input type="date" id="input_date" class="form-control" aria-describedby="basic-addon1" value=${today_register[0].max_date}>
             </div>
             <div class="btn_right">
                 <button class="btn btn-primary" type="submit" id="right_btn">></button>
