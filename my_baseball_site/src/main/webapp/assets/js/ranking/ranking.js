@@ -137,6 +137,17 @@ $(function(){
 
         return print_date
     }
+    function createInputDateFormat(now){
+        let today = now.getFullYear().toString() 
+            
+        if(now.getMonth() < 10) today += "-" +  "0" + (now.getMonth() + 1).toString()
+        else today += "-" + now.getMonth().toString()
+        
+        if(now.getDate() < 10) today += "-" +  "0" + now.getDate().toString()
+        else today += "-" + now.getDate().toString()
+
+        return today
+    }
 
     function getRanking(date){
         $("#ranking_tbody").html("")
@@ -192,6 +203,8 @@ $(function(){
         $("#print_today").append(printToday(btn_date))
         $("#print_date").html("")
         $("#print_date").append(printDate(btn_date))
+
+        $("#input_date").val(createInputDateFormat(btn_date))
 
         getRanking(btn_url)
     }

@@ -43,6 +43,17 @@ $(function(){
 
         return today
     }
+    function createInputDateFormat(now){
+        let today = now.getFullYear().toString() 
+            
+        if(now.getMonth() < 10) today += "-" +  "0" + (now.getMonth() + 1).toString()
+        else today += "-" + now.getMonth().toString()
+        
+        if(now.getDate() < 10) today += "-" +  "0" + now.getDate().toString()
+        else today += "-" + now.getDate().toString()
+
+        return today
+    }
     function printDate(now){
         let print_date
         if(now.getMonth() < 10) 
@@ -74,20 +85,15 @@ $(function(){
         return print_date
     }
     function btn_event(minus_or_plus_day){
-        let today = new Date()
-        if(btn_url == createToday(today)){
-            btn_date = new Date(btn_date.setDate(btn_date.getDate() + minus_or_plus_day-1))
-            btn_url = createToday(btn_date)
-        }
-        else{
-            btn_date = new Date(btn_date.setDate(btn_date.getDate() + minus_or_plus_day))
-            btn_url = createToday(btn_date)
-        }
+        btn_date = new Date(btn_date.setDate(btn_date.getDate() + minus_or_plus_day))
+        btn_url = createToday(btn_date)
 
         $("#print_today").html("")
         $("#print_today").append(printToday(btn_date))
         $("#print_date").html("")
         $("#print_date").append(printDate(btn_date))
+
+        $("#input_date").val(createInputDateFormat(btn_date))
 
         getRegister(btn_url)
     }
