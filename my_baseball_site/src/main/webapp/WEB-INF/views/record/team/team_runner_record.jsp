@@ -33,7 +33,7 @@
                             <td>${item.trr_G}</td>
                             <td>${item.trr_SBA}</td>
                             <td>${item.trr_SB}</td>
-                            <td>${item.trr_SB_PERSENT}</td>
+                            <td>${item.print_sb_persent}</td>
                             <td>${item.trr_CS}</td>
                             <td>${item.trr_OOB}</td>
                             <td>${item.trr_PKO}</td>

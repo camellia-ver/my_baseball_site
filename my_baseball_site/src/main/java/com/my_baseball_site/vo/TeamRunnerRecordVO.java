@@ -16,4 +16,6 @@ public class TeamRunnerRecordVO {
     private Integer trr_OOB;
     private Integer trr_PKO;
     private Year tdr_year;
+
+    private String print_sb_persent;
 }

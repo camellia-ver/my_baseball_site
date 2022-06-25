@@ -44,7 +44,7 @@ public class RecordAPIController {
     ){
         Map<String, Object> resultMap = new LinkedHashMap<String,Object>();
 
-        List<TeamRunnerRecordVO> list = mapper.selectTeamRunnerRecord(year);
+        List<TeamRunnerRecordVO> list = service.selectTeamRunnerRecord(year);
 
         resultMap.put("status", true);
         resultMap.put("data", list);

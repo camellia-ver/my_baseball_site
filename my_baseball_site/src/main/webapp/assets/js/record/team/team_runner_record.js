@@ -20,7 +20,7 @@ $(function(){
                         '<td>'+r.data[i].trr_G+'</td>'+
                         '<td>'+r.data[i].trr_SBA+'</td>'+
                         '<td>'+r.data[i].trr_SB+'</td>'+
-                        '<td>'+r.data[i].trr_SB_PERSENT+'</td>'+
+                        '<td>'+r.data[i].print_sb_persent+'</td>'+
                         '<td>'+r.data[i].trr_CS+'</td>'+
                         '<td>'+r.data[i].trr_OOB+'</td>'+
                         '<td>'+r.data[i].trr_PKO+'</td>'+

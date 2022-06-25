@@ -52,8 +52,24 @@ public class RecordService {
         Calendar now = Calendar.getInstance();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
         String cur_year = formatter.format(now.getTime());
+        DecimalFormat n_formatter = new DecimalFormat("0.0");
 
         List<TeamRunnerRecordVO> list = mapper.selectTeamRunnerRecord(cur_year);
+
+        for(TeamRunnerRecordVO item:list){
+            item.setPrint_sb_persent(n_formatter.format(item.getTrr_SB_PERSENT()));
+        }
+
+        return list;
+    }
+    public List<TeamRunnerRecordVO> selectTeamRunnerRecord(String year){
+        DecimalFormat n_formatter = new DecimalFormat("0.0");
+
+        List<TeamRunnerRecordVO> list = mapper.selectTeamRunnerRecord(year);
+
+        for(TeamRunnerRecordVO item:list){
+            item.setPrint_sb_persent(n_formatter.format(item.getTrr_SB_PERSENT()));
+        }
 
         return list;
     }
