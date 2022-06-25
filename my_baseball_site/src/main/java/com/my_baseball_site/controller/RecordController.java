@@ -61,7 +61,9 @@ public class RecordController {
     }
 
     @GetMapping("/player_defense_record")
-    public String getPlayerDefenseRecord(){
+    public String getPlayerDefenseRecord(Model model){
+        model.addAttribute("defense", service.selectPlayerDefenseRecord());
+
         return "/record/player/player_defense_record";
     }
 

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.my_baseball_site.mapper.RecordMapper;
+import com.my_baseball_site.vo.PlayerDefensRecordVO;
 import com.my_baseball_site.vo.TeamDefenseRecordVO;
 import com.my_baseball_site.vo.TeamHitterRecordVO;
 import com.my_baseball_site.vo.TeamPitcherRecordVO;
@@ -129,6 +130,51 @@ public class RecordService {
                 item.setPrint_whip(n_formatter.format(item.getTpr_WHIP()));
                 item.setPrint_avg(n_formatter2.format(item.getTpr_AVG()));
             }
+        }
+
+        return list;
+    }
+
+    public List<PlayerDefensRecordVO> selectPlayerDefenseRecord(){
+        Calendar now = Calendar.getInstance();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
+        String cur_year = formatter.format(now.getTime());
+
+        DecimalFormat n_formatter = new DecimalFormat("0.0");
+        DecimalFormat n_formatter2 = new DecimalFormat("0.000");
+        
+        List<PlayerDefensRecordVO> list = mapper.selectPlayerDefenseRecord(cur_year, "전체");
+    
+        for(PlayerDefensRecordVO item:list){
+            item.setPrint_fpct(n_formatter2.format(item.getPdr_FPCT()));
+            item.setPrint_cs_persent(n_formatter.format(item.getPdr_CS_PERSENT()));
+        }
+
+        return list;
+    }
+    public List<PlayerDefensRecordVO> selectPlayerDefenseRecord(String year,String position){
+        DecimalFormat n_formatter = new DecimalFormat("0.0");
+        DecimalFormat n_formatter2 = new DecimalFormat("0.000");
+        
+        List<PlayerDefensRecordVO> list = null;
+
+        if(position.equals("전체") || position.equals("포수"))
+            list = mapper.selectPlayerDefenseRecord(year, position);
+        else if(position.equals("내야수")){
+            list = mapper.selectPlayerDefenseRecord(year, "1루수");
+            list.addAll(mapper.selectPlayerDefenseRecord(year, "2루수"));
+            list.addAll(mapper.selectPlayerDefenseRecord(year, "3루수"));
+            list.addAll(mapper.selectPlayerDefenseRecord(year, "유격수"));
+        }
+        else if(position.equals("외야수")){
+            list = mapper.selectPlayerDefenseRecord(year, "좌익수");
+            list.addAll(mapper.selectPlayerDefenseRecord(year, "중견수"));
+            list.addAll(mapper.selectPlayerDefenseRecord(year, "우익수"));
+        }
+    
+        for(PlayerDefensRecordVO item:list){
+            item.setPrint_fpct(n_formatter2.format(item.getPdr_FPCT()));
+            item.setPrint_cs_persent(n_formatter.format(item.getPdr_CS_PERSENT()));
         }
 
         return list;

@@ -12,13 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.my_baseball_site.mapper.RecordMapper;
 import com.my_baseball_site.service.RecordService;
+import com.my_baseball_site.vo.PlayerDefensRecordVO;
 import com.my_baseball_site.vo.TeamDefenseRecordVO;
 import com.my_baseball_site.vo.TeamHitterRecordVO;
 import com.my_baseball_site.vo.TeamPitcherRecordVO;
 import com.my_baseball_site.vo.TeamRunnerRecordVO;
 
 @RestController
-public class TeamRecordAPIController {
+public class RecordAPIController {
     @Autowired RecordService service;
     @Autowired RecordMapper mapper;
 
@@ -73,6 +74,21 @@ public class TeamRecordAPIController {
         Map<String, Object> resultMap = new LinkedHashMap<String,Object>();
 
         List<TeamPitcherRecordVO> list = service.selectTeamPitcherRecord(year, series);
+        
+        resultMap.put("status", true);
+        resultMap.put("data", list);
+        
+        return resultMap;
+    }
+
+    @GetMapping("/player_defense_record/api/list")
+    public Map<String, Object> getPlayerDefenseRecord(
+        @RequestParam String year,
+        @RequestParam String position
+    ){
+        Map<String, Object> resultMap = new LinkedHashMap<String,Object>();
+
+        List<PlayerDefensRecordVO> list = service.selectPlayerDefenseRecord(year, position);
         
         resultMap.put("status", true);
         resultMap.put("data", list);
