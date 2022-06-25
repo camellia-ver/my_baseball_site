@@ -27,4 +27,10 @@
             and pdr_position = #{position}
         </if>
     </select>
+    <select id="selectPlayerRunnerRecord" resultType="com.my_baseball_site.vo.PlayerRunnerRecordVO">
+        select * from player_runner_record where prr_year = #{year}
+        <if test="!position.equals('전체')">
+            and prr_position = #{position}
+        </if>
+    </select>
 </mapper>

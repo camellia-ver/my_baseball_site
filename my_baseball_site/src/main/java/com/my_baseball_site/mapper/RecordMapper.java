@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.my_baseball_site.vo.PlayerDefensRecordVO;
+import com.my_baseball_site.vo.PlayerRunnerRecordVO;
 import com.my_baseball_site.vo.TeamDefenseRecordVO;
 import com.my_baseball_site.vo.TeamHitterRecordVO;
 import com.my_baseball_site.vo.TeamPitcherRecordVO;
@@ -20,4 +21,5 @@ public interface RecordMapper {
     public List<TeamPitcherRecordVO> selectTeamPitcherRecord(String year,String series);
 
     public List<PlayerDefensRecordVO> selectPlayerDefenseRecord(String year,String position);
+    public List<PlayerRunnerRecordVO> selectPlayerRunnerRecord(String year,String position);
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.my_baseball_site.mapper.RecordMapper;
 import com.my_baseball_site.vo.PlayerDefensRecordVO;
+import com.my_baseball_site.vo.PlayerRunnerRecordVO;
 import com.my_baseball_site.vo.TeamDefenseRecordVO;
 import com.my_baseball_site.vo.TeamHitterRecordVO;
 import com.my_baseball_site.vo.TeamPitcherRecordVO;
@@ -175,6 +176,33 @@ public class RecordService {
         for(PlayerDefensRecordVO item:list){
             item.setPrint_fpct(n_formatter2.format(item.getPdr_FPCT()));
             item.setPrint_cs_persent(n_formatter.format(item.getPdr_CS_PERSENT()));
+        }
+
+        return list;
+    }
+
+    public List<PlayerRunnerRecordVO> selectPlayerRunnerRecord(){
+        Calendar now = Calendar.getInstance();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
+        String cur_year = formatter.format(now.getTime());
+
+        DecimalFormat n_formatter = new DecimalFormat("0.0");
+        
+        List<PlayerRunnerRecordVO> list = mapper.selectPlayerRunnerRecord(cur_year, "전체");
+    
+        for(PlayerRunnerRecordVO item:list){
+            item.setPrint_sb_persent(n_formatter.format(item.getPrr_SB_PERSENT()));
+        }
+
+        return list;
+    }
+    public List<PlayerRunnerRecordVO> selectPlayerRunnerRecord(String year,String position){
+        DecimalFormat n_formatter = new DecimalFormat("0.0");
+        
+        List<PlayerRunnerRecordVO> list = mapper.selectPlayerRunnerRecord(year, position);
+    
+        for(PlayerRunnerRecordVO item:list){
+            item.setPrint_sb_persent(n_formatter.format(item.getPrr_SB_PERSENT()));
         }
 
         return list;

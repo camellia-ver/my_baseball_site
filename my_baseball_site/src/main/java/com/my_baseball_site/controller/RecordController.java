@@ -68,7 +68,9 @@ public class RecordController {
     }
 
     @GetMapping("/player_runner_record")
-    public String getPlayerRunnerRecord(){
+    public String getPlayerRunnerRecord(Model model){
+        model.addAttribute("runner",service.selectPlayerRunnerRecord());
+
         return "/record/player/player_runner_record";
     }
 }
