@@ -37,16 +37,13 @@ $(function(){
                 console.log(r) 
                 let sb_persent          
                 for(let i = 0;i < r.data.length;i++){                    
-                    if(r.data[i].print_sb_persent == '-1.0') sb_persent = '-'
-                    else sb_persent = r.data[i].print_sb_persent
-
                     let tag = 
                     '<tr>'+
                         '<td>'+r.data[i].prr_player_name+'</td>'+
                         '<td>'+r.data[i].prr_G+'</td>'+
                         '<td>'+r.data[i].prr_SBA+'</td>'+
                         '<td>'+r.data[i].prr_SB+'</td>'+
-                        '<td>'+sb_persent+'</td>'+
+                        '<td>'+r.data[i].print_sb_persent+'</td>'+
                         '<td>'+r.data[i].prr_CS+'</td>'+
                         '<td>'+r.data[i].prr_OOB+'</td>'+
                         '<td>'+r.data[i].prr_PKO+'</td>'+

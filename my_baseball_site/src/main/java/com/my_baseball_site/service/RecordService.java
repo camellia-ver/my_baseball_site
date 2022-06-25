@@ -203,22 +203,33 @@ public class RecordService {
         String cur_year = formatter.format(now.getTime());
 
         DecimalFormat n_formatter = new DecimalFormat("0.0");
-        
+        String print_sb_persent;
+
         List<PlayerRunnerRecordVO> list = mapper.selectPlayerRunnerRecord(cur_year, "전체");
     
         for(PlayerRunnerRecordVO item:list){
-            item.setPrint_sb_persent(n_formatter.format(item.getPrr_SB_PERSENT()));
+            print_sb_persent = n_formatter.format(item.getPrr_SB_PERSENT());
+
+            if(print_sb_persent.equals("-1.0"))
+                print_sb_persent = "-";
+
+            item.setPrint_sb_persent(print_sb_persent);
         }
 
         return list;
     }
     public List<PlayerRunnerRecordVO> selectPlayerRunnerRecord(String year,String position){
         DecimalFormat n_formatter = new DecimalFormat("0.0");
-        
+        String print_sb_persent;
+
         List<PlayerRunnerRecordVO> list = mapper.selectPlayerRunnerRecord(year, position);
     
         for(PlayerRunnerRecordVO item:list){
-            item.setPrint_sb_persent(n_formatter.format(item.getPrr_SB_PERSENT()));
+            print_sb_persent = n_formatter.format(item.getPrr_SB_PERSENT());
+
+            if(print_sb_persent.equals("-1.0"))
+                print_sb_persent = "-";
+
         }
 
         return list;

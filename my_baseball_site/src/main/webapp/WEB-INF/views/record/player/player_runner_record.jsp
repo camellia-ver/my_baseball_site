@@ -33,12 +33,7 @@
                             <td>${item.prr_G}</td>
                             <td>${item.prr_SBA}</td>
                             <td>${item.prr_SB}</td>
-                            <c:if test="${item.print_sb_persent != '-1.0'}">
-                                <td>${item.print_sb_persent}</td>
-                            </c:if>
-                            <c:if test="${item.print_sb_persent == '-1.0'}">
-                                <td>-</td>
-                            </c:if>
+                            <td>${item.print_sb_persent}</td>
                             <td>${item.prr_CS}</td>
                             <td>${item.prr_OOB}</td>
                             <td>${item.prr_PKO}</td>
