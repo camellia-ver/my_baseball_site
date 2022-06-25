@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.my_baseball_site.mapper.RecordMapper;
 import com.my_baseball_site.service.RecordService;
 import com.my_baseball_site.vo.PlayerDefensRecordVO;
+import com.my_baseball_site.vo.PlayerHitterRecordBasicVO;
+import com.my_baseball_site.vo.PlayerHitterRecordDetailVO;
 import com.my_baseball_site.vo.PlayerRunnerRecordVO;
 import com.my_baseball_site.vo.TeamDefenseRecordVO;
 import com.my_baseball_site.vo.TeamHitterRecordVO;
@@ -105,6 +107,36 @@ public class RecordAPIController {
         Map<String, Object> resultMap = new LinkedHashMap<String,Object>();
 
         List<PlayerRunnerRecordVO> list = service.selectPlayerRunnerRecord(year, position);
+        
+        resultMap.put("status", true);
+        resultMap.put("data", list);
+        
+        return resultMap;
+    }
+
+    @GetMapping("/player_hitter_record/api/basic")
+    public Map<String, Object> getPlayerHitterRecordBasic(
+        @RequestParam String year,
+        @RequestParam String series,
+        @RequestParam String position
+    ){
+        Map<String, Object> resultMap = new LinkedHashMap<String,Object>();
+
+        List<PlayerHitterRecordBasicVO> list = service.selectPlayerHitterRecordBasic(year, series, position);
+        
+        resultMap.put("status", true);
+        resultMap.put("data", list);
+        
+        return resultMap;
+    }
+    @GetMapping("/player_hitter_record/api/detail")
+    public Map<String, Object> getPlayerHitterRecordDtail(
+        @RequestParam String year,
+        @RequestParam String position
+    ){
+        Map<String, Object> resultMap = new LinkedHashMap<String,Object>();
+
+        List<PlayerHitterRecordDetailVO> list = service.selectPlayerHitterRecordDetail(year, position);
         
         resultMap.put("status", true);
         resultMap.put("data", list);

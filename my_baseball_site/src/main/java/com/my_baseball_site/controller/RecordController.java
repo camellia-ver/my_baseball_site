@@ -51,7 +51,9 @@ public class RecordController {
     }
 
     @GetMapping("/player_hitter_record")
-    public String getPlayerHitterRecord(){
+    public String getPlayerHitterRecord(Model model){
+        model.addAttribute("hitter", service.selectPlayerHitterRecordBasic());
+
         return "/record/player/player_hitter_record";
     }
 

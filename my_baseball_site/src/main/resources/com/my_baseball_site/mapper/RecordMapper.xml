@@ -15,10 +15,12 @@
         select * from team_runner_record where trr_year = #{year}
     </select>
     <select id="selectTeamHitterRecord" resultType="com.my_baseball_site.vo.TeamHitterRecordVO">
-        select * from team_hitter_record where thr_year = #{year} and thr_series = #{series}
+        select * from team_hitter_record 
+        where thr_year = #{year} and thr_series = #{series}
     </select>
     <select id="selectTeamPitcherRecord" resultType="com.my_baseball_site.vo.TeamPitcherRecordVO">
-        select * from team_pitcher_record where tpr_year = #{year} and tpr_series = #{series}
+        select * from team_pitcher_record 
+        where tpr_year = #{year} and tpr_series = #{series}
     </select>
     
     <select id="selectPlayerDefenseRecord" resultType="com.my_baseball_site.vo.PlayerDefensRecordVO">
@@ -31,6 +33,20 @@
         select * from player_runner_record where prr_year = #{year}
         <if test="!position.equals('전체')">
             and prr_position = #{position}
+        </if>
+    </select>
+    <select id="selectPlayerHitterRecordBasic" resultType="com.my_baseball_site.vo.PlayerHitterRecordBasicVO">
+        select * from player_hitter_record_basic 
+        where phrb_year = #{year} and phrb_series = #{series}
+        <if test="!position.equals('전체')">
+            and phrb_position = #{position}
+        </if>
+    </select>
+    <select id="selectPlayerHitterRecordDetail" resultType="com.my_baseball_site.vo.PlayerHitterRecordDetailVO">
+        select * from player_hitter_record_detail 
+        where phrb_year = #{year}
+        <if test="!position.equals('전체')">
+            and phrb_position = #{position}
         </if>
     </select>
 </mapper>
