@@ -72,7 +72,7 @@
                             <td>${item.print_risp}</td>
                             <td>${item.print_ph_ba}</td>
                         </tr>
-                    </c:forEach>`
+                    </c:forEach>
                 </tbody>
             </table>
             <table class="table table-striped" id="before_2002">
@@ -118,20 +118,6 @@
                 </thead>
                 <tbody id="detail_tdody">
                 </tbody>
-            </table>
-            <table class="table table-striped" id="other_serise">
-              <thead>
-                <tr>
-                  <th scope="col">이름</th>
-                  <th scope="col">AVG</th>
-                </tr>
-              </thead>
-              <tbody id="after_2002_tdody">
-                <tr>
-                  <td>${item.phrb_player_name}</td>
-                  <td>${item.print_avg}</td>
-                </tr>
-              </tbody>
             </table>
         </div>
     </div>

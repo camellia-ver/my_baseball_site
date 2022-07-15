@@ -297,7 +297,7 @@ public class RecordService {
     public List<PlayerHitterRecordBasicVO> selectPlayerHitterRecordBasic(String year,String series,String position){
         DecimalFormat n_formatter = new DecimalFormat("0.000");
         String print_formatting;
-
+        
         List<PlayerHitterRecordBasicVO> list = mapper.selectPlayerHitterRecordBasic(year,series,position);
         
         for(PlayerHitterRecordBasicVO item:list){
@@ -309,40 +309,66 @@ public class RecordService {
             item.setPrint_avg(print_formatting);
             
             if(item.getPhrb_year() > 2002){
-                print_formatting = n_formatter.format(item.getPhrb_SLG());
-                if(print_formatting.equals("-1.000"))
-                    print_formatting = "-";
-                else if(print_formatting.equals("0.000"))
-                    print_formatting = "0";
-                item.setPrint_slg(print_formatting);
-
-                print_formatting = n_formatter.format(item.getPhrb_OBP());
-                if(print_formatting.equals("-1.000"))
-                    print_formatting = "-";
-                else if(print_formatting.equals("0.000"))
-                    print_formatting = "0";
-                item.setPrint_obp(print_formatting);
-
-                print_formatting = n_formatter.format(item.getPhrb_OPS());
-                if(print_formatting.equals("-1.000"))
-                    print_formatting = "-";
-                else if(print_formatting.equals("0.000"))
-                    print_formatting = "0";
-                item.setPrint_ops(print_formatting);
-
-                print_formatting = n_formatter.format(item.getPhrb_RISP());
-                if(print_formatting.equals("-1.000"))
-                    print_formatting = "-";
-                else if(print_formatting.equals("0.000"))
-                    print_formatting = "0";
-                item.setPrint_risp(print_formatting);
-
-                print_formatting = n_formatter.format(item.getPhrb_PH_BA());
-                if(print_formatting.equals("-1.000"))
-                    print_formatting = "-";
-                else if(print_formatting.equals("0.000"))
-                    print_formatting = "0";
-                item.setPrint_ph_ba(print_formatting);
+                if(item.getPhrb_SLG() == null){
+                    item.setPrint_slg("-");
+                }
+                else{
+                    print_formatting = n_formatter.format(item.getPhrb_SLG());
+                    if(print_formatting.equals("-1.000"))
+                        print_formatting = "-";
+                    else if(print_formatting.equals("0.000"))
+                        print_formatting = "0";
+                    item.setPrint_slg(print_formatting);
+                }
+                
+                if(item.getPhrb_OBP() == null){
+                    item.setPrint_obp("-");
+                }
+                else{
+                    print_formatting = n_formatter.format(item.getPhrb_OBP());
+                    if(print_formatting.equals("-1.000"))
+                        print_formatting = "-";
+                    else if(print_formatting.equals("0.000"))
+                        print_formatting = "0";
+                    item.setPrint_obp(print_formatting);
+                }
+                
+                if(item.getPhrb_OPS() == null){
+                    item.setPrint_ops("-");
+                }
+                else{
+                    print_formatting = n_formatter.format(item.getPhrb_OPS());
+                    if(print_formatting.equals("-1.000"))
+                        print_formatting = "-";
+                    else if(print_formatting.equals("0.000"))
+                        print_formatting = "0";
+                    item.setPrint_ops(print_formatting);
+                }
+                
+                if(item.getPhrb_RISP() == null){
+                    item.setPrint_risp("-");
+                }
+                else{
+                    print_formatting = n_formatter.format(item.getPhrb_RISP());
+                    if(print_formatting.equals("-1.000"))
+                        print_formatting = "-";
+                    else if(print_formatting.equals("0.000"))
+                        print_formatting = "0";
+                    item.setPrint_risp(print_formatting);
+                }
+             
+                if(item.getPhrb_PH_BA() == null){
+                    item.setPrint_ph_ba("-");
+                }
+                else{
+                    print_formatting = n_formatter.format(item.getPhrb_PH_BA());
+                    if(print_formatting.equals("-1.000"))
+                        print_formatting = "-";
+                    else if(print_formatting.equals("0.000"))
+                        print_formatting = "0";
+                    item.setPrint_ph_ba(print_formatting);
+                }
+           
             }
         }
         
@@ -436,15 +462,25 @@ public class RecordService {
             item.setPrint_wpct(print_formatting);
 
             if(item.getPprb_year() > 2002){
-                print_formatting = n_formatter2.format(item.getPprb_WHIP());
-                if(print_formatting.equals("-1.00")) print_formatting = "-";
-                else if(print_formatting.equals("0.00")) print_formatting = "0";
-                item.setPrint_whip(print_formatting);
+                if(item.getPprb_WHIP() == null){
+                    item.setPrint_whip("-");
+                }
+                else{
+                    print_formatting = n_formatter2.format(item.getPprb_WHIP());
+                    if(print_formatting.equals("-1.00")) print_formatting = "-";
+                    else if(print_formatting.equals("0.00")) print_formatting = "0";
+                    item.setPrint_whip(print_formatting);
+                }
 
-                print_formatting = n_formatter.format(item.getPprb_AVG());
-                if(print_formatting.equals("-1.000")) print_formatting = "-";
-                else if(print_formatting.equals("0.000")) print_formatting = "0";
-                item.setPrint_avg(print_formatting);
+                if(item.getPprb_AVG() == null){
+                    item.setPrint_avg("-");
+                }
+                else{
+                    print_formatting = n_formatter.format(item.getPprb_AVG());
+                    if(print_formatting.equals("-1.000")) print_formatting = "-";
+                    else if(print_formatting.equals("0.000")) print_formatting = "0";
+                    item.setPrint_avg(print_formatting);
+                }
             }
         }
         

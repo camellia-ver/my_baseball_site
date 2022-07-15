@@ -39,22 +39,31 @@ $(function(){
         }
     })
     $("#series_select").change(function(){
-        // 정규시즌 외의 출력 수정
         let year = $("#year_select").val()
         let series = $("#series_select").val()
         let position = $("#position_select").val()
-
-        if(year > 2002){
-            $("#before_2002").css("display","none")
-            $("#after_2002").css("display","table")
-            $("#detail").css("display","none")
-            after2002(year,series,position)
-        }
-        else{
+        
+        if(series != "정규시즌"){
+            $(".select_data").css("display","none")
             $("#before_2002").css("display","table")
             $("#after_2002").css("display","none")
             $("#detail").css("display","none")
             before2002(year,series,position)
+        }
+        else{
+            $(".select_data").css("display","block")
+            if(year > 2002){
+                $("#before_2002").css("display","none")
+                $("#after_2002").css("display","table")
+                $("#detail").css("display","none")
+                after2002(year,series,position)
+            }
+            else{
+                $("#before_2002").css("display","table")
+                $("#after_2002").css("display","none")
+                $("#detail").css("display","none")
+                before2002(year,series,position)
+            }
         }
     })
     $("#position_select").change(function(){
@@ -153,31 +162,31 @@ $(function(){
                 for(let i = 0;i < r.data.length;i++){
                     let tag = 
                     '<tr>'+
-                        +'<td>'+r.data[i].phrb_player_name+'</td>'
-                        +'<td>'+r.data[i].print_avg+'</td>'
-                        +'<td>'+r.data[i].phrb_G+'</td>'
-                        +'<td>'+r.data[i].phrb_PA+'</td>'
-                        +'<td>'+r.data[i].phrb_AB+'</td>'
-                        +'<td>'+r.data[i].phrb_R+'</td>'
-                        +'<td>'+r.data[i].phrb_H+'</td>'
-                        +'<td>'+r.data[i].phrb_2B+'</td>'
-                        +'<td>'+r.data[i].phrb_3B+'</td>'
-                        +'<td>'+r.data[i].phrb_HR+'</td>'
-                        +'<td>'+r.data[i].phrb_TB+'</td>'
-                        +'<td>'+r.data[i].phrb_RBI+'</td>'
-                        +'<td>'+r.data[i].phrb_SAC+'</td>'
-                        +'<td>'+r.data[i].phrb_SF+'</td>'
-                        +'<td>'+r.data[i].phrb_BB+'</td>'
-                        +'<td>'+r.data[i].phrb_IBB+'</td>'
-                        +'<td>'+r.data[i].phrb_HBP+'</td>'
-                        +'<td>'+r.data[i].phrb_SO+'</td>'
-                        +'<td>'+r.data[i].phrb_GDP+'</td>'
-                        +'<td>'+r.data[i].print_slg+'</td>'
-                        +'<td>'+r.data[i].print_obp+'</td>'
-                        +'<td>'+r.data[i].print_ops+'</td>'
-                        +'<td>'+r.data[i].phrb_MH+'</td>'
-                        +'<td>'+r.data[i].print_risp+'</td>'
-                        +'<td>'+r.data[i].print_ph_ba+'</td>'
+                        '<td>'+r.data[i].phrb_player_name+'</td>'+
+                        '<td>'+r.data[i].print_avg+'</td>'+
+                        '<td>'+r.data[i].phrb_G+'</td>'+
+                        '<td>'+r.data[i].phrb_PA+'</td>'+
+                        '<td>'+r.data[i].phrb_AB+'</td>'+
+                        '<td>'+r.data[i].phrb_R+'</td>'+
+                        '<td>'+r.data[i].phrb_H+'</td>'+
+                        '<td>'+r.data[i].phrb_2B+'</td>'+
+                        '<td>'+r.data[i].phrb_3B+'</td>'+
+                        '<td>'+r.data[i].phrb_HR+'</td>'+
+                        '<td>'+r.data[i].phrb_TB+'</td>'+
+                        '<td>'+r.data[i].phrb_RBI+'</td>'+
+                        '<td>'+r.data[i].phrb_SAC+'</td>'+
+                        '<td>'+r.data[i].phrb_SF+'</td>'+
+                        '<td>'+r.data[i].phrb_BB+'</td>'+
+                        '<td>'+r.data[i].phrb_IBB+'</td>'+
+                        '<td>'+r.data[i].phrb_HBP+'</td>'+
+                        '<td>'+r.data[i].phrb_SO+'</td>'+
+                        '<td>'+r.data[i].phrb_GDP+'</td>'+
+                        '<td>'+r.data[i].print_slg+'</td>'+
+                        '<td>'+r.data[i].print_obp+'</td>'+
+                        '<td>'+r.data[i].print_ops+'</td>'+
+                        '<td>'+r.data[i].phrb_MH+'</td>'+
+                        '<td>'+r.data[i].print_risp+'</td>'+
+                        '<td>'+r.data[i].print_ph_ba+'</td>'+
                     '</tr>'
 
                     $("#after_2002_tdody").append(tag)

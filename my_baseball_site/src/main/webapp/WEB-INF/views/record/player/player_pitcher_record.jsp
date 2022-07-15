@@ -131,20 +131,6 @@
                 <tbody id="detail_tdody">
                 </tbody>
             </table>
-            <table class="table table-striped" id="other_serise">
-              <thead>
-                <tr>
-                  <th scope="col">이름</th>
-                  <th scope="col">AVG</th>
-                </tr>
-              </thead>
-              <tbody id="after_2002_tdody">
-                <tr>
-                  <td>${item.phrb_player_name}</td>
-                  <td>${item.print_avg}</td>
-                </tr>
-              </tbody>
-            </table>
         </div>
     </div>
 </body>
