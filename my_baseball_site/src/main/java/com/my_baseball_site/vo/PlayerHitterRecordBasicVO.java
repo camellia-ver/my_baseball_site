@@ -1,6 +1,5 @@
 package com.my_baseball_site.vo;
 
-import java.time.Year;
 import java.util.Date;
 
 import lombok.Data;
@@ -36,7 +35,7 @@ public class PlayerHitterRecordBasicVO {
     private Integer phrb_MH;
     private Float phrb_RISP;
     private Float phrb_PH_BA;
-    private Year phrb_year;
+    private Integer phrb_year;
     private String phrb_series;
     private Date phrb_birth;
     private String phrb_position;

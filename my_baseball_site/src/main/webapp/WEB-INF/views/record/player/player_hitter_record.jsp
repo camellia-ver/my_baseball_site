@@ -98,32 +98,12 @@
                   </tr>
                 </thead>
                 <tbody id="before_2002_tdody">
-                    <tr>
-                        <td>${item.phrb_player_name}</td>
-                        <td>${item.print_avg}</td>
-                        <td>${item.phrb_G}</td>
-                        <td>${item.phrb_PA}</td>
-                        <td>${item.phrb_AB}</td>
-                        <td>${item.phrb_H}</td>
-                        <td>${item.phrb_2B}</td>
-                        <td>${item.phrb_3B}</td>
-                        <td>${item.phrb_HR}</td>
-                        <td>${item.phrb_RBI}</td>
-                        <td>${item.phrb_SB}</td>
-                        <td>${item.phrb_CS}</td>
-                        <td>${item.phrb_BB}</td>
-                        <td>${item.phrb_HBP}</td>
-                        <td>${item.phrb_SO}</td>
-                        <td>${item.phrb_GDP}</td>
-                        <td>${item.phrb_E}</td>
-                    </tr>
                 </tbody>
             </table>
             <table class="table table-striped" id="detail">
                 <thead>
                   <tr>
                     <th scope="col">이름</th>
-                    <th scope="col">AVG</th>
                     <th scope="col">XBH</th>
                     <th scope="col">GO</th>
                     <th scope="col">AO</th>

@@ -44,7 +44,7 @@
     </select>
     <select id="selectPlayerHitterRecordDetail" resultType="com.my_baseball_site.vo.PlayerHitterRecordDetailVO">
         select * from player_hitter_record_detail 
-        where phrb_year = #{year}
+        where phrd_year = #{year}
         <if test="!position.equals('전체')">
             and phrb_position = #{position}
         </if>

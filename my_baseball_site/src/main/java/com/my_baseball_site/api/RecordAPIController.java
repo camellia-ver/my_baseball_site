@@ -137,7 +137,7 @@ public class RecordAPIController {
         Map<String, Object> resultMap = new LinkedHashMap<String,Object>();
 
         List<PlayerHitterRecordDetailVO> list = service.selectPlayerHitterRecordDetail(year, position);
-        
+        System.out.println(list);
         resultMap.put("status", true);
         resultMap.put("data", list);
         
