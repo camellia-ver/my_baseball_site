@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Mapper;
 import com.my_baseball_site.vo.PlayerDefensRecordVO;
 import com.my_baseball_site.vo.PlayerHitterRecordBasicVO;
 import com.my_baseball_site.vo.PlayerHitterRecordDetailVO;
+import com.my_baseball_site.vo.PlayerPitcherRecordBasicVO;
+import com.my_baseball_site.vo.PlayerPitcherRecordDetailVO;
 import com.my_baseball_site.vo.PlayerRunnerRecordVO;
 import com.my_baseball_site.vo.TeamDefenseRecordVO;
 import com.my_baseball_site.vo.TeamHitterRecordVO;
@@ -26,4 +28,6 @@ public interface RecordMapper {
     public List<PlayerRunnerRecordVO> selectPlayerRunnerRecord(String year,String position);
     public List<PlayerHitterRecordBasicVO> selectPlayerHitterRecordBasic(String year,String series,String position);
     public List<PlayerHitterRecordDetailVO> selectPlayerHitterRecordDetail(String year,String position);
+    public List<PlayerPitcherRecordBasicVO> selectPlayerPitcherRecordBasic(String year,String series,String position);
+    public List<PlayerPitcherRecordDetailVO> selectPlayerPitcherRecordDetail(String year,String position);
 }

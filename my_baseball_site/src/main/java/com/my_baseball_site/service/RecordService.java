@@ -12,6 +12,8 @@ import com.my_baseball_site.mapper.RecordMapper;
 import com.my_baseball_site.vo.PlayerDefensRecordVO;
 import com.my_baseball_site.vo.PlayerHitterRecordBasicVO;
 import com.my_baseball_site.vo.PlayerHitterRecordDetailVO;
+import com.my_baseball_site.vo.PlayerPitcherRecordBasicVO;
+import com.my_baseball_site.vo.PlayerPitcherRecordDetailVO;
 import com.my_baseball_site.vo.PlayerRunnerRecordVO;
 import com.my_baseball_site.vo.TeamDefenseRecordVO;
 import com.my_baseball_site.vo.TeamHitterRecordVO;
@@ -383,6 +385,129 @@ public class RecordService {
             if(print_formatting.equals("-1.000")) print_formatting = "-";
             else if(print_formatting.equals("0.000")) print_formatting = "0";
             item.setPrint_gpa(print_formatting);
+        }
+        
+        return list;
+    }
+
+    public List<PlayerPitcherRecordBasicVO> selectPlayerPitcherRecordBasic(){
+        Calendar now = Calendar.getInstance();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
+        String cur_year = formatter.format(now.getTime());
+
+        DecimalFormat n_formatter = new DecimalFormat("0.000");
+        DecimalFormat n_formatter2 = new DecimalFormat("0.00");
+        String print_formatting;
+
+        List<PlayerPitcherRecordBasicVO> list = mapper.selectPlayerPitcherRecordBasic(cur_year,"정규시즌","전체");
+        
+        for(PlayerPitcherRecordBasicVO item:list){
+            print_formatting = n_formatter.format(item.getPprb_WPCT());
+            if(print_formatting.equals("-1.000")) print_formatting = "-";
+            else if(print_formatting.equals("0.000")) print_formatting = "0";
+            item.setPrint_wpct(print_formatting);
+
+            if(item.getPprb_year() > 2002){
+                print_formatting = n_formatter2.format(item.getPprb_WHIP());
+                if(print_formatting.equals("-1.00")) print_formatting = "-";
+                else if(print_formatting.equals("0.00")) print_formatting = "0";
+                item.setPrint_whip(print_formatting);
+
+                print_formatting = n_formatter.format(item.getPprb_AVG());
+                if(print_formatting.equals("-1.000")) print_formatting = "-";
+                else if(print_formatting.equals("0.000")) print_formatting = "0";
+                item.setPrint_avg(print_formatting);
+            }
+        }
+        
+        return list;
+    }
+    public List<PlayerPitcherRecordBasicVO> selectPlayerPitcherRecordBasic(String year,String series,String position){
+        DecimalFormat n_formatter = new DecimalFormat("0.000");
+        DecimalFormat n_formatter2 = new DecimalFormat("0.00");
+        String print_formatting;
+
+        List<PlayerPitcherRecordBasicVO> list = mapper.selectPlayerPitcherRecordBasic(year,series,position);
+        
+        for(PlayerPitcherRecordBasicVO item:list){
+            print_formatting = n_formatter.format(item.getPprb_WPCT());
+            if(print_formatting.equals("-1.000")) print_formatting = "-";
+            else if(print_formatting.equals("0.000")) print_formatting = "0";
+            item.setPrint_wpct(print_formatting);
+
+            if(item.getPprb_year() > 2002){
+                print_formatting = n_formatter2.format(item.getPprb_WHIP());
+                if(print_formatting.equals("-1.00")) print_formatting = "-";
+                else if(print_formatting.equals("0.00")) print_formatting = "0";
+                item.setPrint_whip(print_formatting);
+
+                print_formatting = n_formatter.format(item.getPprb_AVG());
+                if(print_formatting.equals("-1.000")) print_formatting = "-";
+                else if(print_formatting.equals("0.000")) print_formatting = "0";
+                item.setPrint_avg(print_formatting);
+            }
+        }
+        
+        return list;
+    }
+    public List<PlayerPitcherRecordDetailVO> selectPlayerPitcherRecordDetail(String year,String position){
+        DecimalFormat n_formatter = new DecimalFormat("0.0");
+        DecimalFormat n_formatter2 = new DecimalFormat("0.00");
+        DecimalFormat n_formatter3 = new DecimalFormat("0.000");
+        String print_formatting;
+
+        List<PlayerPitcherRecordDetailVO> list = mapper.selectPlayerPitcherRecordDetail(year,position);
+        
+        for(PlayerPitcherRecordDetailVO item:list){
+            print_formatting = n_formatter.format(item.getPprd_P_G());
+            if(print_formatting.equals("-1.0")) print_formatting = "-";
+            else if(print_formatting.equals("0.0")) print_formatting = "0";
+            item.setPrint_p_g(print_formatting);
+
+            print_formatting = n_formatter.format(item.getPprd_P_IP());
+            if(print_formatting.equals("-1.0")) print_formatting = "-";
+            else if(print_formatting.equals("0.0")) print_formatting = "0";
+            item.setPrint_p_ip(print_formatting);
+
+            print_formatting = n_formatter2.format(item.getPprd_GO_AO());
+            if(print_formatting.equals("-1.0")) print_formatting = "-";
+            else if(print_formatting.equals("0.0")) print_formatting = "0";
+            item.setPrint_go_ao(print_formatting);
+
+            print_formatting = n_formatter2.format(item.getPprd_K_9());
+            if(print_formatting.equals("-1.00")) print_formatting = "-";
+            else if(print_formatting.equals("0.00")) print_formatting = "0";
+            item.setPrint_k_9(print_formatting);
+            
+            print_formatting = n_formatter2.format(item.getPprd_BB_9());
+            if(print_formatting.equals("-1.00")) print_formatting = "-";
+            else if(print_formatting.equals("0.00")) print_formatting = "0";
+            item.setPrint_bb_9(print_formatting);
+
+            print_formatting = n_formatter2.format(item.getPprd_K_BB());
+            if(print_formatting.equals("-1.00")) print_formatting = "-";
+            else if(print_formatting.equals("0.00")) print_formatting = "0";
+            item.setPrint_k_bb(print_formatting);
+
+            print_formatting = n_formatter3.format(item.getPprd_BABIP());
+            if(print_formatting.equals("-1.000")) print_formatting = "-";
+            else if(print_formatting.equals("0.000")) print_formatting = "0";
+            item.setPrint_babip(print_formatting);
+
+            print_formatting = n_formatter3.format(item.getPprd_OBP());
+            if(print_formatting.equals("-1.000")) print_formatting = "-";
+            else if(print_formatting.equals("0.000")) print_formatting = "0";
+            item.setPrint_obp(print_formatting);
+
+            print_formatting = n_formatter3.format(item.getPprd_SLG());
+            if(print_formatting.equals("-1.000")) print_formatting = "-";
+            else if(print_formatting.equals("0.000")) print_formatting = "0";
+            item.setPrint_slg(print_formatting);
+
+            print_formatting = n_formatter3.format(item.getPprd_OPS());
+            if(print_formatting.equals("-1.000")) print_formatting = "-";
+            else if(print_formatting.equals("0.000")) print_formatting = "0";
+            item.setPrint_ops(print_formatting);
         }
         
         return list;

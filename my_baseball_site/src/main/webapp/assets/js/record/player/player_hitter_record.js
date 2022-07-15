@@ -39,6 +39,7 @@ $(function(){
         }
     })
     $("#series_select").change(function(){
+        // 정규시즌 외의 출력 수정
         let year = $("#year_select").val()
         let series = $("#series_select").val()
         let position = $("#position_select").val()

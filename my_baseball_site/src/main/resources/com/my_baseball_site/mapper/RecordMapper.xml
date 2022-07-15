@@ -49,4 +49,18 @@
             and phrb_position = #{position}
         </if>
     </select>
+    <select id="selectPlayerPitcherRecordBasic" resultType="com.my_baseball_site.vo.PlayerPitcherRecordBasicVO">
+        select * from player_pitcher_record_basic 
+        where pprb_year = #{year} and pprb_serise = #{series}
+        <if test="!position.equals('전체')">
+            and pprb_position = #{position}
+        </if>
+    </select>
+    <select id="selectPlayerPitcherRecordDetail" resultType="com.my_baseball_site.vo.PlayerPitcherRecordDetailVO">
+        select * from player_pitcher_record_detail 
+        where pprd_year = #{year}
+        <if test="!position.equals('전체')">
+            and pprd_position = #{position}
+        </if>
+    </select>
 </mapper>
