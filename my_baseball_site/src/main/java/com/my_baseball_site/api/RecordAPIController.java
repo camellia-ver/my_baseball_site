@@ -149,12 +149,11 @@ public class RecordAPIController {
     @GetMapping("/player_pitcher_record/api/basic")
     public Map<String, Object> getPlayerPitcherRecordBasic(
         @RequestParam String year,
-        @RequestParam String series,
-        @RequestParam String position
+        @RequestParam String series
     ){
         Map<String, Object> resultMap = new LinkedHashMap<String,Object>();
 
-        List<PlayerPitcherRecordBasicVO> list = service.selectPlayerPitcherRecordBasic(year, series, position);
+        List<PlayerPitcherRecordBasicVO> list = service.selectPlayerPitcherRecordBasic(year, series);
         
         resultMap.put("status", true);
         resultMap.put("data", list);
@@ -163,12 +162,11 @@ public class RecordAPIController {
     }
     @GetMapping("/player_pitcher_record/api/detail")
     public Map<String, Object> getPlayerPitcherRecordDetail(
-        @RequestParam String year,
-        @RequestParam String position
+        @RequestParam String year
     ){
         Map<String, Object> resultMap = new LinkedHashMap<String,Object>();
 
-        List<PlayerPitcherRecordDetailVO> list = service.selectPlayerPitcherRecordDetail(year, position);
+        List<PlayerPitcherRecordDetailVO> list = service.selectPlayerPitcherRecordDetail(year);
         
         resultMap.put("status", true);
         resultMap.put("data", list);

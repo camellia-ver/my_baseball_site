@@ -94,6 +94,7 @@
                     <th scope="col">ERA</th>
                     <th scope="col">G</th>
                     <th scope="col">CG</th>
+                    <th scope="col">SHO</th>
                     <th scope="col">W</th>
                     <th scope="col">L</th>
                     <th scope="col">SV</th>

@@ -28,6 +28,6 @@ public interface RecordMapper {
     public List<PlayerRunnerRecordVO> selectPlayerRunnerRecord(String year,String position);
     public List<PlayerHitterRecordBasicVO> selectPlayerHitterRecordBasic(String year,String series,String position);
     public List<PlayerHitterRecordDetailVO> selectPlayerHitterRecordDetail(String year,String position);
-    public List<PlayerPitcherRecordBasicVO> selectPlayerPitcherRecordBasic(String year,String series,String position);
-    public List<PlayerPitcherRecordDetailVO> selectPlayerPitcherRecordDetail(String year,String position);
+    public List<PlayerPitcherRecordBasicVO> selectPlayerPitcherRecordBasic(String year,String series);
+    public List<PlayerPitcherRecordDetailVO> selectPlayerPitcherRecordDetail(String year);
 }

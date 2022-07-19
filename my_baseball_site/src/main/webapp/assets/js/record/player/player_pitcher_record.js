@@ -4,6 +4,8 @@ $(function(){
 
     $("#year_select").html("")
 
+    $("#series_select").attr("disabled",true)
+
     for(let i = now.getFullYear();i >= 1982;i--){
         let tag = '<option value='+i+'>'+i+'</option>'
         $("#year_select").append(tag)
@@ -12,14 +14,13 @@ $(function(){
     $("#year_select").change(function(){
         let year = $("#year_select").val()
         let series = $("#series_select").val()
-        let position = $("#position_select").val()
 
         if(year < 2002){
             $(".select_data").css("display","none")
             $("#before_2002").css("display","table")
             $("#after_2002").css("display","none")
             $("#detail").css("display","none")
-            before2002(year,series,position)
+            before2002(year,series)
         }
         else{
             if(is_baisc){
@@ -27,28 +28,27 @@ $(function(){
                 $("#before_2002").css("display","none")
                 $("#after_2002").css("display","table")
                 $("#detail").css("display","none")
-                after2002(year,series,position)
+                after2002(year,series)
             }
             else{
                 $(".select_data").css("display","block")
                 $("#before_2002").css("display","none")
                 $("#after_2002").css("display","none")
                 $("#detail").css("display","table")
-                detail(year,position)
+                detail(year)
             }
         }
     })
     $("#series_select").change(function(){
         let year = $("#year_select").val()
         let series = $("#series_select").val()
-        let position = $("#position_select").val()
         
         if(series != "정규시즌"){
             $(".select_data").css("display","none")
             $("#before_2002").css("display","table")
             $("#after_2002").css("display","none")
             $("#detail").css("display","none")
-            before2002(year,series,position)
+            before2002(year,series)
         }
         else{
             $(".select_data").css("display","block")
@@ -56,45 +56,26 @@ $(function(){
                 $("#before_2002").css("display","none")
                 $("#after_2002").css("display","table")
                 $("#detail").css("display","none")
-                after2002(year,series,position)
+                after2002(year,series)
             }
             else{
                 $("#before_2002").css("display","table")
                 $("#after_2002").css("display","none")
                 $("#detail").css("display","none")
-                before2002(year,series,position)
+                before2002(year,series)
             }
-        }
-    })
-    $("#position_select").change(function(){
-        let year = $("#year_select").val()
-        let series = $("#series_select").val()
-        let position = $("#position_select").val()
-
-        if(year > 2002){
-            $("#before_2002").css("display","none")
-            $("#after_2002").css("display","table")
-            $("#detail").css("display","none")
-            after2002(year,series,position)
-        }
-        else{
-            $("#before_2002").css("display","table")
-            $("#after_2002").css("display","none")
-            $("#detail").css("display","none")
-            before2002(year,series,position)
         }
     })
 
     $("#detail_record").click(function(){
         let year = $("#year_select").val()
-        let position = $("#position_select").val()
         
         $("#series_select").attr("disabled",true)
         is_baisc = false
         $("#before_2002").css("display","none")
         $("#after_2002").css("display","none")
         $("#detail").css("display","table")
-        detail(year,position)
+        detail(year)
     })
     $("#basic_record").click(function(){
         let year = $("#year_select").val()
@@ -104,20 +85,20 @@ $(function(){
             $("#before_2002").css("display","none")
             $("#after_2002").css("display","table")
             $("#detail").css("display","none")
-            after2002(year,series,position)
+            after2002(year,series)
         }
         else{
             $("#before_2002").css("display","table")
             $("#after_2002").css("display","none")
             $("#detail").css("display","none")
-            before2002(year,series,position)
+            before2002(year,series)
         }
     })
 
-    function before2002(year,series,position){
+    function before2002(year,series){
         $("#before_2002_tdody").html("")
 
-        let url = "/player_pitcher_record/api/basic?year="+year+"&series="+series+"&position="+position
+        let url = "/player_pitcher_record/api/basic?year="+year+"&series="+series
 
         $.ajax({
             type:"get",
@@ -153,10 +134,10 @@ $(function(){
             }
         })
     }
-    function after2002(year,series,position){
+    function after2002(year,series){
         $("#after_2002_tdody").html("")
 
-        let url = "/player_pitcher_record/api/basic?year="+year+"&series="+series+"&position="+position
+        let url = "/player_pitcher_record/api/basic?year="+year+"&series="+series
 
         $.ajax({
             type:"get",
@@ -203,10 +184,10 @@ $(function(){
             }
         })
     }
-    function detail(year,position){
+    function detail(year){
         $("#detail_tdody").html("")
 
-        let url = "/player_pitcher_record/api/detail?year="+year+"&position="+position
+        let url = "/player_pitcher_record/api/detail?year="+year
 
         $.ajax({
             type:"get",

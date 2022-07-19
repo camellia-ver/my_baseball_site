@@ -425,7 +425,7 @@ public class RecordService {
         DecimalFormat n_formatter2 = new DecimalFormat("0.00");
         String print_formatting;
 
-        List<PlayerPitcherRecordBasicVO> list = mapper.selectPlayerPitcherRecordBasic(cur_year,"정규시즌","전체");
+        List<PlayerPitcherRecordBasicVO> list = mapper.selectPlayerPitcherRecordBasic(cur_year,"정규시즌");
         
         for(PlayerPitcherRecordBasicVO item:list){
             print_formatting = n_formatter.format(item.getPprb_WPCT());
@@ -448,12 +448,12 @@ public class RecordService {
         
         return list;
     }
-    public List<PlayerPitcherRecordBasicVO> selectPlayerPitcherRecordBasic(String year,String series,String position){
+    public List<PlayerPitcherRecordBasicVO> selectPlayerPitcherRecordBasic(String year,String series){
         DecimalFormat n_formatter = new DecimalFormat("0.000");
         DecimalFormat n_formatter2 = new DecimalFormat("0.00");
         String print_formatting;
 
-        List<PlayerPitcherRecordBasicVO> list = mapper.selectPlayerPitcherRecordBasic(year,series,position);
+        List<PlayerPitcherRecordBasicVO> list = mapper.selectPlayerPitcherRecordBasic(year,series);
         
         for(PlayerPitcherRecordBasicVO item:list){
             print_formatting = n_formatter.format(item.getPprb_WPCT());
@@ -486,13 +486,13 @@ public class RecordService {
         
         return list;
     }
-    public List<PlayerPitcherRecordDetailVO> selectPlayerPitcherRecordDetail(String year,String position){
+    public List<PlayerPitcherRecordDetailVO> selectPlayerPitcherRecordDetail(String year){
         DecimalFormat n_formatter = new DecimalFormat("0.0");
         DecimalFormat n_formatter2 = new DecimalFormat("0.00");
         DecimalFormat n_formatter3 = new DecimalFormat("0.000");
         String print_formatting;
 
-        List<PlayerPitcherRecordDetailVO> list = mapper.selectPlayerPitcherRecordDetail(year,position);
+        List<PlayerPitcherRecordDetailVO> list = mapper.selectPlayerPitcherRecordDetail(year);
         
         for(PlayerPitcherRecordDetailVO item:list){
             print_formatting = n_formatter.format(item.getPprd_P_G());
