@@ -122,24 +122,8 @@ $(function(){
         $.ajax({
             type:"get",
             url:url,
-            success:function(r){             
-                for(let i = 0;i < r.data.length;i++){
-                    let tag = 
-
-                    $("#before_2002_tdody").append(tag)
-                }
-            }
-        })
-    }
-    function after2002(year,series,position){
-        $("#after_2002_tdody").html("")
-
-        let url = "/player_pitcher_record/api/basic?year="+year+"&series="+series+"&position="+position
-
-        $.ajax({
-            type:"get",
-            url:url,
-            success:function(r){             
+            success:function(r){   
+                console.log(r.data)        
                 for(let i = 0;i < r.data.length;i++){
                     let tag = 
                     '<tr>'+
@@ -164,6 +148,56 @@ $(function(){
                         '<td>'+r.data[i].pprb_ER+'</td>'+
                     '</tr>'
 
+                    $("#before_2002_tdody").append(tag)
+                }
+            }
+        })
+    }
+    function after2002(year,series,position){
+        $("#after_2002_tdody").html("")
+
+        let url = "/player_pitcher_record/api/basic?year="+year+"&series="+series+"&position="+position
+
+        $.ajax({
+            type:"get",
+            url:url,
+            success:function(r){             
+                for(let i = 0;i < r.data.length;i++){
+                    let tag = 
+                    '<tr>'+
+                        '<td>'+r.data[i].pprb_player_name+'</td>'+
+                        '<td>'+r.data[i].pprb_ERA+'</td>'+
+                        '<td>'+r.data[i].pprb_G+'</td>'+
+                        '<td>'+r.data[i].pprb_W+'</td>'+
+                        '<td>'+r.data[i].pprb_L+'</td>'+
+                        '<td>'+r.data[i].pprb_SV+'</td>'+
+                        '<td>'+r.data[i].pprb_HLD+'</td>'+
+                        '<td>'+r.data[i].print_wpct+'</td>'+
+                        '<td>'+r.data[i].pprb_IP+'</td>'+
+                        '<td>'+r.data[i].pprb_H+'</td>'+
+                        '<td>'+r.data[i].pprb_HR+'</td>'+
+                        '<td>'+r.data[i].pprb_BB+'</td>'+
+                        '<td>'+r.data[i].pprb_HBP+'</td>'+
+                        '<td>'+r.data[i].pprb_SO+'</td>'+
+                        '<td>'+r.data[i].pprb_R+'</td>'+
+                        '<td>'+r.data[i].pprb_ER+'</td>'+
+                        '<td>'+r.data[i].print_whip+'</td>'+
+                        '<td>'+r.data[i].pprb_CG+'</td>'+
+                        '<td>'+r.data[i].pprb_SHO+'</td>'+
+                        '<td>'+r.data[i].pprb_QS+'</td>'+
+                        '<td>'+r.data[i].pprb_BSV+'</td>'+
+                        '<td>'+r.data[i].pprb_TBF+'</td>'+
+                        '<td>'+r.data[i].pprb_NP+'</td>'+
+                        '<td>'+r.data[i].print_avg+'</td>'+
+                        '<td>'+r.data[i].pprb_2B+'</td>'+
+                        '<td>'+r.data[i].pprb_3B+'</td>'+
+                        '<td>'+r.data[i].pprb_SAC+'</td>'+
+                        '<td>'+r.data[i].pprb_SF+'</td>'+
+                        '<td>'+r.data[i].pprb_IBB+'</td>'+
+                        '<td>'+r.data[i].pprb_WP+'</td>'+
+                        '<td>'+r.data[i].pprb_BK+'</td>'+
+                    '</tr>'
+
                     $("#after_2002_tdody").append(tag)
                 }
             }
@@ -180,7 +214,29 @@ $(function(){
             success:function(r){             
                 for(let i = 0;i < r.data.length;i++){
                     let tag = 
-                    
+                    '<tr>'+
+                        '<td>'+r.data[i].pprd_player_name+'</td>'+
+                        '<td>'+r.data[i].pprd_ERA+'</td>'+
+                        '<td>'+r.data[i].pprd_GS+'</td>'+
+                        '<td>'+r.data[i].pprd_Wgs+'</td>'+
+                        '<td>'+r.data[i].pprd_Wgr+'</td>'+
+                        '<td>'+r.data[i].pprd_GF+'</td>'+
+                        '<td>'+r.data[i].pprd_SVO+'</td>'+
+                        '<td>'+r.data[i].pprd_TS+'</td>'+
+                        '<td>'+r.data[i].pprd_GDP+'</td>'+
+                        '<td>'+r.data[i].pprd_GO+'</td>'+
+                        '<td>'+r.data[i].pprd_AO+'</td>'+
+                        '<td>'+r.data[i].print_go_ao+'</td>'+
+                        '<td>'+r.data[i].print_babip+'</td>'+
+                        '<td>'+r.data[i].print_p_g+'</td>'+
+                        '<td>'+r.data[i].print_p_ip+'</td>'+
+                        '<td>'+r.data[i].print_k_9+'</td>'+
+                        '<td>'+r.data[i].print_bb_9+'</td>'+
+                        '<td>'+r.data[i].print_k_bb+'</td>'+
+                        '<td>'+r.data[i].print_obp+'</td>'+
+                        '<td>'+r.data[i].print_slg+'</td>'+
+                        '<td>'+r.data[i].print_ops+'</td>'+
+                    '</tr>'
 
                     $("#detail_tdody").append(tag)
                 }

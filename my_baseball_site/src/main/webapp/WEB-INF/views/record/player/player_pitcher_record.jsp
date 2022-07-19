@@ -19,56 +19,6 @@
                     <th scope="col">이름</th>
                     <th scope="col">ERA</th>
                     <th scope="col">G</th>
-                    <th scope="col">CG</th>
-                    <th scope="col">SHO</th>
-                    <th scope="col">W</th>
-                    <th scope="col">L</th>
-                    <th scope="col">SV</th>
-                    <th scope="col">HLD</th>
-                    <th scope="col">WPCT</th>
-                    <th scope="col">TBF</th>
-                    <th scope="col">IP</th>
-                    <th scope="col">H</th>
-                    <th scope="col">HR</th>
-                    <th scope="col">BB</th>
-                    <th scope="col">HBP</th>
-                    <th scope="col">SO</th>
-                    <th scope="col">R</th>
-                    <th scope="col">ER</th>
-                  </tr>
-                </thead>
-                <tbody id="after_2002_tdody">
-                    <c:forEach items="${pitcher}" var="item">
-                        <tr>
-                            <td>${item.pprb_player_name}</td>
-                            <td>${item.pprb_ERA}</td>
-                            <td>${item.pprb_G}</td>
-                            <td>${item.pprb_CG}</td>
-                            <td>${item.pprb_SHO}</td>
-                            <td>${item.pprb_W}</td>
-                            <td>${item.pprb_L}</td>
-                            <td>${item.pprb_SV}</td>
-                            <td>${item.pprb_HLD}</td>
-                            <td>${item.print_wpct}</td>
-                            <td>${item.pprb_TBF}</td>
-                            <td>${item.pprb_IP}</td>
-                            <td>${item.pprb_H}</td>
-                            <td>${item.pprb_HR}</td>
-                            <td>${item.pprb_BB}</td>
-                            <td>${item.pprb_HBP}</td>
-                            <td>${item.pprb_SO}</td>
-                            <td>${item.pprb_R}</td>
-                            <td>${item.pprb_ER}</td>
-                        </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
-            <table class="table table-striped" id="before_2002">
-                <thead>
-                  <tr>
-                    <th scope="col">이름</th>
-                    <th scope="col">ERA</th>
-                    <th scope="col">G</th>
                     <th scope="col">W</th>
                     <th scope="col">L</th>
                     <th scope="col">SV</th>
@@ -97,6 +47,67 @@
                     <th scope="col">IBB</th>
                     <th scope="col">WP</th>
                     <th scope="col">BK</th>
+                  </tr>
+                </thead>
+                <tbody id="after_2002_tdody">
+                    <c:forEach items="${pitcher}" var="item">
+                        <tr>
+                            <td>${item.pprb_player_name}</td>
+                            <td>${item.pprb_ERA}</td>
+                            <td>${item.pprb_G}</td>
+                            <td>${item.pprb_W}</td>
+                            <td>${item.pprb_L}</td>
+                            <td>${item.pprb_SV}</td>
+                            <td>${item.pprb_HLD}</td>
+                            <td>${item.print_wpct}</td>
+                            <td>${item.pprb_IP}</td>
+                            <td>${item.pprb_H}</td>
+                            <td>${item.pprb_HR}</td>
+                            <td>${item.pprb_BB}</td>
+                            <td>${item.pprb_HBP}</td>
+                            <td>${item.pprb_SO}</td>
+                            <td>${item.pprb_R}</td>
+                            <td>${item.pprb_ER}</td>
+                            <td>${item.print_whip}</td>
+                            <td>${item.pprb_CG}</td>
+                            <td>${item.pprb_SHO}</td>
+                            <td>${item.pprb_QS}</td>
+                            <td>${item.pprb_BSV}</td>
+                            <td>${item.pprb_TBF}</td>
+                            <td>${item.pprb_NP}</td>
+                            <td>${item.print_avg}</td>
+                            <td>${item.pprb_2B}</td>
+                            <td>${item.pprb_3B}</td>
+                            <td>${item.pprb_SAC}</td>
+                            <td>${item.pprb_SF}</td>
+                            <td>${item.pprb_IBB}</td>
+                            <td>${item.pprb_WP}</td>
+                            <td>${item.pprb_BK}</td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+            <table class="table table-striped" id="before_2002">
+                <thead>
+                  <tr>
+                    <th scope="col">이름</th>
+                    <th scope="col">ERA</th>
+                    <th scope="col">G</th>
+                    <th scope="col">CG</th>
+                    <th scope="col">W</th>
+                    <th scope="col">L</th>
+                    <th scope="col">SV</th>
+                    <th scope="col">HLD</th>
+                    <th scope="col">WPCT</th>
+                    <th scope="col">TBF</th>
+                    <th scope="col">IP</th>
+                    <th scope="col">H</th>
+                    <th scope="col">HR</th>
+                    <th scope="col">BB</th>
+                    <th scope="col">HBP</th>
+                    <th scope="col">SO</th>
+                    <th scope="col">R</th>
+                    <th scope="col">ER</th>
                   </tr>
                 </thead>
                 <tbody id="before_2002_tdody">
