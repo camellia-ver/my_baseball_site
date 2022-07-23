@@ -11,12 +11,6 @@
 <body>
     <div class="contents">
         <div class="profile">
-            <div class="player_img">
-               
-            </div>
-            <div class="player_data">
-
-            </div>
         </div>
     </div>
 </body>

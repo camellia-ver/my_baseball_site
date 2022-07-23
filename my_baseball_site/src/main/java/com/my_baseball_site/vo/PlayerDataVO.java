@@ -17,6 +17,5 @@ public class PlayerDataVO {
     private Integer salary;
     private String draft;
     private String join_year;
-    private String image_url;
     private String league;
 }
