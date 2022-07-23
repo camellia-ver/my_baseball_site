@@ -63,6 +63,9 @@
                   <li><a class="dropdown-item" href="/golden_glove">역대 골든글로브</a></li>
                 </ul>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/player_list">선수명단</a>
+              </li>
               <!-- <li class="nav-item">
                 <a class="nav-link" href="#">게시판</a>
               </li> -->

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.my_baseball_site.mapper.PlayerDataMapper">
+    <select id="selectPlayerDataByPosition" resultType="com.my_baseball_site.vo.PlayerDataVO">
+        select * from player_profile
+        <if test="!position.equals('전체')">
+            where position1 = #{position}
+        </if>
+    </select>
+    <select id="selectPlayerDataByName" resultType="com.my_baseball_site.vo.PlayerDataVO">
+        select * from player_profile
+        where name = #{name}
+    </select>
+
+    <select id="selectPlayerProfile" resultType="com.my_baseball_site.vo.PlayerDataVO">
+        select * from player_profile
+        where name = #{name} and birth = #{birth}
+    </select>
+    <select id="selectPitcherRecord" resultType="com.my_baseball_site.vo.PlayerPitcherRecordBasicVO">
+        select * from player_pitcher_record_basic
+        where pprb_player_name = #{name} and pprb_birth = #{birth}
+    </select>
+    <select id="selectHitterRecord" resultType="com.my_baseball_site.vo.PlayerHitterRecordBasicVO">
+        select * from player_hitter_record_basic
+        where phrb_player_name = #{name} and phrb_birth = #{birth}
+    </select>
+    <select id="selectFuturesPitcherRecord" resultType="com.my_baseball_site.vo.FuturesPitcherRecordVO">
+        select * from futures_pitcher_record
+        where fpr_name = #{name} and fpr_birth = #{birth}
+    </select>
+    <select id="selectFuturesHitterRecord" resultType="com.my_baseball_site.vo.FuturesHitterRecordVO">
+        select * from futures_hitter_record
+        where fhr_name = #{name} and fhr_birth = #{birth}
+    </select>
+</mapper>

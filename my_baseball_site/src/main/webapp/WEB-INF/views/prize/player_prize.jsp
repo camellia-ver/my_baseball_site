@@ -7,7 +7,6 @@
     <meta charset="UTF-8">
     <title>baseball data site</title>
     <link rel="stylesheet" href="/assets/css/prize/player_prize.css">
-    <!-- <script src="/assets/js/ranking/ranking.js"></script> -->
 </head>
 <body>
     <div class="contents">
