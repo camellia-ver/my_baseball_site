@@ -12,7 +12,7 @@
     <div class="contents">
         <div class="profile">
             <div class="player_img">
-                <img src="C:/Users/jyr/Desktop/study/portfolio/kbo_scraping/player_data/image/players_img/${profile.image_url}" alt="">
+               
             </div>
             <div class="player_data">
 
